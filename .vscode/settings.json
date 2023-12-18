@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "react_aspcore_app\\bin\\Release\\net7.0\\publish",
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/aa3927f1-c325-4e26-be5c-d6bb17071bd5/resourceGroups/AppServiceWPRGroepB/providers/Microsoft.Web/sites/AppServiceWPRGroepB"
+}

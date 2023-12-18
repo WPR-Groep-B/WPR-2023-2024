@@ -8,7 +8,7 @@ function Home() {
                 <img src={wheelchair} alt="Wheelchair user at computer" className={styles.heroImage} />
                 <div className={styles.heroText}>
                     <h1>
-                        Samen met onze partners en klanten werken we aan een inclusieve samenleving die toegankelijk is voor iedereen.
+                        Samen met onze partners en klanten werken we aan een inclusieve samenleving die toegankelijk is voor iedereen. TEST
                     </h1>
                     <h2>
                         Meer over Accessibility &gt;

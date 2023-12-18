@@ -1,4 +1,4 @@
-import styles from '../styles/Privacy.module.css';
+//import styles from '../styles/Privacy.module.css';
 
 function Privacy() {
     return (
@@ -53,7 +53,7 @@ Feedback die gegeven wordt over de panelsite zelf wordt bewaard, totdat deze ver
 Een account waar 6 maanden geen actie op is waargenomen zal ook verwijderd worden uit onze systemen.</p>
 
             <h3>Rechten van gebruikers</h3>
-            <p>Gebruikers hebben het recht om hun persoonlijke gegevens in te zien, te corrigeren of te verwijderen. Neem contact met ons op via onze <a href="https://appservicewprgroepb.azurewebsites.net/contact" target="_blank">contactgegevens</a> om gebruik te maken van deze rechten.</p>
+            <p>Gebruikers hebben het recht om hun persoonlijke gegevens in te zien, te corrigeren of te verwijderen. Neem contact met ons op via onze <a href="https://appservicewprgroepb.azurewebsites.net/contact" target="_blank" rel="noreferrer">contactgegevens</a> om gebruik te maken van deze rechten.</p>
 
             <h3>Toestemming</h3>
             <p>Door het gebruik van onze webapplicatie gaat de gebruiker akkoord met deze privacyverklaring en het verzamelen en gebruiken van persoonlijke gegevens zoals beschreven.</p>
@@ -85,7 +85,7 @@ Een account waar 6 maanden geen actie op is waargenomen zal ook verwijderd worde
             <p>Gebruikersgegevens worden niet gedeeld met derden zonder de uitdrukkelijke toestemming van de gebruiker, tenzij vereist door de wet.</p>
 
             <h3>Rechten van Gebruikers</h3>
-            <p>Gebruikers hebben het recht om inzage te krijgen in de verzamelde gegevens en om gebruik te maken van hun recht om deze gegevens te corrigeren of te verwijderen. Neem contact met ons op via onze <a href="https://appservicewprgroepb.azurewebsites.net/contact" target="_blank">contactgegevens</a> om gebruik te maken van deze rechten.</p>
+            <p>Gebruikers hebben het recht om inzage te krijgen in de verzamelde gegevens en om gebruik te maken van hun recht om deze gegevens te corrigeren of te verwijderen. Neem contact met ons op via onze <a href="https://appservicewprgroepb.azurewebsites.net/contact" target="_blank" rel="noreferrer">contactgegevens</a> om gebruik te maken van deze rechten.</p>
 
             <h3>Toestemming</h3>
             <p>Door het gebruik van onze webapplicatie gaat de gebruiker akkoord met deze privacyverklaring en het verzamelen en gebruiken van gebruikersgegevens zoals beschreven.</p>

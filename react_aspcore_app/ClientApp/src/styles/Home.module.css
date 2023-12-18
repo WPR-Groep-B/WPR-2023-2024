@@ -1,0 +1,89 @@
+/* Home.module.css */
+.homeContainer {
+    color: #1A2E83;
+    /* Main text color */
+    font-family: Arial, sans-serif;
+    /* You can choose the font that matches your design */
+}
+
+.homeContainer h1 {
+    font-size: 1.75em;
+    /* Adjust the font size as needed */
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 1em;
+    /* Space below the header */
+    z-index: 10;
+    background-color: #111E55;
+    /* Set the background color */
+    display: inline;
+    /* Make the h1 inline or inline-block for the background to fit the text */
+    padding: 0.2em 0.6em;
+    /* Add some padding around the text */
+    box-decoration-break: clone;
+    /* This ensures the background extends across line breaks */
+    -webkit-box-decoration-break: clone;
+    /* For WebKit browsers */
+}
+
+.homeContainer h2 {
+    font-size: 2em;
+    font-weight: normal;
+    margin-bottom: 2em;
+    /* Space below the sub-header */
+    cursor: pointer;
+    /* Indicates the text is clickable */
+    z-index: 10;
+    background-color: #108670;
+    /* Set the background color */
+    display: inline;
+    /* Make the h2 inline or inline-block for the background to fit the text */
+    padding: 0.2em 0.6em;
+    /* Add some padding around the text */
+    box-decoration-break: clone;
+    /* This ensures the background extends across line breaks */
+    -webkit-box-decoration-break: clone;
+    /* For WebKit browsers */
+}
+
+
+.heroSection {
+    position: relative;
+    width: 100%;
+}
+
+.heroImage {
+    width: 100vw;
+    height: auto;
+    /* Adjust the height as needed */
+    display: block;
+    margin-left: calc(-50vw + 50%);
+    /* Center the image on the page */
+}
+
+
+.heroText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    /* Adjust the text color as needed for readability */
+    text-align: center;
+    z-index: 2;
+    /* Ensure the text is above the image */
+}
+
+.onderrzoekContainer {
+    background-color: #FFF;
+    /* Background color for the 'Onderzoek' section */
+    padding: 1em;
+    /* Padding inside the 'Onderzoek' sections */
+    margin-bottom: 1em;
+    /* Space between 'Onderzoek' sections */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adds subtle shadow for depth */
+    width: 256px;
+}
+
+/* More specific styles for the 'Onderzoek' sections can be added here, such as title styles, etc. */

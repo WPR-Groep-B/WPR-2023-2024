@@ -1,8 +1,8 @@
-//import styles from '../styles/Privacy.module.css';
+import styles from '../styles/Privacy.module.css';
 
 function Privacy() {
     return (
-        <html>
+        <html className={styles.justifiedText}>
             <h1>Privacyverklaring</h1>
 
             <div>

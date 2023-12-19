@@ -1,8 +1,8 @@
-//import styles from '../styles/AboutUs.module.css';
+import styles from '../styles/AboutUs.module.css';
 
 function AboutUs() {
     return (
-        <p>
+        <html className={styles.justifiedText}>
         <h1>Over ons</h1>
 
         Stichting Accessibility zet zich in voor een digitaal, fysiek en sociaal toegankelijke samenleving. Een samenleving waarin iedereen zelfstandig kan meedoen en zich optimaal kan ontplooien, ook als je een beperking hebt. Accessibility ondersteunt (maatschappelijke) organisaties bij het realiseren van toegankelijkheid. Zo dragen wij bij aan een inclusieve samenleving met voorzieningen die toegankelijk en bruikbaar zijn voor iedereen. Wij richten ons in het bijzonder op mensen met een visuele beperking.
@@ -31,9 +31,7 @@ Als sociale onderneming met een ANBI-status blijven we onze diensten, expertise 
 
 Stichting Accessibility heeft een ANBI status en zit in de advisory committee van het W3C.
         </p>
-        </p>
-        
-        
+        </html>
         );
 }
 

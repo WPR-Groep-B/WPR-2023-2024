@@ -3,26 +3,23 @@
 function Login() {
     return (
         <html>
-        <head>
-            <meta charset="UTF-8"></meta>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-            <link rel="stylesheet" href="Login.module.css"></link>
-            <title>Login Form</title>
-        </head>
     <body className={styles.body}>
+        <div className={styles.container}>
+        <h1>Login</h1>
         <form className={styles.form}>
-            <h1>Login</h1>
+            <hr></hr>
             <label className={styles.label} for="email">Email:</label>
-            <input className={styles.input} type="email" id="email" name="email" required></input>
+            <input className={styles.input} type="email" id="email" name="email" placeholder="text@email.com" required></input>
             <label className={styles.label} for="password">Password:</label>
-            <input className={styles.input} type="password" id="password" name="password" required></input>
-            <br></br>
+            <input className={styles.input} type="password" id="password" name="password" placeholder="Wachtwoord" required></input>
+            <hr></hr>
             <button className={styles.button} type="submit">Login</button>
-            <br></br>
-            <br></br>
-            <a href="https://appservicewprgroepb.azurewebsites.net/register" rel="noreferrer">Geen account? Maak er hier een aan</a>
             </form>
+            </div>
         </body>
+        <div className={styles.linkcontainer}>
+            <a href="http://localhost:3000/register">Geen account? Maak er hier een aan</a>
+        </div>
     </html>
         );
 }

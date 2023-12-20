@@ -18,7 +18,7 @@ function Login() {
             </div>
         </body>
         <div className={styles.linkcontainer}>
-            <a href="http://appservicewprgroepb.azurewebsites.net/login">Geen account? Maak er hier een aan</a>
+            <a href="http://appservicewprgroepb.azurewebsites.net/register">Geen account? Maak er hier een aan</a>
         </div>
     </html>
         );

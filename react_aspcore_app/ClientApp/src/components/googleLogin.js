@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-
+//secret id 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 Niet gebruiken behalve ik
 function GoogleLoginComponent() {
 
     function handleCredentialResponse(response) {
         console.log(response.credential);
+
     }
 
     useEffect(() => {
@@ -23,7 +24,6 @@ function GoogleLoginComponent() {
     return (
         <div>
             <div id="g_id_onload"></div>
-
         </div>
     );
 }

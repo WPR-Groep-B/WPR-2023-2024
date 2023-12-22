@@ -1,4 +1,5 @@
 import styles from '../styles/Login.module.css';
+import { Link } from 'react-router-dom';
 
 function login() {
     return (
@@ -34,9 +35,9 @@ function login() {
                 </button>
             </form>
             <div className={styles.linkcontainer}>
-                <a href="http://appservicewprgroepb.azurewebsites.net/register">
-                    Geen account? Maak er hier een aan
-                </a>
+            <Link to="/register">
+                Geen account? Maak er hier een aan
+            </Link>
             </div>
         </div>
     );

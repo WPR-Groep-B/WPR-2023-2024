@@ -71,6 +71,20 @@
     border-radius: 15px;
   }
 
+  .typeRegisterBtn {
+    background-color: #fe7d01;
+    color: #111e55;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    margin: auto;
+    opacity: 0.8;
+    font-weight: 800;
+    font-size: large;
+    border-radius: 15px;
+  }
+
   .registerbtn:hover {
     opacity: 1;
   }

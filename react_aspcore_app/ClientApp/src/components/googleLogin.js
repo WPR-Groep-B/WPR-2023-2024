@@ -1,27 +1,30 @@
-import { GoogleLogin } from 'react-google-login';
-
-const clientID = "432096940340 - mbj1p2us3bgq1t2f89h7ln18me2bn82e.apps.googleusercontent.com";
+import { useEffect } from 'react';
 
 function GoogleLoginComponent() {
 
-    const onSuccess = (res) => {
-        console.log('[Login Success] currentUser:', res.profileObj);
-    };   
+    function handleCredentialResponse(response) {
+        console.log(response.credential);
+    }
 
-    const onFailure = (res) => {
-        console.log('[Login failed] res:', res);
-    };
+    useEffect(() => {
+        /*global google*/
+        google.accounts.id.initialize({
+            client_id: "432096940340-mbj1p2us3bgq1t2f89h7ln18me2bn82e.apps.googleusercontent.com",
+            callback: handleCredentialResponse,
+            auto_select: true,
+        });
+
+        google.accounts.id.renderButton(
+            document.getElementById("g_id_onload"),
+            { theme: "outline", size: "large" }
+        );
+    }, []);
 
     return (
-        <GoogleLogin
-            clientId={clientID}
-            buttonText="Login"
-            onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={'single_host_origin'}
-            style={{ marginTop: '100px' }}
-            isSignedIn={true}
-        />
+        <div>
+            <div id="g_id_onload"></div>
+
+        </div>
     );
 }
 

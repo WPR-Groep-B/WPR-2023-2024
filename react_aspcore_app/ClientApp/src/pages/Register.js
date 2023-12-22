@@ -10,7 +10,7 @@ function Register() {
                     <hr></hr>
                     <div>
                         <label for="firstName">Voornaam:</label>
-                        <input type="text" id="firstName" name="firstName" placeholder="Vooraam" required></input>
+                        <input type="text" id="firstName" name="firstName" placeholder="Voornaam" required></input>
                     </div>                   
 
                     <div>
@@ -21,6 +21,16 @@ function Register() {
                     <div>
                         <label for="age">Leeftijd:</label>
                         <input type="date" id="age" name="age" required></input>
+                    </div>
+
+                    <div>
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" required></input>
+                    </div>
+
+                    <div>
+                        <label for="postcode">Postcode:</label>
+                        <input type="text" id="postcode" name="postcode" placeholder="1234 AB" required></input>
                     </div>
 
                     <div>

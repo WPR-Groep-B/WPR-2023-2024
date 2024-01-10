@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css';
 import wheelchair from '../images/Computer-User-Wheelchair-2.jpeg';
+import { NavLink } from "react-router-dom";
 
 function Home() {
     return (
@@ -11,7 +12,9 @@ function Home() {
                         Samen met onze partners en klanten werken we aan een inclusieve samenleving die toegankelijk is voor iedereen.
                     </h1>
                     <h2>
-                        <a classname={styles.homeHyperlink} href="./aboutus"> Meer over Accessibility &gt;</a>
+                    <NavLink to="/aboutus">
+                        Meer over Accessibility &gt;
+                    </NavLink>
                     </h2>
                 </div>
             </div>

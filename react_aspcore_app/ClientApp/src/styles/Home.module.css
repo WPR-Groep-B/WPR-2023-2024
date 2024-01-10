@@ -4,6 +4,7 @@
     /* Main text color */
     font-family: Arial, sans-serif;
     /* You can choose the font that matches your design */
+    
 }
 
 .homeContainer h1 {
@@ -42,6 +43,7 @@
     /* This ensures the background extends across line breaks */
     -webkit-box-decoration-break: clone;
     /* For WebKit browsers */
+
 }
 
 
@@ -70,6 +72,8 @@
     text-align: center;
     z-index: 2;
     /* Ensure the text is above the image */
+    max-height: 200px;
+    overflow: auto;
 }
 
 .onderrzoekContainer {
@@ -89,6 +93,7 @@
     text-decoration: none;
     color: white;
     cursor: pointer;
+    /* Indicates the text is clickable */
 }
 
  .homeContainer h2 :hover {
@@ -96,6 +101,14 @@
     color: white;
     cursor: pointer;
     /* Indicates the text is clickable */
+}
+
+.homeContainer h2 :focus-visible {
+    text-decoration: underline !important;
+    color: white;
+    border-style: solid;
+    border-color: #1A2E83 !important;
+    /* Indicates the text is clickable trough tabbing navigation */
 }
 
 /* More specific styles for the 'Onderzoek' sections can be added here, such as title styles, etc. */

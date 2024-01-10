@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace react_aspcore_app.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     [ApiController]
     public class ResearchController : ControllerBase
     {

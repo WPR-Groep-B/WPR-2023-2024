@@ -86,4 +86,8 @@
     width: 256px;
 }
 
+.homeHyperlink a {
+    text-decoration: none;
+}
+
 /* More specific styles for the 'Onderzoek' sections can be added here, such as title styles, etc. */

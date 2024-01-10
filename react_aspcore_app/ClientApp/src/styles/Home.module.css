@@ -88,10 +88,12 @@
 
 .homeHyperlink {
     text-decoration: none !important;
+    color: inherit;
 }
 
 .homeHyperlink a :hover {
     text-decoration: underline !important;
+    color: inherit
 }
 
 /* More specific styles for the 'Onderzoek' sections can be added here, such as title styles, etc. */

@@ -27,12 +27,10 @@
 }
 
 .homeContainer h2 {
-    font-size: 2em;
+    font-size: 1.75em;
     font-weight: normal;
     margin-bottom: 2em;
     /* Space below the sub-header */
-    cursor: pointer;
-    /* Indicates the text is clickable */
     z-index: 10;
     background-color: #108670;
     /* Set the background color */
@@ -86,14 +84,18 @@
     width: 256px;
 }
 
-.homeHyperlink {
-    text-decoration: none !important;
-    color: inherit;
+ .homeContainer h2 a {
+    all: unset;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
 }
 
-.homeHyperlink a :hover {
+ .homeContainer h2 :hover {
     text-decoration: underline !important;
-    color: inherit
+    color: white;
+    cursor: pointer;
+    /* Indicates the text is clickable */
 }
 
 /* More specific styles for the 'Onderzoek' sections can be added here, such as title styles, etc. */

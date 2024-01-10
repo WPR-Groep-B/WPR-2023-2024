@@ -33,7 +33,7 @@ function Register() {
                         <input type="text" id="postcode" name="postcode" placeholder="1234 AB" required></input>
                     </div>
 
-                    <div>
+                    
                         Geslacht:
                         <br></br>
                         <div className={styles.radiogroup}>
@@ -52,7 +52,7 @@ function Register() {
                             <label for="undisclosed">Zeg ik liever niet:</label>
                             <input type="radio" id="gender" name="gender" value="undisclosed" required></input>
                         </div>
-                    </div>
+                    
 
                     <div>
                         <label for="disability">Beperking:</label>

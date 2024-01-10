@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using react_aspcore_app.Models;
 
 namespace react_aspcore_app.Controllers
@@ -8,15 +9,18 @@ namespace react_aspcore_app.Controllers
     [ApiController]
     public class ResearchController : ControllerBase
     {
-        // Tijdelijke lijst om gegevens op te slaan (vervang dit door database logica)
-        private static List<onderzoek> onderzoeken = new List<onderzoek>();
+        private readonly SampleDBContext _context;
+
+        public ResearchController(SampleDBContext context)
+        {
+            _context = context;
+        }
 
         // GET: api/research
         [HttpGet]
         public ActionResult<IEnumerable<onderzoek>> Get()
         {
-            // Retourneer de lijst met onderzoeken
-            return Ok(onderzoeken);
+            return Ok(_context.onderzoeken.ToList());
         }
 
         // POST: api/research
@@ -28,10 +32,9 @@ namespace react_aspcore_app.Controllers
                 return BadRequest();
             }
 
-            // Voeg het nieuwe onderzoek toe aan de lijst
-            onderzoeken.Add(nieuwOnderzoek);
+            _context.onderzoeken.Add(nieuwOnderzoek);
+            _context.SaveChanges();
 
-            // Retourneer een response
             return CreatedAtAction(nameof(Get), new { id = nieuwOnderzoek.Id }, nieuwOnderzoek);
         }
 

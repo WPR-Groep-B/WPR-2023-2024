@@ -1,24 +1,24 @@
 .body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 40px;
-  overflow-x: hidden;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    overflow-x: hidden;
+  }
 
-* {
-  box-sizing: border-box;
-}
+  * {
+    box-sizing: border-box;
+  }
   
-.container {
-  margin: auto;
-  width: 50%;
-  padding: 16px;
-  background: #111e55;
-  color: #fff;
-  border-radius: 25px;
-  text-align: center;
-}
+  .container {
+    margin: auto;
+    width: 50%;
+    padding: 16px;
+    background: #111e55;
+    color: #fff;
+    border-radius: 25px;
+    text-align: center;
+  }
 
   .displayCntr {
     display: flex;
@@ -98,7 +98,7 @@
   }
 
   .registerbtn {
-    background-color: #fe7d01;
+    background-color: #1fc396;
     color: #111e55;
     padding: 16px;
     border: none;
@@ -112,7 +112,7 @@
   }
 
   .typeRegisterBtn {
-    background-color: #fe7d01;
+    background-color: #1fc396;
     color: #111e55;
     padding: 16px;
     border: none;

@@ -11,8 +11,9 @@ function NavBar() {
     <nav className={styles.navbar}>
       <ul>
         <li>
-          <img src={logo} alt="Logo" className={styles.logo} />
-          <NavLink to="/">X</NavLink>
+          <a href="/">
+            <img src={logo} alt="Logo" className={styles.logo} />
+          </a>
         </li>
         <li>
           <NavLink to="/">Home</NavLink>
@@ -31,8 +32,9 @@ function NavBar() {
           <img src={dropdown} alt="Privacy pagina redirect" className={styles.dropdown} />
         </li>
         <li>
-          <img src={search} alt="Search bar" className={styles.search} />
-          <NavLink to="/">x</NavLink>
+          <a href="/">
+            <img src={search} alt="Search" className={styles.search} />
+          </a>
         </li>
         <li>
           <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />

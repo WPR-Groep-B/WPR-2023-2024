@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: center;
   margin: 40px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 * {
@@ -17,6 +19,7 @@
   color: #fff;
   border-radius: 25px;
   text-align: center;
+  overflow-x: hidden;
 }
 
 .form {
@@ -38,7 +41,7 @@ input {
 }
 
 .button {
-  background-color: #fe7d01;
+  background-color: #1fc396;
   color: #111e55;
   padding: 16px;
   border: none;
@@ -56,6 +59,14 @@ input {
 }
 
 .linkcontainer {
+  display: block;
   margin-top: 10px; /* Adjust the margin-top as needed for spacing */
   text-align: center;
+}
+
+.google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 22px;
 }

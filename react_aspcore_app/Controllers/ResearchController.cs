@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using react_aspcore_app.Models;
 
 namespace react_aspcore_app.Controllers
 {
@@ -35,7 +34,7 @@ namespace react_aspcore_app.Controllers
             _context.onderzoeken.Add(nieuwOnderzoek);
             _context.SaveChanges();
 
-            return CreatedAtAction(nameof(Get), new { id = nieuwOnderzoek.Id }, nieuwOnderzoek);
+            return CreatedAtAction(nameof(Get), new { id = nieuwOnderzoek.onderzoekId }, nieuwOnderzoek);
         }
 
         // Overige methoden (PUT, DELETE) kunnen hier worden toegevoegd

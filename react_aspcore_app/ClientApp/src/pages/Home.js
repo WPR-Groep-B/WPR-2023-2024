@@ -11,7 +11,7 @@ function Home() {
                         Samen met onze partners en klanten werken we aan een inclusieve samenleving die toegankelijk is voor iedereen.
                     </h1>
                     <h2>
-                        Meer over Accessibility &gt;
+                        <a href="./aboutus"> Meer over Accessibility &gt;</a>
                     </h2>
                 </div>
             </div>

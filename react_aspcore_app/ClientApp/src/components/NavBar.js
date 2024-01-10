@@ -17,19 +17,19 @@ function NavBar() {
         </li>
         <li>
           <NavLink to="/">Home</NavLink>
-          <img src={dropdown} alt="Dropdown" className={styles.dropdown} />
+          <img src={dropdown} alt="Home pagina redirect " className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/contact">Contact</NavLink>
-          <img src={dropdown} alt="Dropdown" className={styles.dropdown} />
+          <img src={dropdown} alt="Contact pagina redirect" className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/aboutus">About Us</NavLink>
-          <img src={dropdown} alt="Dropdown" className={styles.dropdown} />
+          <img src={dropdown} alt="Over ons pagina redirect" className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/privacy">Privacy</NavLink>
-          <img src={dropdown} alt="Dropdown" className={styles.dropdown} />
+          <img src={dropdown} alt="Privacy pagina redirect" className={styles.dropdown} />
         </li>
         <li>
           <a href="/">
@@ -37,7 +37,7 @@ function NavBar() {
           </a>
         </li>
         <li>
-          <img src={accounticon} alt="Accounticon" className={styles.accounticon} />
+          <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
           <NavLink to="/login">inloggen</NavLink>
         </li>
       </ul>

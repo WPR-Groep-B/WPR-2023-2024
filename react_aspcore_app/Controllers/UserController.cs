@@ -1,11 +1,47 @@
-using Microsoft.AspNetCore.Components;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
+using Microsoft.IdentityModel.Tokens;
 
-[Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
+
+public class LoginModel
+{
+    public required string Email { get; set; }
+    public string? wachtwoord { get; set; }
+    public int? googleId { get; set; }
+}
+
+[Route("api/[controller]")]
 [ApiController]
 public class UserController : ControllerBase
 {
+    
+
+private string GenerateJwtToken(gebruiker user)
+{
+    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("VGhpc0lzQVNlY3JldEtleVRoYXRJc0F0TGVhc3RTaXh0ZWVuQnl0ZXNMb25n")); // Replace "Your_Secret_Key" with your actual secret key
+    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+    var claims = new[]
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, user.email),
+        new Claim("id", user.GebruikerId.ToString()),
+        new Claim("voornaam", user.Voornaam),
+        new Claim("achternaam", user.Achternaam)
+        // Add more claims if needed
+    };
+
+    var token = new JwtSecurityToken(
+        issuer: "Your_Issuer", // Replace with your issuer
+        audience: "Your_Audience", // Replace with your audience
+        claims: claims,
+        expires: DateTime.Now.AddMinutes(30), // Token expiration time
+        signingCredentials: credentials);
+
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
+
     private readonly SampleDBContext _context;
 
     public UserController(SampleDBContext context)
@@ -20,18 +56,20 @@ public class UserController : ControllerBase
         return Ok(_context.gebruikers.ToList());
     }
 
-    // Get: api/user/{email}{wachtwoord}
-    [HttpGet("{email}/{wachtwoord}/{googleId}")]
-    public ActionResult<gebruiker> Get(string email, string wachtwoord, int googleId)
+    [HttpPost("login")]
+    public ActionResult<gebruiker> Login([FromBody] LoginModel login)
     {
-        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == email && g.wachtwoord == wachtwoord && g.googleId == googleId);
+        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == login.Email && (g.wachtwoord == login.wachtwoord || g.googleId == login.googleId));
 
         if (gebruiker == null)
         {
             return NotFound();
         }
-        return gebruiker;
+
+        var token = GenerateJwtToken(gebruiker);
+        return Ok(new { user = gebruiker, token = token });
     }
+
 
     // POST: api/user/deskundige
     [HttpPost("deskundige")]
@@ -122,7 +160,7 @@ public class UserController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.GebruikerId == id);
+        var gebruiker = _context.gebruikers.First(g => g.GebruikerId == id);
 
         if (gebruiker == null)
         {

@@ -1,6 +1,5 @@
 import styles from '../styles/Home.module.css';
 import wheelchair from '../images/Computer-User-Wheelchair-2.jpeg';
-import { NavLink } from "react-router-dom";
 
 function Home() {
     return (

@@ -12,9 +12,7 @@ function Home() {
                         Samen met onze partners en klanten werken we aan een inclusieve samenleving die toegankelijk is voor iedereen.
                     </h1>
                     <h2>
-                    <NavLink to="/aboutus">
-                        Meer over Accessibility &gt;
-                    </NavLink>
+                        <a classname={styles.homeHyperlink} href="./aboutus"> Meer over Accessibility &gt;</a>
                     </h2>
                 </div>
             </div>

@@ -86,4 +86,12 @@
     width: 256px;
 }
 
+.homeHyperlink {
+    text-decoration: none !important;
+}
+
+.homeHyperlink a :hover {
+    text-decoration: underline !important;
+}
+
 /* More specific styles for the 'Onderzoek' sections can be added here, such as title styles, etc. */

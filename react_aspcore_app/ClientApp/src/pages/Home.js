@@ -10,13 +10,9 @@ function Home() {
                     <h1>
                         Samen met onze partners en klanten werken we aan een inclusieve samenleving die toegankelijk is voor iedereen.
                     </h1>
-                    /* eslint-disable */
-                    <NavLink to="/aboutus">
-                        <h2>
-                            Meer over Accessibility &gt;
-                        </h2>
-                    </NavLink>
-                    /* eslint-enable */
+                    <h2>
+                        <a href="./aboutus"> Meer over Accessibility &gt;</a>
+                    </h2>
                 </div>
             </div>
             <div className={styles.onderrzoekContainer}>

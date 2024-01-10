@@ -4,9 +4,9 @@ import Contact from "../pages/Contact"
 import Privacy from "../pages/Privacy"
 import Login from "../pages/Login"
 import Register from "../pages/Register"
-import RegisterName from "../pages/Registration/RegisterName"
-import RegisterInfo from "../pages/Registration/RegisterInfo"
-import RegisterAccount from "../pages/Registration/RegisterAccount"
+import RegisterName from "../pages/RegistrationErv/RegisterName"
+import RegisterInfo from "../pages/RegistrationErv/RegisterInfo"
+import RegisterAccount from "../pages/RegistrationErv/RegisterAccount"
 import AboutUs from "../pages/AboutUs"
 
 function Pages() {

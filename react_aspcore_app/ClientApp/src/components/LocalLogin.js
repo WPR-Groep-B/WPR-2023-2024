@@ -20,7 +20,7 @@ function login() {
         </body>
         <div className={styles.linkcontainer}>
             <GoogleLoginComponent />
-            <a href="http://appservicewprgroepb.azurewebsites.net/register">Geen account? Maak er hier een aan</a>
+            <a href="http://appservicewprgroepb.azurewebsites.net/registerStart">Geen account? Maak er hier een aan</a>
         </div>
     </html>
     );

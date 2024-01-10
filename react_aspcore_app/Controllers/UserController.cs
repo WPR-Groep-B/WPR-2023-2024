@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -28,13 +29,14 @@ private string GenerateJwtToken(gebruiker user)
         new Claim(JwtRegisteredClaimNames.Sub, user.email),
         new Claim("id", user.GebruikerId.ToString()),
         new Claim("voornaam", user.Voornaam),
-        new Claim("achternaam", user.Achternaam)
+        new Claim("achternaam", user.Achternaam),
+        new Claim("accountType", user.GetType().Name)
         // Add more claims if needed
     };
 
     var token = new JwtSecurityToken(
-        issuer: "Your_Issuer", // Replace with your issuer
-        audience: "Your_Audience", // Replace with your audience
+        issuer: "WPRgroepB", // Replace with your issuer
+        audience: "kut kevers", // Replace with your audience
         claims: claims,
         expires: DateTime.Now.AddMinutes(30), // Token expiration time
         signingCredentials: credentials);
@@ -56,6 +58,7 @@ private string GenerateJwtToken(gebruiker user)
         return Ok(_context.gebruikers.ToList());
     }
 
+    // Post: api/user/login
     [HttpPost("login")]
     public ActionResult<gebruiker> Login([FromBody] LoginModel login)
     {
@@ -129,7 +132,9 @@ private string GenerateJwtToken(gebruiker user)
         return CreatedAtAction(nameof(Get), new { id = nieuwGebruiker.GebruikerId }, nieuwGebruiker);
     }
 
+    
     // PUT: api/user/{id}
+    [Authorize]
     [HttpPut("{id}")]
     public IActionResult Put(int id, [FromBody] gebruiker gebruiker)
     {
@@ -157,6 +162,7 @@ private string GenerateJwtToken(gebruiker user)
     }
 
     // Delete: api/user/{id}
+    [Authorize]
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {

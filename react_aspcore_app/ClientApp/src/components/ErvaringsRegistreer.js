@@ -5,11 +5,11 @@ function ErvaringRegister() {
     return (
         <div className={styles.body}>
             <div className={styles.container}>
-                <h1>Ervaringsdeskundige registeer pagina</h1>
+                <h1>Registratie Ervaringsdeskundige</h1>
             <form className={styles.form}>
                 <div>
                     <label htmlFor="firstName">Voornaam:</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="Vooraam" required />
+                    <input type="text" id="firstName" name="firstName" placeholder="Voornaam" required />
                 </div>
 
                 <div>

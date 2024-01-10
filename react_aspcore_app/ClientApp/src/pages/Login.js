@@ -1,4 +1,3 @@
-import styles from '../styles/Login.module.css';
 import GoogleLoginComponent from '../components/googleLogin';
 import LocalLogin from '../components/LocalLogin';
 
@@ -11,7 +10,6 @@ function Login() {
     return (
         <div>
             <LocalLogin />
-            <GoogleLoginComponent />
         </div>
     );
 }

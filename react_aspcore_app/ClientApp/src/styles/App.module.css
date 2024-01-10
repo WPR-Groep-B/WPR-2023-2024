@@ -1,5 +1,7 @@
 body {
   background: #D9EBF7;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .container {

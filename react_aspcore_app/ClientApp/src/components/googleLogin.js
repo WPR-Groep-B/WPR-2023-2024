@@ -5,7 +5,6 @@ function GoogleLoginComponent() {
 
     function handleCredentialResponse(response) {
         console.log(response.credential);
-
     }
 
     useEffect(() => {

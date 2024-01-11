@@ -20,7 +20,7 @@ function Contact() {
         <p>Algemene informatie over de toegankelijkheid, rolstoelvriendelijkheid en het meebrengen van geleidehonden staat op onze pagina over <a href="https://www.accessibility.nl/algemene-informatie-toegankelijkheid-kantoor-accessibility">de toegankelijkheid van ons kantoor</a></p>
 
 
-        <p>Tel. +31 30 239 82 70 <br></br> E-mail: <a href="mailto:info@accessibility.nl">info@accessibility.nl </a></p>
+        <p>Tel. +31 30 239 82 70 <br></br> E-mail: <a href="mailto:info@accessibility.nl">info@accessibility.nl <span class="visually-hidden">(verzendt email)</span></a></p>
 
             
         <h1>Nieuwsgierig naar onze vacatures?</h1>

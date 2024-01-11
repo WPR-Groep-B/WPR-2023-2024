@@ -1,11 +1,25 @@
 import { useEffect } from 'react';
 import styles from '../styles/Login.module.css';
+import axios from 'axios';
 //secret id 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 Niet gebruiken behalve ik
 function GoogleLoginComponent() {
 
     function handleCredentialResponse(response) {
         console.log(response.credential);
-
+        axios.post('https://localhost:7251/api/user/googlelogin', {
+            GoogleToken: response.credential
+        }).then((response) => {
+            console.log(response);
+            if (response.status === 200) {
+                localStorage.setItem('jwt', response.data.token);
+                console.log(response.data.token);
+                alert("Succesvol ingelogd!");
+                window.location.href = "https://localhost:44436/";
+            }
+            else {
+                alert("Er is iets fout gegaan!");
+            }
+        })
     }
 
     useEffect(() => {

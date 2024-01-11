@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 
 async function getData(){
-    const data = await fetch('https://localhost:7251/api/research/', {mode: "cors", headers: {
+    const data = await fetch('https://localhost:7251/api/research/', {mode: "no-cors", headers: {
       "Access-Control-Allow-Origin": "*"
     }})
     return await data.json()

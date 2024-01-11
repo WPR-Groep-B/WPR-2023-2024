@@ -5,6 +5,7 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 2rem;
+    border-radius: 15px;
 }
 
 .mapContainer {
@@ -22,5 +23,10 @@ iframe {
 }
 
 a {
-    color: inherit;
+    color: #1A2E83;
+    transition: color 0.2s ease;
+}
+  
+a:hover {    
+    color: #1fc396;
 }

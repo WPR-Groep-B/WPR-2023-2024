@@ -1,6 +1,11 @@
 import styles from '../styles/AboutUs.module.css';
+import React, { useEffect } from 'react';
 
 function AboutUs() {
+    useEffect(() => {
+        document.title = "Stichting Accessibility - About us";
+      }, []);
+
     return (
         <html className={styles.justifiedText}>
         <h1>Over ons</h1>
@@ -43,15 +48,14 @@ function AboutUs() {
         </p>
         <br></br>
         <p>
-            Onze beweging blijft niet onopgemerkt. De regelgeving beweegt mee: mede dankzij onze inspanningen is de internationale richtlijn op het gebied van digitale websites en apps, <a href="https://wcag.nl/kennis/richtlijnen/wcag-2-1-richtlijnen/">de WCAG</a>, gerealiseerd. Daarnaast denken we mee met diverse richtlijnen op inclusief design en fysieke toegankelijkheid. 
+            Onze beweging blijft niet onopgemerkt. De regelgeving beweegt mee: mede dankzij onze inspanningen is de internationale richtlijn op het gebied van digitale websites en apps, <a href="https://wcag.nl/kennis/richtlijnen/wcag-2-1-richtlijnen/" target="_blank" rel="noreferrer">de WCAG</a>, gerealiseerd. Daarnaast denken we mee met diverse richtlijnen op inclusief design en fysieke toegankelijkheid. 
         </p>
         <br></br>
         <h2>Nieuwsgierig naar onze vacatures?</h2>
         <p>
-            <a href="https://www.accessibility.nl/werken-bij-accessibility">Bekijk op deze pagina de vacatures</a> die we momenteel open hebben staan. We bieden ook stageplekken!
+            <a href="https://www.accessibility.nl/werken-bij-accessibility" target="_blank" rel="noreferrer">Bekijk op deze pagina de vacatures</a> die we momenteel open hebben staan. We bieden ook stageplekken!
         </p>
         </html>
         );
 }
-
 export default AboutUs;

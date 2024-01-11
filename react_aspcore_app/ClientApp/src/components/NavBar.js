@@ -16,19 +16,15 @@ function NavBar() {
         </li>
         <li>
           <NavLink to="/">Home</NavLink>
-          <img src={dropdown} alt="Dropdown" className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/contact">Contact</NavLink>
-          <img src={dropdown} alt="Dropdown" className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/aboutus">About Us</NavLink>
-          <img src={dropdown} alt="Dropdown" className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/privacy">Privacy</NavLink>
-          <img src={dropdown} alt="Dropdown" className={styles.dropdown} />
         </li>
         <li>
           <a href="/">
@@ -36,8 +32,7 @@ function NavBar() {
           </a>
         </li>
         <li>
-          <img src={accounticon} alt="Accounticon" className={styles.accounticon} />
-          <NavLink to="/login">inloggen</NavLink>
+            <NavLink to="/login"><img src={accounticon} alt="Accounticon" className={styles.accounticon} /> Inloggen</NavLink>
         </li>
       </ul>
     </nav></>

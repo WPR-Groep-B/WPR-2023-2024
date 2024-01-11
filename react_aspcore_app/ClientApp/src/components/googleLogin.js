@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import styles from '../styles/Login.module.css';
 import axios from 'axios';
-//secret id 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 Niet gebruiken behalve ik
+
 function GoogleLoginComponent() {
 
     function handleCredentialResponse(response) {

@@ -1,5 +1,10 @@
 .justifiedText {
     text-align: justify;
+    color: #1A2E83;
+    background-color: white;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
 }
 
 .mapContainer {

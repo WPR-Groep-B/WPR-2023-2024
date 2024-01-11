@@ -4,8 +4,17 @@ import logo from '../images/Accessibility-logo-RGB-1024x245.png';
 import accounticon from '../images/Account_Icon.png';
 import dropdown from '../images/gridicons_dropdown.png'
 import search from '../images/Search.png'
+import React, { useState } from 'react';
 
 function NavBar() {
+
+  const [jwt, setJwt] = useState(localStorage.getItem('jwt'));
+
+  const handleLogout = () => {
+    localStorage.removeItem('jwt');
+    setJwt(null);
+    window.location.href = "https://localhost:44436/";
+  };
   return (
 
     <nav className={styles.navbar}>
@@ -36,10 +45,20 @@ function NavBar() {
             <img src={search} alt="Search" className={styles.search} />
           </a>
         </li>
-        <li>
-          <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
-          <NavLink to="/login">inloggen</NavLink>
-        </li>
+        {jwt == null ? (
+          <li>
+            <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+            <NavLink to="/login">inloggen</NavLink>
+          </li>
+        ) : (
+          <><li>
+              <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+              <NavLink to="/account">Account</NavLink>
+            </li><li>
+                <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+                <button onClick={handleLogout} className={styles.logout}>Uitloggen</button>
+              </li></>
+        )}
       </ul>
     </nav>
   );

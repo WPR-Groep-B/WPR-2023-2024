@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import styles from "./styles/App.module.css";
 import NavBar from "./components/NavBar";
@@ -86,7 +86,7 @@ export default class App extends Component {
           </div>
 
           <div>
-            <img className={styles.logo} src={logo}></img>
+            <img alt="Stichting Accessibility logo" className={styles.logo} src={logo}></img>
           </div>
         </footer>
     </Router>

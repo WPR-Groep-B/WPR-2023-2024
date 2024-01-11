@@ -29,9 +29,9 @@ export default function OnderzoekAanmaken() {
     }
 
     // zoek op google goed toepassen form html react functionaliteit bij React
-    function OnderzoekEdit({onderzoek}) {
-      return <form>{onderzoek.onderzoekNaam}</form>
-    }
+    //function OnderzoekEdit({onderzoek}) {
+    //  return <form>{onderzoek.onderzoekNaam}</form>
+    //}
 
     // deze kan herbruiker gemaakt worden (maak er apart component van)
     function OnderzoekDetails({onderzoek}) {

@@ -13,7 +13,7 @@ public class gebruiker
     public string email { get; set; }
 
     public string? wachtwoord { get; set; }
-    public int? googleId { get; set; }
+    public string? googleId { get; set; }
 
 }
 

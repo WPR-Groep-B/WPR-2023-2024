@@ -7,6 +7,7 @@ import RegisterStart from "../pages/RegisterStart"
 import RegisterInfo from "../pages/RegisterInfo"
 import RegisterAccount from "../pages/RegisterAccount"
 import AboutUs from "../pages/AboutUs"
+import OnderzoekAanmaken from "../pages/OnderzoekAanmaken"
 
 function Pages() {
     return (
@@ -19,6 +20,7 @@ function Pages() {
         <Route path="registerInfo" element={<RegisterInfo />} />
         <Route path="registerAccount" element={<RegisterAccount />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/onderzoekaanmaken" element={<OnderzoekAanmaken />} />
         </Routes>
   );
 }

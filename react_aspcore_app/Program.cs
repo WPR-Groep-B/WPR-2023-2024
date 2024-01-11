@@ -13,6 +13,17 @@ builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SampleDBContext>(options => options.UseSqlServer(connectionString));
 
+builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAllOrigins",
+            builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
+    });
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -55,6 +66,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseCors("AllowAllOrigins"); // Use the CORS policy
+
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -74,6 +88,12 @@ app.Run();
 
 app.MapFallbackToFile("index.html");
 
-
+  // CORS - Allow calling the API from WebBrowsers
+        app.UseCors(x => x
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials()
+            //.WithOrigins("https://localhost:44351")); // Allow only this origin can also have multiple origins seperated with comma
+            .SetIsOriginAllowed(origin => true));// Allow any origin
 
 app.Run();

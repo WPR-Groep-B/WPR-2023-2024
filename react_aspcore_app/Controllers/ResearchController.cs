@@ -37,6 +37,50 @@ namespace react_aspcore_app.Controllers
             return CreatedAtAction(nameof(Get), new { id = nieuwOnderzoek.onderzoekId }, nieuwOnderzoek);
         }
 
-        // Overige methoden (PUT, DELETE) kunnen hier worden toegevoegd
+        // PUT: api/research/{id}
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] onderzoek onderzoekUpdate)
+        {
+            if (onderzoekUpdate == null || onderzoekUpdate.onderzoekId != id)
+            {
+                return BadRequest();
+            }
+
+            var onderzoek = _context.onderzoeken.FirstOrDefault(o => o.onderzoekId == id);
+            if (onderzoek == null)
+            {
+                return NotFound();
+            }
+
+            onderzoek.onderzoekNaam = onderzoekUpdate.onderzoekNaam;
+            onderzoek.onderzoekBeschrijving = onderzoekUpdate.onderzoekBeschrijving;
+            onderzoek.onderzoekStartDatum = onderzoekUpdate.onderzoekStartDatum;
+            onderzoek.onderzoekEindDatum = onderzoekUpdate.onderzoekEindDatum;
+            onderzoek.GoedgekeurdDoorId = onderzoekUpdate.GoedgekeurdDoorId;
+            onderzoek.GebruikerBedrijfId = onderzoekUpdate.GebruikerBedrijfId;
+            onderzoek.GebruikerDeskundigeId = onderzoekUpdate.GebruikerDeskundigeId;
+            // Update andere relevante velden indien nodig
+
+            _context.onderzoeken.Update(onderzoek);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
+
+        // DELETE: api/research/{id}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var onderzoek = _context.onderzoeken.FirstOrDefault(o => o.onderzoekId == id);
+            if (onderzoek == null)
+            {
+                return NotFound();
+            }
+
+            _context.onderzoeken.Remove(onderzoek);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

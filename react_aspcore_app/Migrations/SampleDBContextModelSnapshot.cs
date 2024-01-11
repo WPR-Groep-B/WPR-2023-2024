@@ -69,6 +69,12 @@ namespace react_aspcore_app.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("googleId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("wachtwoord")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("GebruikerId");
 
                     b.ToTable("gebruikers", (string)null);

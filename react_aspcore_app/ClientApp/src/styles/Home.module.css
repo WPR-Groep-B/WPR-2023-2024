@@ -88,19 +88,29 @@
     width: 256px;
 }
 
- .homeContainer h2 a {
+.homeContainer h2 a {
     all: unset;
     text-decoration: none;
     color: white;
-    cursor: pointer;
-    /* Indicates the text is clickable */
+    position: relative;
+    display: inline-block; /* Ensure the pseudo-element aligns with the text */
 }
 
- .homeContainer h2 :hover {
-    text-decoration: underline !important;
-    color: white;
-    cursor: pointer;
-    /* Indicates the text is clickable */
+.homeContainer h2 a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: white; /* Underline color on hover */
+    position: absolute;
+    bottom: 0; /* Adjust this value to center the underline */
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.homeContainer h2 a:hover::after {
+    opacity: 1;
 }
 
 .homeContainer h2 :focus-visible {

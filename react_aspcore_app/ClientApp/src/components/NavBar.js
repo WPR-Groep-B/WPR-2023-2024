@@ -20,6 +20,10 @@ function NavBar() {
           <img src={dropdown} alt="Home pagina redirect " className={styles.dropdown} />
         </li>
         <li>
+          <NavLink to="/onderzoeken">Onderzoeken</NavLink>
+          <img src={dropdown} alt="Onderzoeken pagina redirect " className={styles.dropdown} />
+        </li>
+        <li>
           <NavLink to="/contact">Contact</NavLink>
           <img src={dropdown} alt="Contact pagina redirect" className={styles.dropdown} />
         </li>

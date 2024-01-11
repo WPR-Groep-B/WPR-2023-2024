@@ -4,28 +4,35 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Google.Apis.Auth;
+
+
 
 
 public class LoginModel
 {
     public required string Email { get; set; }
-    public string? wachtwoord { get; set; }
-    public int? googleId { get; set; }
+    public string wachtwoord { get; set; }
+}
+
+public class GoogleLoginModel
+{
+    public string GoogleToken { get; set; }
 }
 
 [Route("api/[controller]")]
 [ApiController]
 public class UserController : ControllerBase
 {
-    
 
-private string GenerateJwtToken(gebruiker user)
-{
-    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("VGhpc0lzQVNlY3JldEtleVRoYXRJc0F0TGVhc3RTaXh0ZWVuQnl0ZXNMb25n")); // Replace "Your_Secret_Key" with your actual secret key
-    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-    var claims = new[]
+    private string GenerateJwtToken(gebruiker user)
     {
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("VGhpc0lzQVNlY3JldEtleVRoYXRJc0F0TGVhc3RTaXh0ZWVuQnl0ZXNMb25n")); // Replace "Your_Secret_Key" with your actual secret key
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+        var claims = new[]
+        {
         new Claim(JwtRegisteredClaimNames.Sub, user.email),
         new Claim("id", user.GebruikerId.ToString()),
         new Claim("voornaam", user.Voornaam),
@@ -34,15 +41,15 @@ private string GenerateJwtToken(gebruiker user)
         // Add more claims if needed
     };
 
-    var token = new JwtSecurityToken(
-        issuer: "WPRgroepB", // Replace with your issuer
-        audience: "kut kevers", // Replace with your audience
-        claims: claims,
-        expires: DateTime.Now.AddMinutes(30), // Token expiration time
-        signingCredentials: credentials);
+        var token = new JwtSecurityToken(
+            issuer: "WPRgroepB", // Replace with your issuer
+            audience: "kut kevers", // Replace with your audience
+            claims: claims,
+            expires: DateTime.Now.AddMinutes(30), // Token expiration time
+            signingCredentials: credentials);
 
-    return new JwtSecurityTokenHandler().WriteToken(token);
-}
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
 
     private readonly SampleDBContext _context;
 
@@ -62,13 +69,60 @@ private string GenerateJwtToken(gebruiker user)
     [HttpPost("login")]
     public ActionResult<gebruiker> Login([FromBody] LoginModel login)
     {
-        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == login.Email && (g.wachtwoord == login.wachtwoord || g.googleId == login.googleId));
+        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == login.Email && g.wachtwoord == login.wachtwoord);
 
         if (gebruiker == null)
         {
             return NotFound();
         }
 
+        var token = GenerateJwtToken(gebruiker);
+        return Ok(new { user = gebruiker, token = token });
+    }
+
+    // POST: api/user/googlelogin
+    [HttpPost("googlelogin")]
+    public async Task<ActionResult<gebruiker>> GoogleLogin([FromBody] GoogleLoginModel GoogleToken)
+    {
+        // Verify the Google token
+        GoogleJsonWebSignature.Payload payload;
+        try
+        {
+            var settings = new GoogleJsonWebSignature.ValidationSettings
+            {
+                // Replace with your Google web app's client ID
+                Audience = new List<string> { "432096940340-mbj1p2us3bgq1t2f89h7ln18me2bn82e.apps.googleusercontent.com" }
+            };
+            payload = await GoogleJsonWebSignature.ValidateAsync(GoogleToken.GoogleToken, settings);
+        }
+        catch (InvalidJwtException)
+        {
+            return BadRequest("Invalid Google token.");
+        }
+
+
+        // Check if the user exists in the database
+        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.googleId == payload.Subject);
+        if (gebruiker == null)
+        {
+            // Create a new user if it doesn't exist
+            if (_context.gebruikers.FirstOrDefault(g => g.email == payload.Email) != null)
+            {
+                return BadRequest("Email already exists.");
+            }
+
+            gebruiker = new gebruiker
+            {
+                email = payload.Email,
+                googleId = payload.Subject,
+                Voornaam = payload.GivenName,
+                Achternaam = payload.FamilyName
+            };
+            _context.gebruikers.Add(gebruiker);
+            _context.SaveChanges();
+        }
+
+        // Generate your own JWT token
         var token = GenerateJwtToken(gebruiker);
         return Ok(new { user = gebruiker, token = token });
     }
@@ -83,7 +137,7 @@ private string GenerateJwtToken(gebruiker user)
             return BadRequest();
         }
 
-        if (nieuwGebruiker.wachtwoord == null && nieuwGebruiker.googleId == null)
+        if (nieuwGebruiker.wachtwoord == null || nieuwGebruiker.googleId == null)
         {
             return BadRequest();
         }
@@ -102,7 +156,7 @@ private string GenerateJwtToken(gebruiker user)
             return BadRequest();
         }
 
-        if (nieuwGebruiker.wachtwoord == null && nieuwGebruiker.googleId == null)
+        if (nieuwGebruiker.wachtwoord == null || nieuwGebruiker.googleId == null)
         {
             return BadRequest();
         }
@@ -132,7 +186,7 @@ private string GenerateJwtToken(gebruiker user)
         return CreatedAtAction(nameof(Get), new { id = nieuwGebruiker.GebruikerId }, nieuwGebruiker);
     }
 
-    
+
     // PUT: api/user/{id}
     [Authorize]
     [HttpPut("{id}")]

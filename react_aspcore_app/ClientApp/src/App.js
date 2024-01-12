@@ -70,8 +70,10 @@ export default class App extends Component {
               <li>
                 <button alternate="Email adres van Stichting Accessiblity" onClick={() => { window.location.href = "mailto:info@accessibility.nl"; }}>info@accessibility.nl</button>
               </li><br></br>
-
-              
+              <li>
+                <button onClick={() => { window.open("https://www.accessibility.nl/werken-bij-accessibility", "_blank"); }}>
+                Onze vacatures</button>  
+                </li>       
             </ul>
           </div>
 

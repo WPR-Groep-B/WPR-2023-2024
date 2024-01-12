@@ -1,5 +1,8 @@
 import styles from '../styles/Contact.module.css';
 import React, { useEffect } from 'react';
+import linkedinlogo from "../images/linkedin-logo.png"
+import ytlogo from "../images/yt-logo.png"
+import xlogo from "../images/x-logo.png"
 
 function Contact() {
     useEffect(() => {
@@ -10,7 +13,7 @@ function Contact() {
         <div className={styles.justifiedText}>
         <h1>Contact</h1>
         <p>Stichting Accessibility is gevestigd in het bedrijfsverzamelgebouw de Krammstate op een paar minuten lopen van Station Utrecht Overvecht.</p>
-
+        <hr></hr>
         <h2>Bezoek- en postadres:</h2>
 
         <p>Christiaan Krammlaan 2 <br></br>
@@ -28,6 +31,36 @@ function Contact() {
         <a href="mailto:info@accessibility.nl" alternate="Email adres van Stichting Accessiblity">Verzend een e-mail naar Stichting Accessibility</a>
         <br></br>
         <br></br>
+        <hr></hr>
+
+        <div>
+            <h2>Sociale media platformen</h2>
+
+            <div className={styles.divsocials}>
+                <div className={styles.socialsdiv}>
+                    <p>Benieuw naar onze ervaringen en op de hoogte willen blijven van actuele gebeurtenissen van ons, dat kan! Wij zijn op de volgende kanalen te vinden:</p>
+                </div>
+
+              <div className={styles.socialbtn}>
+              <button className={styles.button}  onClick={() => { window.open("https://nl.linkedin.com/company/accessibilitynl", "_blank"); }}>
+                <img className={styles.sclogo} src={linkedinlogo} alt="LinkedIn Logo" />
+              </button>
+              </div>
+
+              <div className={styles.socialbtn}>
+              <button className={styles.button} onClick={() => { window.open("https://twitter.com/AccessibilityNL", "_blank"); }}>
+                <img className={styles.sclogo} src={xlogo} alt="X/Twitter Logo" />
+              </button>
+              </div>
+
+              <div className={styles.socialbtn}>
+              <button className={styles.button} onClick={() => { window.open("https://www.youtube.com/channel/UCSFsnRBNIDCgYJEW_ZLfTrg", "_blank"); }}>
+                <img className={styles.sclogo} src={ytlogo} alt="Youtube Logo" />
+              </button>
+              </div>
+            </div>
+        </div>
+        <hr></hr>
 
         <h2>Nieuwsgierig naar onze vacatures?</h2>
 

@@ -14,7 +14,7 @@ function Login() {
         if (email === "" || wachtwoord === "") {
             alert("Vul alle velden in!" + email + wachtwoord);
         }
-        axios.post('https://localhost:7251/api/user/login', {
+        axios.post('https://appservicewprgroepb.azurewebsites.net/api/user/login', {
             email: email,
             wachtwoord: wachtwoord
         }).then((response) => {
@@ -30,8 +30,6 @@ function Login() {
             }
         })
     }
-
-function login() {
     return (
         <div>
             <div className={styles.body}>

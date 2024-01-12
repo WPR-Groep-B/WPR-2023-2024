@@ -11,6 +11,7 @@ function NavBar() {
     localStorage.removeItem('jwt');
     window.location.href = "/";
   };
+
   return (
     <nav className={styles.navbar}>
       <ul>
@@ -41,22 +42,23 @@ function NavBar() {
           </a>
         </li>
         {
-        localStorage.getItem("jwt") == null ? (
-          <li>
-            <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
-            <NavLink to="/login">inloggen</NavLink>
-          </li>
-        ) : (
-          <><li>
+          localStorage.getItem("jwt") == null ? (
+            <li>
+              <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+              <NavLink to="/login">inloggen</NavLink>
+            </li>
+          ) : (
+            <><li>
               <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
               <NavLink to="/account">Account</NavLink>
             </li><li>
                 <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
                 <button onClick={handleLogout} className={styles.logout}>Uitloggen</button>
-              </li></>
-        )}
+              </li>
+            </>
+          )}
       </ul>
-    </nav></>
+    </nav>
   );
 }
 

@@ -30,8 +30,6 @@ function Login() {
             }
         })
     }
-
-function login() {
     return (
         <div>
             <div className={styles.body}>

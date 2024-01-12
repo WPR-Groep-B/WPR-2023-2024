@@ -1,41 +1,42 @@
-import React, { useState } from 'react';
 import styles from '../styles/Login.module.css';
 import GoogleLoginComponent from '../components/googleLogin';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
 
 function Login() {
-    const navigate = useNavigate();
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [wachtwoord, setWachtwoord] = useState('');
 
     const goToLogInPage = () => {
-        navigate('/');
+        window.location.href = "/";
     };
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
-
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        if (email.trim() !== '' && password.trim() !== '') {
-            goToLogInPage();
-        } else {
-            console.error("Email and password are required");
+    function HandleLogin() {
+        if (email === "" || wachtwoord === "") {
+            alert("Vul alle velden in!" + email + wachtwoord);
         }
-    };
-
+        axios.post('https://localhost:7251/api/user/login', {
+            email: email,
+            wachtwoord: wachtwoord
+        }).then((response) => {
+            console.log(response);
+            if (response.status === 200) {
+                localStorage.setItem('jwt', response.data.token);
+                console.log(response.data.token);
+                alert("Succesvol ingelogd!");
+                goToLogInPage();
+            }
+            else {
+                alert("Er is iets fout gegaan!");
+            }
+        })
+    }
     return (
-        <html lang="nl">
-            <body className={styles.body}>
+        <div>
+            <div className={styles.body}>
                 <div className={styles.container}>
                     <h1>Login</h1>
-                    <form className={styles.form} onSubmit={handleSubmit}>
+                    <div className={styles.form}>
                         <hr></hr>
                         <label className={styles.label} htmlFor="email">Email:</label>
                         <input
@@ -46,7 +47,7 @@ function Login() {
                             placeholder="text@email.com"
                             required
                             value={email}
-                            onChange={handleEmailChange}
+                            onChange={e => setEmail(e.target.value)}
                         />
 
                         <label className={styles.label} htmlFor="password">Password:</label>
@@ -57,20 +58,20 @@ function Login() {
                             name="password"
                             placeholder="Wachtwoord123!"
                             required
-                            value={password}
-                            onChange={handlePasswordChange}
+                            value={wachtwoord}
+                            onChange={e => setWachtwoord(e.target.value)}
                         />
-                        
+
                         <hr></hr>
-                        <button className={styles.button} type="submit">Login</button>
-                    </form>
+                        <button className={styles.button} type="submit" onClick={HandleLogin}>Login</button>
+                    </div>
                 </div>
-            </body>
+            </div>
             <div className={styles.linkcontainer}>
                 <GoogleLoginComponent />
                 <a className={styles.a} href="/register-start">Geen account? Maak er hier een aan</a>
             </div>
-        </html>
+        </div>
     );
 }
 

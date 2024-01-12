@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react';
 import styles from '../styles/Home.module.css';
 import wheelchair from '../images/Computer-User-Wheelchair-2.jpeg';
 
 function Home() {
-    useEffect(() => {
-        document.title = "Stichting Accessibility - Home";
-      }, []);
-
     return (
         <div className={styles.homeContainer}>
             <div className={styles.heroSection}>

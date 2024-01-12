@@ -7,15 +7,6 @@
   overflow-y: hidden;
 }
 
-.a {
-  color: #1A2E83;
-  transition: color 0.2s ease;
-}
-
-.a:hover {
-  color: #1fc396;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -50,8 +41,6 @@ input {
 }
 
 .button {
-  position: relative;
-  overflow: hidden;
   background-color: #1fc396;
   color: #111e55;
   padding: 16px;
@@ -59,36 +48,15 @@ input {
   cursor: pointer;
   width: 100%;
   margin: auto;
+  opacity: 0.8;
   font-weight: 800;
   font-size: large;
   border-radius: 15px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .button:hover {
-  background-color: #26ecb7;
-  transform: scale(1.01);
-}
-
-.button::before {
-  content: '';
-  position: absolute;
-  background-color: #26ecb7;
-  border-radius: 50%;
-  opacity: 0;
-  transform: scale(0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.button:hover::before {
   opacity: 1;
-  transform: scale(1);
 }
-
-.button:hover::after {
-  opacity: 0;
-}
-
 
 .linkcontainer {
   display: block;

@@ -1,11 +1,6 @@
 import styles from '../styles/AboutUs.module.css';
-import React, { useEffect } from 'react';
 
 function AboutUs() {
-    useEffect(() => {
-        document.title = "Stichting Accessibility - About us";
-      }, []);
-
     return (
         <html lang='nl' className={styles.justifiedText}>
         <h1>Over ons</h1>
@@ -16,13 +11,15 @@ function AboutUs() {
             Onze missie
         </h2>
         <p>
-        Bij Accessibility werken we aan een inclusieve samenleving waarin iedereen kan meedoen en tot zijn recht komt. Steeds meer organisaties sluiten zich aan bij onze ambities. Al zoeken ze nog naar hoe ze dit voor elkaar kunnen krijgen. 
+        Een inclusieve samenleving waarin alle mensen met of zonder beperking gelijkwaardig participeren.
         </p>
-        <br></br>
+        <h2>
+            onze visie
+        </h2>
         <p>
-        Samen met onze klanten en partners bouwen we iedere dag aan een toegankelijker Nederland. We zetten onze kennis en expertise in om fysieke, sociale én digitale omgevingen toegankelijk te maken; in het bijzonder voor mensen met een (visuele) beperking.
+        Het optimaal toegankelijk maken van de fysieke, sociale en digitale omgeving voor mensen met een (visuele) beperking.
         </p>
-        <br></br>
+        <h2>achtergrond</h2>
         <p>
         Onze experts denken graag met hen mee en bieden begeleiding op maat. Dit doen zij in nauwe samenwerking met ervaringsdeskundigen. Met onze trainingen, producten en diensten kan iedere organisatie morgen nog aan de slag met toegankelijkheid. Zo vertalen we onze kennis naar joúw praktijk.
         </p>
@@ -59,4 +56,5 @@ function AboutUs() {
         </html>
         );
 }
+
 export default AboutUs;

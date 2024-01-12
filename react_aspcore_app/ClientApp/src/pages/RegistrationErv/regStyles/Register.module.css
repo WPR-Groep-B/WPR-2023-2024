@@ -1,24 +1,29 @@
 .body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 40px;
-  overflow-x: hidden;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
 
-* {
-  box-sizing: border-box;
-}
+  .removeScrollbar {
+    overflow-y: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
   
-.container {
-  margin: auto;
-  width: 50%;
-  padding: 16px;
-  background: #111e55;
-  color: #fff;
-  border-radius: 25px;
-  text-align: center;
-}
+  .container {
+    margin: auto;
+    width: 50%;
+    padding: 16px;
+    background: #111e55;
+    color: #fff;
+    border-radius: 25px;
+    text-align: center;
+  }
 
   .displayCntr {
     display: flex;
@@ -48,11 +53,25 @@
   input {
     margin-bottom: 15px;
   }
+  
+  .inputText {
+    width: 225px;
+  }
 
   select {
     width: 225px;
     padding: 15px;
     margin: 5px 0 22px 55px ;
+    display: inline-block;
+    border: none;
+    background: whitesmoke;
+    border-radius: 8px;
+  }
+
+  .select {
+    width: 225px;
+    padding: 15px;
+    margin: 6px 55px 22px 0px ;
     display: inline-block;
     border: none;
     background: whitesmoke;
@@ -67,8 +86,7 @@
   input[type='text'],
   input[type='password'],
   input[type='email'],
-  input[type='tel'],
-  input[type='date'] {
+  input[type='tel'] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -98,7 +116,7 @@
   }
 
   .registerbtn {
-    background-color: #fe7d01;
+    background-color: #1fc396;
     color: #111e55;
     padding: 16px;
     border: none;
@@ -112,7 +130,7 @@
   }
 
   .typeRegisterBtn {
-    background-color: #fe7d01;
+    background-color: #1fc396;
     color: #111e55;
     padding: 16px;
     border: none;
@@ -140,4 +158,8 @@
 
   .radiogroup input {
     flex: 1;
+  }
+
+  .hidden {
+    display: none;
   }

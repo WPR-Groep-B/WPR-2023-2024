@@ -1,18 +1,4 @@
 .justifiedText {
     text-align: justify;
     color: #1A2E83;
-    background-color: white;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    border-radius: 15px;
-}
-
-a {
-    color: #1A2E83;
-    transition: color 0.2s ease;
-}
-  
-a:hover {    
-    color: #1fc396;
 }

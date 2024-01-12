@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import styles from '../styles/Login.module.css';
 import GoogleLoginComponent from '../components/googleLogin';
 import axios from 'axios';
@@ -32,9 +31,10 @@ function Login() {
         })
     }
 
+function login() {
     return (
-        <html>
-            <body className={styles.body}>
+        <div>
+            <div className={styles.body}>
                 <div className={styles.container}>
                     <h1>Login</h1>
                     <div className={styles.form}>
@@ -67,13 +67,13 @@ function Login() {
                         <button className={styles.button} type="submit" onClick={HandleLogin}>Login</button>
                     </div>
                 </div>
-            </body>
+            </div>
             <div className={styles.linkcontainer}>
                 <GoogleLoginComponent />
                 <a className={styles.a} href="/registerStart">Geen account? Maak er hier een aan</a>
             </div>
-        </html>
+        </div>
     );
 }
 
-export default Login;
+export default login;

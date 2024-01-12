@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import logo from '../images/Accessibility-logo-RGB-1024x245.png';
 import accounticon from '../images/Account_Icon.png';
+import dropdown from '../images/gridicons_dropdown.png'
 import search from '../images/Search.png'
 
 function NavBar() {
@@ -11,8 +12,7 @@ function NavBar() {
     window.location.href = "/";
   };
   return (
-    <><nav className={styles.navbar}>
-    <><nav className={styles.navbar}>
+    <nav className={styles.navbar}>
       <ul>
         <li>
           <a href="/">
@@ -21,15 +21,19 @@ function NavBar() {
         </li>
         <li>
           <NavLink to="/">Home</NavLink>
+          <img src={dropdown} alt="Home pagina redirect " className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/contact">Contact</NavLink>
+          <img src={dropdown} alt="Contact pagina redirect" className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/aboutus">About Us</NavLink>
+          <img src={dropdown} alt="Over ons pagina redirect" className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/privacy">Privacy</NavLink>
+          <img src={dropdown} alt="Privacy pagina redirect" className={styles.dropdown} />
         </li>
         <li>
           <a href="/">
@@ -52,7 +56,6 @@ function NavBar() {
               </li></>
         )}
       </ul>
-    </nav></>
     </nav></>
   );
 }

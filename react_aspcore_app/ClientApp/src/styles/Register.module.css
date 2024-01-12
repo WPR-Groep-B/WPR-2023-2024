@@ -4,12 +4,17 @@
   justify-content: center;
   margin: 40px;
   overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.removeScrollbar {
+  overflow-y: hidden;
 }
 
 * {
   box-sizing: border-box;
 }
-  
+
 .container {
   margin: auto;
   width: 50%;
@@ -20,124 +25,169 @@
   text-align: center;
 }
 
-  .displayCntr {
-    display: flex;
-  }
-  
-  .form {
-    display: flex;
-    text-align: left; /* Align form elements to the left */
-    flex-direction: column;
-  }
-  
-  .h1 {
-    margin-bottom: 20px;
-  }
+.displayCntr {
+  display: flex;
+}
 
-  label {
-    margin-bottom: 15px;
-    font-weight: 700;
-  }
+.form {
+  display: flex;
+  text-align: left; /* Align form elements to the left */
+  flex-direction: column;
+}
 
-  .labelFlex {
-    margin-bottom: 15px;
-    margin-left: 55px;
-    font-weight: 700;
-  }
-  
-  input {
-    margin-bottom: 15px;
-  }
+.h1 {
+  margin-bottom: 20px;
+}
 
-  select {
-    width: 225px;
-    padding: 15px;
-    margin: 5px 0 22px 55px ;
-    display: inline-block;
-    border: none;
-    background: whitesmoke;
-    border-radius: 8px;
-  }
+label {
+  margin-bottom: 15px;
+  font-weight: 700;
+}
 
-  select:focus {
-    background-color: #ddddddd9;
-    outline: none;
-  }
+.labelFlex {
+  margin-bottom: 15px;
+  margin-left: 55px;
+  font-weight: 700;
+}
 
-  input[type='text'],
-  input[type='password'],
-  input[type='email'],
-  input[type='tel'],
-  input[type='date'] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: whitesmoke;
-    border-radius: 8px;
-  }
+input {
+  margin-bottom: 15px;
+}
 
-  input[type='date'] {
-    width: 225px;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: whitesmoke;
-    border-radius: 8px;
-  }
+.inputText {
+  width: 225px;
+}
 
-  input[type='text']:focus,
-  input[type='password']:focus,
-  input[type='email']:focus,
-  input[type='tel']:focus,
-  input[type='date']:focus {
-    background-color: #ddddddd9;
-    outline: none;
-  }
+select {
+  width: 225px;
+  padding: 15px;
+  margin: 5px 0 22px 55px ;
+  display: inline-block;
+  border: none;
+  background: whitesmoke;
+  border-radius: 8px;
+}
 
-  .registerbtn {
-    background-color: #fe7d01;
-    color: #111e55;
-    padding: 16px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin: auto;
-    opacity: 0.8;
-    font-weight: 800;
-    font-size: large;
-    border-radius: 15px;
-  }
+.select {
+  width: 225px;
+  padding: 15px;
+  margin: 6px 55px 22px 0px ;
+  display: inline-block;
+  border: none;
+  background: whitesmoke;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
 
-  .typeRegisterBtn {
-    background-color: #fe7d01;
-    color: #111e55;
-    padding: 16px;
-    border: none;
-    cursor: pointer;
-    width: 50%;
-    margin: auto;
-    opacity: 0.8;
-    font-weight: 800;
-    font-size: large;
-    border-radius: 15px;
-  }
+select:focus {
+  background-color: #ddddddd9;
+  outline: none;
+  transition: background-color 0.2s ease;
+}
 
-  .registerbtn:hover {
-    opacity: 1;
-  }
+select:hover {
+  background-color: #ddddddd9;
+  outline: none;
+}
 
-  .radiogroup {
-    display: flex;
-    align-items: right;
-  }
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='tel'],
+input[type='tel'] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: whitesmoke;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
 
-  .radiogroup label {
-    flex: 10;
-  }
+input[type='date'] {
+  width: 225px;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: whitesmoke;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
 
-  .radiogroup input {
-    flex: 1;
-  }
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='tel']:focus,
+input[type='date']:focus {
+  background-color: #ddddddd9;
+  outline: none;
+}
+
+input[type='text']:hover,
+input[type='password']:hover,
+input[type='email']:hover,
+input[type='tel']:hover,
+input[type='date']:hover {
+  background-color: #ddddddd9;
+  outline: none;
+}
+
+.registerbtn {
+  position: relative;
+  overflow: hidden;
+  background-color: #1fc396;
+  color: #111e55;
+  padding: 16px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin: auto;
+  opacity: 0.8;
+  font-weight: 800;
+  font-size: large;
+  border-radius: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.registerbtn:hover {
+  background-color: #26ecb7;
+  transform: scale(1.01);
+}
+
+.registerbtn::before {
+  content: '';
+  position: absolute;
+  background-color: #26ecb7;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.registerbtn:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.registerbtn:hover::after {
+  opacity: 0;
+}
+
+.radiogroup {
+  display: flex;
+  align-items: right;
+}
+
+.radiogroup label {
+  flex: 10;
+}
+
+.radiogroup input {
+  flex: 1;
+}
+
+.hidden {
+  display: none;
+}

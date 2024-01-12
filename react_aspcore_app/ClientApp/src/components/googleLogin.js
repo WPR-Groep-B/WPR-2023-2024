@@ -14,7 +14,7 @@ function GoogleLoginComponent() {
                 localStorage.setItem('jwt', response.data.token);
                 console.log(response.data.token);
                 alert("Succesvol ingelogd!");
-                window.location.href = "https://localhost:44436/";
+                window.location.href = "/";
             }
             else {
                 alert("Er is iets fout gegaan!");

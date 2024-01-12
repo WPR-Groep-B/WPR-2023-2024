@@ -1,0 +1,18 @@
+.overlay {
+    margin: auto;
+    width: auto;
+    padding: 10px;
+    background: #fff;
+    color: #e01919;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .close {
+    padding: 0px;
+    color: #e01919;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: underline;
+  }

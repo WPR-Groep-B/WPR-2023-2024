@@ -1,38 +1,61 @@
 import styles from '../styles/AboutUs.module.css';
+import React, { useEffect } from 'react';
 
 function AboutUs() {
+    useEffect(() => {
+        document.title = "Stichting Accessibility - About us";
+      }, []);
+
     return (
         <html className={styles.justifiedText}>
         <h1>Over ons</h1>
 
-        Stichting Accessibility zet zich in voor een digitaal, fysiek en sociaal toegankelijke samenleving. Een samenleving waarin iedereen zelfstandig kan meedoen en zich optimaal kan ontplooien, ook als je een beperking hebt. Accessibility ondersteunt (maatschappelijke) organisaties bij het realiseren van toegankelijkheid. Zo dragen wij bij aan een inclusieve samenleving met voorzieningen die toegankelijk en bruikbaar zijn voor iedereen. Wij richten ons in het bijzonder op mensen met een visuele beperking.
+        <p>Stichting Accessibility zet zich in voor een digitaal, fysiek en sociaal toegankelijke samenleving. Een samenleving waarin iedereen zelfstandig kan meedoen en zich optimaal kan ontplooien, ook als je een beperking hebt. Accessibility ondersteunt (maatschappelijke) organisaties bij het realiseren van toegankelijkheid. Zo dragen wij bij aan een inclusieve samenleving met voorzieningen die toegankelijk en bruikbaar zijn voor iedereen.</p>
         <h2>
             Onze missie
         </h2>
         <p>
-        Een inclusieve samenleving waarin alle mensen met of zonder beperking gelijkwaardig participeren.
+        Bij Accessibility werken we aan een inclusieve samenleving waarin iedereen kan meedoen en tot zijn recht komt. Steeds meer organisaties sluiten zich aan bij onze ambities. Al zoeken ze nog naar hoe ze dit voor elkaar kunnen krijgen. 
         </p>
-        <h2>
-            onze visie
-        </h2>
+        <br></br>
         <p>
-        Het optimaal toegankelijk maken van de fysieke, sociale en digitale omgeving voor mensen met een (visuele) beperking.
+        Samen met onze klanten en partners bouwen we iedere dag aan een toegankelijker Nederland. We zetten onze kennis en expertise in om fysieke, sociale én digitale omgevingen toegankelijk te maken; in het bijzonder voor mensen met een (visuele) beperking.
         </p>
-        <h2>achtergrond</h2>
+        <br></br>
         <p>
-        2001 was het jaar waarin Stichting Accessibility werd opgericht. ‘Digitale toegankelijkheid’ stond nog in de kinderschoenen. De samenleving digitaliseerde in rap tempo, maar slechts weinigen vroegen zich af of hun websites en digitale hulpmiddelen voor iederéén te gebruiken waren. Als eerste organisatie in Nederland zette Stichting Accessibility zich in voor het toegankelijk maken van ICT voor mensen met een visuele beperking. En dat doen we nog steeds: door het onderwerp op de agenda te zetten, door te onderzoeken, te adviseren, en door organisaties te ondersteunen in het implementeren van digitale toegankelijkheid in hun digitale middelen. En gelukkig kunnen we hierin samen optrekken met een groeiend aantal collega-organisaties. 
-
-In de loop der jaren verbreedde onze aandacht zich naar digitale toegankelijkheid voor álle groepen die (tijdelijk) beperkt zijn en naar nieuwe ontwikkelingen op technologisch gebied. In 2016 ging Accessibility zelfstandig verder, en de nauwe samenwerking met Bartiméus en het Bartiméus Fonds bleef.
-Met onze medewerkers werken we elke dag aan het structureel verankeren van toegankelijkheid in alle organisaties in Nederland, van overheidsinstellingen tot MKB. En onze beweging blijft niet onopgemerkt. De Nederlandse en Europese regelgeving voor overheid en bedrijven beweegt mee en mede dankzij onze inspanningen is de internationale richtlijn op het gebied van toegankelijke websites en apps, de WCAG (nu toe aan versie 2.1), gerealiseerd. 
-
-Vanaf 1 april 2021 is Accessibility onderdeel van Bartiméus, Accessibility is zo als het ware weer thuis. Zo zijn we voor onze gezamenlijke klanten de veelzijdige expertise specialist op het gebied van fysieke én digitale toegankelijkheid voor iedereen met een (visuele) beperking.
-
-Als sociale onderneming met een ANBI-status blijven we onze diensten, expertise en netwerk inzetten. En daarom vloeien onze verdiensten terug in de organisatie, in research en development, zodat we onze missie kunnen blijven voortzetten: Een inclusieve samenleving waarin alle mensen met of zonder beperking gelijkwaardig participeren.
-
-Stichting Accessibility heeft een ANBI status en zit in de advisory committee van het W3C.
+        Onze experts denken graag met hen mee en bieden begeleiding op maat. Dit doen zij in nauwe samenwerking met ervaringsdeskundigen. Met onze trainingen, producten en diensten kan iedere organisatie morgen nog aan de slag met toegankelijkheid. Zo vertalen we onze kennis naar joúw praktijk.
+        </p>
+        <br></br>
+        <p>
+        Wij denken in mogelijkheden iedere dag opnieuw binnen jouw doelen en budget. Zodat jouw organisatie doet waar jullie voor staan; voor collega’s, klanten en/of burgers. 
+        </p>
+        <br></br>
+        <p>
+        Jouw investering in toegankelijkheid is waardevol voor jouw bedrijf én voor de samenleving. Via Stichting Accessibility vloeit jouw investering terug naar projecten die bijdragen aan een toegankelijke en inclusieve samenleving. Sluit ook bij ons aan! 
+        </p>
+        <br></br>
+        <p>
+        <strong>Wij zijn Accessibility, expert in toegankelijkheid.</strong>
+        </p>
+        <br></br>
+        <h2>Achtergrond</h2>
+        <p>
+            Begin deze eeuw digitaliseerde de samenleving in een rap tempo. Maar waren al die websites en digitale hulpmiddelen wel door iedereen te gebruiken? Toegankelijkheid stond nog in de kinderschoenen. Als eerste organisatie in Nederland begon Stichting Accessibility in 2001 met het toegankelijk maken van ICT voor mensen met een visuele beperking. 
+        </p>
+        <br></br>
+        <p>
+        Later verbreedden wij onze aandacht naar toegankelijkheid voor álle mensen met een (tijdelijke) beperking. Hierdoor zijn we sinds 2020 ook actief in de fysieke en sociale omgeving. Met onze experts werken we elke dag aan het verankeren van toegankelijkheid in organisaties in Nederland; van overheidsinstellingen tot bedrijven. Gelukkig kunnen we hierin met steeds meer partnerorganisaties optrekken. 
+        </p>
+        <br></br>
+        <p>
+            Onze beweging blijft niet onopgemerkt. De regelgeving beweegt mee: mede dankzij onze inspanningen is de internationale richtlijn op het gebied van digitale websites en apps, <a href="https://wcag.nl/kennis/richtlijnen/wcag-2-1-richtlijnen/" target="_blank" rel="noreferrer">de WCAG</a>, gerealiseerd. Daarnaast denken we mee met diverse richtlijnen op inclusief design en fysieke toegankelijkheid. 
+        </p>
+        <br></br>
+        <h2>Nieuwsgierig naar onze vacatures?</h2>
+        <p>
+            <a href="https://www.accessibility.nl/werken-bij-accessibility" target="_blank" rel="noreferrer">Bekijk op deze pagina de vacatures</a> die we momenteel open hebben staan. We bieden ook stageplekken!
         </p>
         </html>
         );
 }
-
 export default AboutUs;

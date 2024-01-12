@@ -3,6 +3,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import styles from "./styles/App.module.css";
 import NavBar from "./components/NavBar";
 import Pages from "./components/Pages";
+import linkedinlogo from "./images/linkedin-logo.png"
+import ytlogo from "./images/yt-logo.png"
+import xlogo from "./images/x-logo.png"
+import logo from "./images/logo-groot-transp.png"
 
 // import {
 //   QueryClient,

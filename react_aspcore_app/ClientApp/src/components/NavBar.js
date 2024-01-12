@@ -22,18 +22,15 @@ function NavBar() {
         </li>
         <li>
           <NavLink to="/">Home</NavLink>
-          <img src={dropdown} alt="Home pagina redirect " className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/contact">Contact</NavLink>
-          <img src={dropdown} alt="Contact pagina redirect" className={styles.dropdown} />
         </li>
         <li>
           <NavLink to="/about-us">About Us</NavLink>
         </li>
         <li>
           <NavLink to="/privacy">Privacy</NavLink>
-          <img src={dropdown} alt="Privacy pagina redirect" className={styles.dropdown} />
         </li>
         <li>
           <a href="/">
@@ -43,16 +40,17 @@ function NavBar() {
         {
           localStorage.getItem("jwt") == null ? (
             <li>
-              <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
-              <NavLink to="/login">inloggen</NavLink>
+                <NavLink to="/login">
+                  <img src={accounticon} alt="Accounticon" className={styles.accounticon}/> Inloggen</NavLink>
             </li>
           ) : (
-            <><li>
-              <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
-              <NavLink to="/account">Account</NavLink>
-            </li><li>
-                <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
-                <button onClick={handleLogout} className={styles.logout}>Uitloggen</button>
+            <>
+            <li>
+                <NavLink to="/account"><img src={accounticon} alt="Account shortcut" className={styles.accounticon}/>Account</NavLink>
+            </li>
+            <li>
+                <button className={styles.button} onClick={handleLogout}>
+                  <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />Uitloggen</button>
               </li>
             </>
           )}

@@ -59,7 +59,6 @@ namespace react_aspcore_app.Controllers
             onderzoek.GoedgekeurdDoorId = onderzoekUpdate.GoedgekeurdDoorId;
             onderzoek.GebruikerBedrijfId = onderzoekUpdate.GebruikerBedrijfId;
             onderzoek.GebruikerDeskundigeId = onderzoekUpdate.GebruikerDeskundigeId;
-            // Update andere relevante velden indien nodig
 
             _context.onderzoeken.Update(onderzoek);
             _context.SaveChanges();

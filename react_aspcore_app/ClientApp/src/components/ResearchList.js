@@ -1,15 +1,19 @@
 import { useQuery } from "@tanstack/react-query"
 
 async function getData(){
-    const data = await fetch('https://localhost:7251/api/research/', {mode: "no-cors", headers: {
+    const data = await fetch('https://localhost:7251/api/research/', {mode: "cors", headers: {
       "Access-Control-Allow-Origin": "*"
     }})
-    return await data.json()
+    console.log(data)
+    const json = await data.json()
+    console.log("json", json)
+    console.table(json)
+    return json
 }
 
 export default function ResearchList() {
     const { isPending, error, data } = useQuery({
-        queryKey: ['repoData'],
+        queryKey: ['get-research-list'],
         queryFn: () => getData()
  
       })
@@ -27,9 +31,9 @@ export default function ResearchList() {
       )
     }
 
-    function OnderzoekEdit({onderzoek}) {
-        return <form>{onderzoek.onderzoekNaam}</form>
-      }
+    // function OnderzoekEdit({onderzoek}) {
+    //     return <form>{onderzoek.onderzoekNaam}</form>
+    //   }
 
       function OnderzoekDetails({onderzoek}) {
         return <div><button type="button">Edit</button><div>{onderzoek.onderzoekNaam}</div></div>

@@ -8,7 +8,7 @@ import RegisterName from "../pages/Registration/RegisterName"
 import RegisterInfo from "../pages/Registration/RegisterInfo"
 import RegisterAccount from "../pages/Registration/RegisterAccount"
 import AboutUs from "../pages/AboutUs"
-import OnderzoekAanmaken from "../pages/OnderzoekAanmaken"
+// import OnderzoekAanmaken from "../pages/OnderzoekAanmaken"
 import ResearchOverview from "../pages/ResearchOverview"
 
 function Pages() {
@@ -23,7 +23,7 @@ function Pages() {
         <Route path="registerInfo" element={<RegisterInfo />} />
         <Route path="registerAccount" element={<RegisterAccount />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/onderzoekaanmaken" element={<OnderzoekAanmaken />} />
+        {/* <Route path="/onderzoekaanmaken" element={<OnderzoekAanmaken />} /> */}
         <Route path="/onderzoeken" element={<ResearchOverview />} />
         </Routes>
   );

@@ -20,7 +20,7 @@ footer {
   width: auto;
   padding: 100px 100px 60px 200px;
   background: #111e55;
-  color: #1fc396;
+  color: #26ecb7;
   text-align: left;
   font-weight: 500;
   font-family: var(--bs-body-font-family);
@@ -64,8 +64,8 @@ button:hover::after {
 .button {
   background-color: #fff;
   border-radius: 50px;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   margin: 0 0 0 5px;
 }
 
@@ -89,11 +89,27 @@ button:hover::after {
 
 
 .logo {
-  margin: 200px 0 0 130px;
   height: 80px;
 }
 
 .sclogo {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
+}
+
+.divsocialslogo {
+  display: flex;
+  flex-direction: column; /* Set flex-direction to column */
+  padding-top: 50px;
+}
+
+.divsocials {
+  display: flex;
+  justify-content: flex-end;
+  align-items: justify;
+  padding-top: 75px;
+}
+
+.socialbtn {
+  padding: 0 30px;
 }

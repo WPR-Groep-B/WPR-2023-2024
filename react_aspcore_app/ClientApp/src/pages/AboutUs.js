@@ -7,7 +7,7 @@ function AboutUs() {
       }, []);
 
     return (
-        <html className={styles.justifiedText}>
+        <html lang='nl' className={styles.justifiedText}>
         <h1>Over ons</h1>
 
         <p>Stichting Accessibility zet zich in voor een digitaal, fysiek en sociaal toegankelijke samenleving. Een samenleving waarin iedereen zelfstandig kan meedoen en zich optimaal kan ontplooien, ook als je een beperking hebt. Accessibility ondersteunt (maatschappelijke) organisaties bij het realiseren van toegankelijkheid. Zo dragen wij bij aan een inclusieve samenleving met voorzieningen die toegankelijk en bruikbaar zijn voor iedereen.</p>

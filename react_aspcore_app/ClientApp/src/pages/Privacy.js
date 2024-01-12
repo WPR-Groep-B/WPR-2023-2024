@@ -7,7 +7,7 @@ function Privacy() {
       }, []);
 
     return (
-        <html className={styles.justifiedText}>
+        <html lang='nl' className={styles.justifiedText}>
             <h1>Privacyverklaring</h1>
 
             <hr></hr>

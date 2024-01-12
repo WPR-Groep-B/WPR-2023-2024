@@ -6,7 +6,7 @@ function Contact() {
         document.title = "Stichting Accessibility - Contact";
       }, []);
     return (
-        <html>
+        <html lang='nl'>
         <div className={styles.justifiedText}>
         <h1>Contact</h1>
         <p>Stichting Accessibility is gevestigd in het bedrijfsverzamelgebouw de Krammstate op een paar minuten lopen van Station Utrecht Overvecht.</p>

@@ -31,7 +31,7 @@ function Login() {
     };
 
     return (
-        <html>
+        <html lang="nl">
             <body className={styles.body}>
                 <div className={styles.container}>
                     <h1>Login</h1>

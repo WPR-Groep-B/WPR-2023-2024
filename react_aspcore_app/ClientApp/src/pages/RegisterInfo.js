@@ -49,7 +49,7 @@ function RegisterInfo() {
     };
 
     return (
-        <html>
+        <html lang='nl'>
             <body className={styles.removeScrollbar}>
                 <div className={styles.body}>
                     <div className={styles.container}>

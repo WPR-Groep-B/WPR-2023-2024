@@ -14,7 +14,7 @@ export default class App extends Component {
   render() {
 
     return (
-      <html>
+      <html lang='nl'>
       <Router>
         <div className={styles.container}>
           <NavBar />
@@ -71,22 +71,35 @@ export default class App extends Component {
                 <button alternate="Email adres van Stichting Accessiblity" onClick={() => { window.location.href = "mailto:info@accessibility.nl"; }}>info@accessibility.nl</button>
               </li><br></br>
 
-              <button className={styles.button} onClick={() => { window.open("https://nl.linkedin.com/company/accessibilitynl", "_blank"); }}>
-                <img className={styles.sclogo} src={linkedinlogo} alt="LinkedIn Logo" />
-              </button>
-
-              <button className={styles.button} onClick={() => { window.open("https://twitter.com/AccessibilityNL", "_blank"); }}>
-                <img className={styles.sclogo} src={xlogo} alt="X/Twitter Logo" />
-              </button>
-
-              <button className={styles.button} onClick={() => { window.open("https://www.youtube.com/channel/UCSFsnRBNIDCgYJEW_ZLfTrg", "_blank"); }}>
-                <img className={styles.sclogo} src={ytlogo} alt="Youtube Logo" />
-              </button>
+              
             </ul>
           </div>
 
           <div>
-            <img className={styles.logo} src={logo}></img>
+            <div className={styles.divsocials}>
+
+              <div className={styles.socialbtn}>
+              <button className={styles.button} onClick={() => { window.open("https://nl.linkedin.com/company/accessibilitynl", "_blank"); }}>
+                <img className={styles.sclogo} src={linkedinlogo} alt="LinkedIn Logo" />
+              </button>
+              </div>
+
+              <div className={styles.socialbtn}>
+              <button className={styles.button} onClick={() => { window.open("https://twitter.com/AccessibilityNL", "_blank"); }}>
+                <img className={styles.sclogo} src={xlogo} alt="X/Twitter Logo" />
+              </button>
+              </div>
+
+              <div className={styles.socialbtn}>
+              <button className={styles.button} onClick={() => { window.open("https://www.youtube.com/channel/UCSFsnRBNIDCgYJEW_ZLfTrg", "_blank"); }}>
+                <img className={styles.sclogo} src={ytlogo} alt="Youtube Logo" />
+              </button>
+              </div>
+            </div>
+
+            <div className={styles.divsocialslogo}>
+              <img alt="Stichting Accessibility logo"className={styles.logo} src={logo}></img>
+            </div>
           </div>
         </footer>
     </Router>

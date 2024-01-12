@@ -41,9 +41,20 @@ function NavBar() {
             <img src={search} alt="Search" className={styles.search} />
           </a>
         </li>
-        <li>
-            <NavLink to="/login"><img src={accounticon} alt="Accounticon" className={styles.accounticon} /> Inloggen</NavLink>
-        </li>
+        {jwt == null ? (
+          <li>
+            <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+            <NavLink to="/login">inloggen</NavLink>
+          </li>
+        ) : (
+          <><li>
+              <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+              <NavLink to="/account">Account</NavLink>
+            </li><li>
+                <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+                <button onClick={handleLogout} className={styles.logout}>Uitloggen</button>
+              </li></>
+        )}
       </ul>
     </nav></>
     </nav></>

@@ -69,7 +69,7 @@ function Login() {
             </div>
             <div className={styles.linkcontainer}>
                 <GoogleLoginComponent />
-                <a className={styles.a} href="/registerStart">Geen account? Maak er hier een aan</a>
+                <a className={styles.a} href="/register-start">Geen account? Maak er hier een aan</a>
             </div>
         </div>
     );

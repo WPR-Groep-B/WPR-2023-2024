@@ -29,8 +29,7 @@ function NavBar() {
           <img src={dropdown} alt="Contact pagina redirect" className={styles.dropdown} />
         </li>
         <li>
-          <NavLink to="/aboutus">About Us</NavLink>
-          <img src={dropdown} alt="Over ons pagina redirect" className={styles.dropdown} />
+          <NavLink to="/about-us">About Us</NavLink>
         </li>
         <li>
           <NavLink to="/privacy">Privacy</NavLink>

@@ -19,7 +19,7 @@ function RegisterInfo() {
     const navigate = useNavigate();
 
     const goToRegisterAccount = () => {
-        navigate('/registerAccount');
+        navigate('/register-account');
     };
 
     const handleAgeChange = (e) => {

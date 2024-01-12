@@ -29,7 +29,7 @@ function RegisterName() {
     };
   
     const goToRegisterInfo = () => {
-      navigate('/registerInfo');
+      navigate('/register-info');
     };  
     
     return (

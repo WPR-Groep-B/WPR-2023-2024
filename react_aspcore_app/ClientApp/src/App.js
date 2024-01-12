@@ -29,7 +29,7 @@ export default class App extends Component {
                 <button onClick={() => { window.location.href = "/"; }}>Home</button>
               </li><br></br>
               <li>
-                <button onClick={() => { window.location.href = "/aboutus"; }}>Over Ons</button>
+                <button onClick={() => { window.location.href = "/about-us"; }}>Over Ons</button>
               </li><br></br>
               <li>
                 <button onClick={() => { window.location.href = "/privacy"; }}>Privacy verklaring</button>
@@ -44,16 +44,16 @@ export default class App extends Component {
             <h1>Hoe wij helpen</h1>
             <ul>
               <li>
-                <button onClick={() => { window.location.href = "https://www.accessibility.nl/audits"; }}>Audits</button>
+                <button onClick={() => { window.open("https://www.accessibility.nl/audits", "_blank"); }}>Audits</button>
               </li><br></br>
               <li>
-                <button onClick={() => { window.location.href = "https://www.accessibility.nl/gebruikersonderzoek"; }}>Gebruikersonderzoeken</button>
+                <button onClick={() => { window.open("https://www.accessibility.nl/gebruikersonderzoek", "_blank"); }}>Gebruikersonderzoeken</button>
               </li><br></br>
               <li>
-                <button onClick={() => { window.location.href = "https://www.accessibility.nl/hoe-wij-helpen/trainingen"; }}>Trainingen</button>
+                <button onClick={() => { window.open("https://www.accessibility.nl/hoe-wij-helpen/trainingen", "_blank"); }}>Trainingen</button>
               </li><br></br>
               <li>
-                <button onClick={() => { window.location.href = "https://www.accessibility.nl/advies"; }}>Advies</button>
+                <button onClick={() => { window.open("https://www.accessibility.nl/advies", "_blank"); }}>Advies</button>
               </li><br></br>
             </ul>
           </div>

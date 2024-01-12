@@ -18,7 +18,6 @@ function Login() {
         if (email === "" || wachtwoord === "") {
             alert("Vul alle velden in!" + email + wachtwoord);
         }
-
         axios.post('https://localhost:7251/api/user/login', {
             email: email,
             wachtwoord: password
@@ -37,11 +36,11 @@ function Login() {
     }
 
     return (
-        <div>
-            <div className={styles.body}>
+        <html>
+            <body className={styles.body}>
                 <div className={styles.container}>
                     <h1>Login</h1>
-                    <div className={styles.form}>
+                    <form className={styles.form} onSubmit={handleSubmit}>
                         <hr></hr>
                         <label className={styles.label} htmlFor="email">Email:</label>
                         <input
@@ -68,15 +67,15 @@ function Login() {
                         />
 
                         <hr></hr>
-                        <button className={styles.button} type="submit" onClick={HandleLogin}>Login</button>
-                    </div>
+                        <button className={styles.button} type="submit">Login</button>
+                    </form>
                 </div>
-            </div>
+            </body>
             <div className={styles.linkcontainer}>
                 <GoogleLoginComponent />
                 <a className={styles.a} href="/registerStart">Geen account? Maak er hier een aan</a>
             </div>
-        </div>
+        </html>
     );
 }
 

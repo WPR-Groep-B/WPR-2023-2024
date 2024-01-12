@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Google.Apis.Auth;
 
-
-
-
 public class LoginModel
 {
     public required string Email { get; set; }
@@ -20,6 +17,7 @@ public class GoogleLoginModel
     public string GoogleToken { get; set; }
 }
 
+// Path: react_aspcore_app/Controllers/UserController.cs
 [Route("api/[controller]")]
 [ApiController]
 public class UserController : ControllerBase

@@ -5,6 +5,9 @@ import ytlogo from "../images/yt-logo.png"
 import xlogo from "../images/x-logo.png"
 
 function Contact() {
+  useEffect(() => {
+    document.title = 'Stichting Accessibility - Contact';
+  }, []);
     return (
         <html lang='nl'>
         <div className={styles.justifiedText}>

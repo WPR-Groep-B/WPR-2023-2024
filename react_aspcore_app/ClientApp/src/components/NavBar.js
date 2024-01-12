@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import logo from '../images/Accessibility-logo-RGB-1024x245.png';
 import accounticon from '../images/Account_Icon.png';
-import dropdown from '../images/gridicons_dropdown.png'
 import search from '../images/Search.png'
 
 function NavBar() {

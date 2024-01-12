@@ -44,10 +44,18 @@ function Login() {
                     <div className={styles.form}>
                         <hr></hr>
                         <label className={styles.label} htmlFor="email">Email:</label>
+                        <input
+                            className={styles.input}
+                            type="email"
                             id="email"
+                            name="email"
+                            placeholder="text@email.com"
+                            required
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
                         />
+
                         <label className={styles.label} htmlFor="password">Password:</label>
-                        <input className={styles.input} type="password" id="password" name="password" placeholder="Wachtwoord" onChange={e => setWachtwoord(e.target.value)} />
                         <input
                             className={styles.input}
                             type="password"

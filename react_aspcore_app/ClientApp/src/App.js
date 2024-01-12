@@ -4,13 +4,13 @@ import styles from "./styles/App.module.css";
 import NavBar from "./components/NavBar";
 import Pages from "./components/Pages";
 
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from '@tanstack/react-query'
+// import {
+//   QueryClient,
+//   QueryClientProvider,
+//   useQuery,
+// } from '@tanstack/react-query'
 
-const queryClient = new QueryClient()
+// const queryClient = new QueryClient()
 
 export default class App extends Component {
   static displayName = App.name;
@@ -18,12 +18,12 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <QueryClientProvider client={queryClient}>
+        {/* <QueryClientProvider client={queryClient}> */}
           <div className={styles.container}>
             <NavBar />
             <Pages />
           </div>
-        </QueryClientProvider>
+        {/* </QueryClientProvider> */}
       </Router>
     );
   }

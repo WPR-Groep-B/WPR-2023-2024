@@ -1,6 +1,7 @@
 import styles from '../styles/Login.module.css';
 import GoogleLoginComponent from '../components/googleLogin';
 import axios from 'axios';
+import { useState } from 'react';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -14,7 +15,7 @@ function Login() {
         if (email === "" || wachtwoord === "") {
             alert("Vul alle velden in!" + email + wachtwoord);
         }
-        axios.post('https://appservicewprgroepb.azurewebsites.net/api/user/login', {
+        axios.post('https://localhost:7251/api/user/login', {
             email: email,
             wachtwoord: wachtwoord
         }).then((response) => {

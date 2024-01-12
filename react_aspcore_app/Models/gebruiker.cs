@@ -1,39 +1,32 @@
 using System.ComponentModel.DataAnnotations;
 
-public class gebruiker
-{
+public class gebruiker {
 
     [Key]
     public int GebruikerId { get; set; }
 
-    public string Voornaam { get; set; }
+    public string Voornaam { get; set;}
 
-    public string Achternaam { get; set; }
+    public string Achternaam { get; set;}
 
-    public string email { get; set; }
-
-    public string? wachtwoord { get; set; }
-    public string? googleId { get; set; }
+    public string email { get; set;}
 
 }
 
-public class gebruikerBedrijf : gebruiker
-{
+public class gebruikerBedrijf : gebruiker {
 
     public string bedrijfsnaam { get; set; }
 
 }
 
-public class gebruikerDeskundige : gebruiker
-{
+public class gebruikerDeskundige : gebruiker {
 
-    public string beperking { get; set; }
+    public string beperking {  get; set; }
 
 }
 
-public class gebruikerBeheerder : gebruiker
-{
+public class gebruikerBeheerder : gebruiker {
 
-    public string functie { get; set; }
+    public string functie {get; set; }
 
 }

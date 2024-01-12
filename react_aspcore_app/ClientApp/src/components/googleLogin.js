@@ -6,7 +6,7 @@ function GoogleLoginComponent() {
 
     function handleCredentialResponse(response) {
         console.log(response.credential);
-        axios.post('https://localhost:7251/api/user/googlelogin', {
+        axios.post('https://appservicewprgroepb.azurewebsites.net/api/user/googlelogin', {
             GoogleToken: response.credential
         }).then((response) => {
             console.log(response);

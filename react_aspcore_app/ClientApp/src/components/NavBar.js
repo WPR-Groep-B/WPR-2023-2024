@@ -3,17 +3,12 @@ import styles from "../styles/NavBar.module.css";
 import logo from '../images/Accessibility-logo-RGB-1024x245.png';
 import accounticon from '../images/Account_Icon.png';
 import search from '../images/Search.png'
-import { useState } from "react";
-
 
 function NavBar() {
 
-  const [jwt, setJwt] = useState(localStorage.getItem('jwt'));
-
   const handleLogout = () => {
     localStorage.removeItem('jwt');
-    setJwt(null);
-    navigate('/');
+    window.location.href = "/";
   };
   return (
     <><nav className={styles.navbar}>
@@ -41,7 +36,8 @@ function NavBar() {
             <img src={search} alt="Search" className={styles.search} />
           </a>
         </li>
-        {jwt == null ? (
+        {
+        localStorage.getItem("jwt") == null ? (
           <li>
             <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
             <NavLink to="/login">inloggen</NavLink>

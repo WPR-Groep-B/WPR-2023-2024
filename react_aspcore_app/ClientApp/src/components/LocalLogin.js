@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import styles from '../styles/Login.module.css';
 import GoogleLoginComponent from '../components/googleLogin';
-import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
 import axios from 'axios';
 
 function Login() {
-    const navigate = useNavigate();
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [wachtwoord, setWachtwoord] = useState('');
 
     const goToLogInPage = () => {
-        navigate('/');
+        window.location.href = "/";
     };
 
     function HandleLogin() {
@@ -20,7 +17,7 @@ function Login() {
         }
         axios.post('https://localhost:7251/api/user/login', {
             email: email,
-            wachtwoord: password
+            wachtwoord: wachtwoord
         }).then((response) => {
             console.log(response);
             if (response.status === 200) {
@@ -40,7 +37,7 @@ function Login() {
             <body className={styles.body}>
                 <div className={styles.container}>
                     <h1>Login</h1>
-                    <form className={styles.form} onSubmit={handleSubmit}>
+                    <div className={styles.form}>
                         <hr></hr>
                         <label className={styles.label} htmlFor="email">Email:</label>
                         <input
@@ -62,13 +59,13 @@ function Login() {
                             name="password"
                             placeholder="Wachtwoord123!"
                             required
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
+                            value={wachtwoord}
+                            onChange={e => setWachtwoord(e.target.value)}
                         />
 
                         <hr></hr>
-                        <button className={styles.button} type="submit">Login</button>
-                    </form>
+                        <button className={styles.button} type="submit" onClick={HandleLogin}>Login</button>
+                    </div>
                 </div>
             </body>
             <div className={styles.linkcontainer}>

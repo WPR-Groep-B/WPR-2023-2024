@@ -6,8 +6,12 @@ import dropdown from '../images/gridicons_dropdown.png'
 import search from '../images/Search.png'
 
 function NavBar() {
-  return (
 
+  const handleLogout = () => {
+    localStorage.removeItem('jwt');
+    window.location.href = "/";
+  };
+  return (
     <nav className={styles.navbar}>
       <ul>
         <li>
@@ -36,12 +40,23 @@ function NavBar() {
             <img src={search} alt="Search" className={styles.search} />
           </a>
         </li>
-        <li>
-          <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
-          <NavLink to="/login">inloggen</NavLink>
-        </li>
+        {
+        localStorage.getItem("jwt") == null ? (
+          <li>
+            <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+            <NavLink to="/login">inloggen</NavLink>
+          </li>
+        ) : (
+          <><li>
+              <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+              <NavLink to="/account">Account</NavLink>
+            </li><li>
+                <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />
+                <button onClick={handleLogout} className={styles.logout}>Uitloggen</button>
+              </li></>
+        )}
       </ul>
-    </nav>
+    </nav></>
   );
 }
 

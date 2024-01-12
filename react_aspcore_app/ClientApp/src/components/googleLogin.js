@@ -5,6 +5,20 @@ function GoogleLoginComponent() {
 
     function handleCredentialResponse(response) {
         console.log(response.credential);
+        axios.post('https://localhost:7251/api/user/googlelogin', {
+            GoogleToken: response.credential
+        }).then((response) => {
+            console.log(response);
+            if (response.status === 200) {
+                localStorage.setItem('jwt', response.data.token);
+                console.log(response.data.token);
+                alert("Succesvol ingelogd!");
+                window.location.href = "https://localhost:44436/";
+            }
+            else {
+                alert("Er is iets fout gegaan!");
+            }
+        })
     }
 
     useEffect(() => {

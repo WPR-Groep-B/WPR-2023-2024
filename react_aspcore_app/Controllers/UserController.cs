@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Google.Apis.Auth;
+using Microsoft.AspNetCore.Identity;
 
 public class LoginModel
 {
@@ -78,11 +79,21 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public ActionResult<gebruiker> Login([FromBody] LoginModel login)
     {
-        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == login.Email && g.wachtwoord == login.Wachtwoord);
+        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == login.Email);
 
-        if (gebruiker == null)
+        if (gebruiker == null) return NotFound();
+        if (gebruiker.wachtwoord == null) return Unauthorized();
+
+        // Create a PasswordHasher
+        var passwordHasher = new PasswordHasher<gebruiker>();
+
+        // Verify the hashed password
+        var result = passwordHasher.VerifyHashedPassword(gebruiker, gebruiker.wachtwoord, login.Wachtwoord);
+
+        if (result == PasswordVerificationResult.Failed)
         {
-            return NotFound();
+            // Password verification failed
+            return Unauthorized();
         }
 
         var token = GenerateJwtToken(gebruiker);
@@ -175,8 +186,9 @@ public class UserController : ControllerBase
 
         gebruiker.Voornaam = nieuwGebruiker.Voornaam;
         gebruiker.Achternaam = nieuwGebruiker.Achternaam;
-        gebruiker.email = nieuwGebruiker.Email;
-        gebruiker.wachtwoord = nieuwGebruiker.Wachtwoord;
+        var passwordHasher = new PasswordHasher<gebruiker>();
+        // Hash the password
+        gebruiker.wachtwoord = passwordHasher.HashPassword(gebruiker, nieuwGebruiker.Wachtwoord);
 
         _context.gebruikers.Add(gebruiker);
         _context.SaveChanges();

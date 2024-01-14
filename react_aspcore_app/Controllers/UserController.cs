@@ -186,6 +186,7 @@ public class UserController : ControllerBase
 
         gebruiker.Voornaam = nieuwGebruiker.Voornaam;
         gebruiker.Achternaam = nieuwGebruiker.Achternaam;
+        gebruiker.email = nieuwGebruiker.Email;
         var passwordHasher = new PasswordHasher<gebruiker>();
         // Hash the password
         gebruiker.wachtwoord = passwordHasher.HashPassword(gebruiker, nieuwGebruiker.Wachtwoord);

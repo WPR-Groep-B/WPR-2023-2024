@@ -193,7 +193,8 @@ public class UserController : ControllerBase
 
         _context.gebruikers.Add(gebruiker);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(Get), new { id = gebruiker.GebruikerId }, gebruiker);
+        var token = GenerateJwtToken(gebruiker);
+        return CreatedAtAction(nameof(Get), new { id = gebruiker.GebruikerId }, new { user = gebruiker, token = token });
     }
 
 

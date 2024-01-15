@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '../styles/Register.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,6 +8,9 @@ function RegisterAccount() {
     const goToRegisterInfo = () => {
         navigate('/registerInfo');
     };
+    useEffect(() => {
+        document.title = "Register - Stichting Accessibility"
+    }, []);
     
     return (
         <div className={styles.body}>

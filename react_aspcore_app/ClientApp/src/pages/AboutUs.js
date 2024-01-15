@@ -1,6 +1,11 @@
+import React, { useEffect } from 'react'
 import styles from '../styles/AboutUs.module.css';
 
 function AboutUs() {
+    useEffect(() => {
+        document.title = "About us - Stichting Accessibility"
+      }, [])
+
     return (
         <html lang='nl' className={styles.justifiedText}>
         <h1>Over ons</h1>

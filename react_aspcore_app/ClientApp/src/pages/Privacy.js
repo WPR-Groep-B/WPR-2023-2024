@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 function Privacy() {
     useEffect(() => {
-        document.title = "Stichting Accessibility - Privacy";
+        document.title = "Privacy - Stichting Accessibility";
       }, []);
 
     return (

@@ -9,7 +9,7 @@ function Account() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = 'Stichting Accessibility - Account';
+    document.title = 'Account - Stichting Accessibility';
   }, []);
 
   return (

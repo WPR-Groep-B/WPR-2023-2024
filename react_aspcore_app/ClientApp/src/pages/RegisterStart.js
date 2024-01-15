@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function RegisterName() {
     useEffect(() => {
-        document.title = "Stichting Accessibility - Register";
+        document.title = "Register - Stichting Accessibility";
       }, []);
     const navigate = useNavigate();
     const [naam, setNaam] = useState('');

@@ -5,17 +5,14 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 2rem;
+    border-radius: 15px;
 }
 
 a {
-    color: inherit;
+    color: #1A2E83;
+    transition: color 0.2s ease;
 }
-
-.visually-hidden {
-    position: absolute !important;
-    overflow: hidden;
-    clip: rect(1px,1px,1px,1px);
-    width: 1px;
-    height: 1px;
-    word-wrap: normal;
-  }
+  
+a:hover {    
+    color: #1fc396;
+}

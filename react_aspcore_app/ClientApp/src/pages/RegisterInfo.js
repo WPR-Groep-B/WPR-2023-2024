@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function RegisterInfo() {
     useEffect(() => {
-        document.title = "Stichting Accessibility - Register";
+        document.title = "Register - Stichting Accessibility";
       }, []);
     const [selectedOption, setSelectedOption] = useState('');
     const [age, setAge] = useState('');

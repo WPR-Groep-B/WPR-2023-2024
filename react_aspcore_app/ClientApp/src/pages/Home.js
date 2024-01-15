@@ -1,7 +1,11 @@
+import React, { useEffect } from 'react';
 import styles from '../styles/Home.module.css';
 import wheelchair from '../images/Computer-User-Wheelchair-2.jpeg';
 
 function Home() {
+    useEffect(() => {
+        document.title = 'Home - Stichting Accessibility';
+      }, []);
     return (
         <div className={styles.homeContainer}>
             <div className={styles.heroSection}>
@@ -11,7 +15,7 @@ function Home() {
                         Samen met onze partners en klanten werken we aan een inclusieve samenleving die toegankelijk is voor iedereen.
                     </h1>
                     <h2>
-                        <a href="./aboutus"> Meer over Accessibility &gt;</a>
+                        <a href="./about-us"> Meer over Accessibility &gt;</a>
                     </h2>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import styles from '../styles/Login.module.css';
 import GoogleLoginComponent from '../components/googleLogin';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -10,6 +10,10 @@ function Login() {
     const goToLogInPage = () => {
         window.location.href = "/";
     };
+
+    useEffect(() => {
+        document.title ="Login - Stichting Accessibility"
+    }, []);
 
     function HandleLogin() {
         if (email === "" || wachtwoord === "") {

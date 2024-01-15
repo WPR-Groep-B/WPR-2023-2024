@@ -51,7 +51,7 @@ function AboutUs() {
         </p>
         <br></br>
         <p>
-            Onze beweging blijft niet onopgemerkt. De regelgeving beweegt mee: mede dankzij onze inspanningen is de internationale richtlijn op het gebied van digitale websites en apps, <a href="https://wcag.nl/kennis/richtlijnen/wcag-2-1-richtlijnen/" target="_blank" rel="noreferrer">de WCAG</a>, gerealiseerd. Daarnaast denken we mee met diverse richtlijnen op inclusief design en fysieke toegankelijkheid. 
+            Onze beweging blijft niet onopgemerkt. De regelgeving beweegt mee: mede dankzij onze inspanningen is de internationale richtlijn op het gebied van digitale websites en apps, <a href="https://wcag.nl/kennis/richtlijnen/wcag-2-1-richtlijnen/">de WCAG <span class="visually-hidden">(Opent de WCAG pagina in een nieuwe tab)</span></a>, gerealiseerd. Daarnaast denken we mee met diverse richtlijnen op inclusief design en fysieke toegankelijkheid. 
         </p>
         <hr></hr>
         <h2>Nieuwsgierig naar onze vacatures?</h2>
@@ -62,4 +62,4 @@ function AboutUs() {
         );
 }
 
-export default AboutUs;
+export default AboutUs; 

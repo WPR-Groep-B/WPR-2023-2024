@@ -27,7 +27,7 @@ function Home() {
                             Log hier in om je onderzoeken te zien
                         </button>
                     ) : (
-                        <>
+                        <> {/*Dit zijn placeholderonderzoeken, de implementatie hiervan moet nog toegepast worden*/}
                             <div className={styles.onderzoeken}>
                                 <div className={styles.onderrzoekContainer}>
                                     <p>Hier komen alle onderzoeken te staan</p>

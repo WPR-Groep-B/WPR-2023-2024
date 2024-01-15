@@ -15,7 +15,7 @@
   box-sizing: border-box;
 }
 
-  
+
 .container {
   margin: auto;
   width: 50%;
@@ -32,7 +32,8 @@
 
 .form {
   display: flex;
-  text-align: left; /* Align form elements to the left */
+  text-align: left;
+  /* Align form elements to the left */
   flex-direction: column;
 }
 
@@ -62,7 +63,7 @@ input {
 select {
   width: 225px;
   padding: 15px;
-  margin: 5px 0 22px 55px ;
+  margin: 5px 0 22px 55px;
   display: inline-block;
   border: none;
   background: whitesmoke;
@@ -72,7 +73,7 @@ select {
 .select {
   width: 225px;
   padding: 15px;
-  margin: 6px 55px 22px 0px ;
+  margin: 6px 55px 22px 0px;
   display: inline-block;
   border: none;
   background: whitesmoke;
@@ -187,4 +188,54 @@ input[type='date']:hover {
 
 .radiogroup input {
   flex: 1;
+}
+
+/* styles.module.css or YourStylesheet.css */
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+  /* or inline, inline-block, etc. based on your layout needs */
+}
+
+.error {
+  margin: auto;
+  width: auto;
+  padding: 10px;
+  background: #fff;
+  color: #e01919;
+  border-radius: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.errorclose {
+  background-color: #fff;
+  padding: 0px;
+  color: #e01919;
+  text-align: center;
+  font-weight: 600;
+}
+
+.errorclose:hover {
+  transform: scale(1.1);
+}
+
+.errorclose::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #e01919;
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.errorclose:hover::after {
+  opacity: 1;
 }

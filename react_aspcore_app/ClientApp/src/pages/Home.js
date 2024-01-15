@@ -23,7 +23,7 @@ function Home() {
             <div className={styles.contforond}>
                 {
                     localStorage.getItem("jwt") == null ? (
-                        <button className={styles.button} onClick={() => { window.location.href = "/login"; }}>
+                        <button alt="Login voor weergave onderzoeken" className={styles.button} onClick={() => { window.location.href = "/login"; }}>
                             Log hier in om je onderzoeken te zien
                         </button>
                     ) : (

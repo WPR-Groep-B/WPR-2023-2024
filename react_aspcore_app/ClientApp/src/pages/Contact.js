@@ -13,7 +13,7 @@ function Contact() {
         <div className={styles.justifiedText}>
         <h1>Contact</h1>
         <p>Stichting Accessibility is gevestigd in het bedrijfsverzamelgebouw de Krammstate op een paar minuten lopen van Station Utrecht Overvecht.</p>
-        <br></br>
+        <hr></hr>
         <h2>Bezoek- en postadres:</h2>
 
         <p><strong>Christiaan Krammlaan 2 <br></br>
@@ -27,9 +27,10 @@ function Contact() {
 
         <p>Algemene informatie over de toegankelijkheid, rolstoelvriendelijkheid en het meebrengen van geleidehonden staat op onze pagina over de toegankelijkheid van ons kantoor(insert link toegankelijkeid)</p>
 
-        <p>U kunt ons telefonisch bereiken via <a href="Tel: +31 30 239 82 70" alternate="Telefoonnummer van Stichting Accessiblity">ons telefoonnummer+31 30 239 82 70.</a></p><br></br>
-        <a href="mailto:info@accessibility.nl" alternate="Email adres van Stichting Accessiblity">Verzend een e-mail naar Stichting Accessibility</a>
-        <br></br>
+                        
+        
+        <p>U kunt ons telefonisch bereiken via <a href="Tel: +31 30 239 82 70" alternate="Telefoonnummer van Stichting Accessiblity">ons telefoonnummer+31 30 239 82 70.</a><br></br>
+        <a href="mailto:info@accessibility.nl" alternate="Email adres van Stichting Accessiblity">Verzend een e-mail naar Stichting Accessibility</a></p>
         <br></br>
         <hr></hr>
 

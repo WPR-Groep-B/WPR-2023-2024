@@ -16,7 +16,7 @@ function NavBar() {
       <ul>
         <li>
           <a href="/">
-            <img src={logo} alt="Logo" className={styles.logo} />
+            <img src={logo} alt="Logo en knop naar homepagina" className={styles.logo} />
           </a>
         </li>
         <li>
@@ -39,16 +39,18 @@ function NavBar() {
         {
           localStorage.getItem("jwt") == null ? (
             <li>
-                <NavLink to="/login">
-                  <img src={accounticon} alt="Accounticon" className={styles.accounticon}/> Inloggen</NavLink>
+              <NavLink to="/login">
+                <img src={accounticon} alt="Accounticon" className={styles.accounticon} /> Inloggen</NavLink>
             </li>
           ) : (
             <>
-            <li>
-                <NavLink to="/account"><img src={accounticon} alt="Account shortcut" className={styles.accounticon}/>Account</NavLink>
-            </li>
-            <li>
-                <button className={styles.button} onClick={handleLogout}>
+              <li>
+                <NavLink to="/account">
+                  <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />Account
+                </NavLink>
+              </li>
+              <li>
+                <button aria-label="Uitloggen met account icon" className={styles.button} onClick={handleLogout}>
                   <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />Uitloggen</button>
               </li>
             </>

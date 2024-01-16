@@ -1,27 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Register.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function RegisterInfo() {
-    useEffect(() => {
-        document.title = "Register - Stichting Accessibility";
-    }, []);
-
+    const navigate = useNavigate();
     const [selectedOption, setSelectedOption] = useState('');
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     const [beperking, setBeperking] = useState('');
     const [bedrijf, setBedrijf] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const location = useLocation();
+    const isFromRegisterStart = location.state && location.state.from === '/register-start';
+
+    useEffect(() => {
+        document.title = "Register - Stichting Accessibility";
+    
+        // If not coming from RegisterInfo, redirect to RegisterInfo
+        if (!isFromRegisterStart) {
+          navigate('/register-start');
+        }
+      }, [navigate, isFromRegisterStart]);
 
     const showFields = (option) => {
         setSelectedOption(option);
     };
 
-    const navigate = useNavigate();
-
     const goToRegisterAccount = () => {
-        navigate('/register-account');
+        navigate('/register-account', { state: { from: '/register-info' } });
     };
 
     const handleAgeChange = (e) => {
@@ -44,6 +50,7 @@ function RegisterInfo() {
         e.preventDefault();
 
         if (age.trim() !== '' && gender.trim() !== '' && (selectedOption === 'Ervaring' ? beperking.trim() !== '' : true) && (selectedOption === 'Bedrijf' ? bedrijf.trim() !== '' : true)) {
+            // Perform additional checks if necessary before allowing access to RegisterAccount
             goToRegisterAccount();
         } else {
             setErrorMessage("Please fill in all required fields");
@@ -59,7 +66,6 @@ function RegisterInfo() {
                 <hr />
 
                 <form className={styles.form} onSubmit={handleSubmit}>
-
                     <div className={styles.displayCntr}>
 
                         <div>
@@ -135,7 +141,6 @@ function RegisterInfo() {
                             />
                         </div>
                     </div>
-
                     {errorMessage && <div className={styles.error}>{errorMessage}</div>}
                     <button className={styles.registerbtn} type="submit">Volgende</button>
                     <hr />

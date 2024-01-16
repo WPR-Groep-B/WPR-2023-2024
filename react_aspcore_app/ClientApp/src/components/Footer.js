@@ -8,7 +8,7 @@ function Footer() {
     return (
         <footer>
           <div>
-            <h1>Snel naar...</h1>
+            <h2>Snel naar...</h2>
             <ul>
               <li>
                 <button onClick={() => { window.location.href = "/"; }}>Home</button>
@@ -20,13 +20,13 @@ function Footer() {
                 <button onClick={() => { window.location.href = "/privacy"; }}>Privacy verklaring</button>
               </li><br></br>
               <li>
-                <button onClick={() => { window.location.href = "/login"; }}>Inloggen</button>
+                <button onClick={() => { window.location.href = "/login"; }}>Login</button>
               </li><br></br>
             </ul>
           </div>
 
           <div className={styles.divfoot}>
-            <h1>Hoe wij helpen</h1>
+            <h2>Hoe wij helpen</h2>
             <ul>
               <li>
                 <button onClick={() => { window.open("https://www.accessibility.nl/audits", "_blank"); }}>Audits</button>
@@ -44,16 +44,16 @@ function Footer() {
           </div>
 
           <div className={styles.divfoot}>
-            <h1>Contact</h1>
+            <h2>Contact</h2>
             <ul>
               <li>
                 <button onClick={() => { window.location.href = "/contact"; }}>Contact</button>
               </li><br></br>
               <li>
-                <button alternate="Telefoonnummer van Stichting Accessiblity" onClick={() => { window.location.href = "Tel: +31 30 239 82 70"; }}>Tel: +31 30 239 82 70</button>
+                <button onClick={() => { window.location.href = "Tel: +31 30 239 82 70"; }}>Tel: +31 30 239 82 70</button>
               </li><br></br>
               <li>
-                <button alternate="Email adres van Stichting Accessiblity" onClick={() => { window.location.href = "mailto:info@accessibility.nl"; }}>info@accessibility.nl</button>
+                <button onClick={() => { window.location.href = "mailto:info@accessibility.nl"; }}>info@accessibility.nl</button>
               </li><br></br>
               <li>
                 <button onClick={() => { window.open("https://www.accessibility.nl/werken-bij-accessibility", "_blank"); }}>

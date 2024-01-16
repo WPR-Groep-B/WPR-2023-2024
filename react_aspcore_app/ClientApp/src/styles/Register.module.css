@@ -15,7 +15,7 @@
   box-sizing: border-box;
 }
 
-  
+
 .container {
   margin: auto;
   width: 50%;
@@ -32,7 +32,8 @@
 
 .form {
   display: flex;
-  text-align: left; /* Align form elements to the left */
+  text-align: left;
+  /* Align form elements to the left */
   flex-direction: column;
 }
 
@@ -62,7 +63,7 @@ input {
 select {
   width: 225px;
   padding: 15px;
-  margin: 5px 0 22px 55px ;
+  margin: 5px 0 22px 55px;
   display: inline-block;
   border: none;
   background: whitesmoke;
@@ -72,7 +73,7 @@ select {
 .select {
   width: 225px;
   padding: 15px;
-  margin: 6px 55px 22px 0px ;
+  margin: 6px 55px 22px 0px;
   display: inline-block;
   border: none;
   background: whitesmoke;

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Register.module.css';
-import { useNavigate } from 'react-router-dom';
 
 function RegisterInfo() {
     useEffect(() => {
         document.title = "Stichting Accessibility - Register";
-      }, []);
+    }, []);
     const [selectedOption, setSelectedOption] = useState('');
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
@@ -14,12 +13,6 @@ function RegisterInfo() {
 
     const showFields = (option) => {
         setSelectedOption(option);
-    };
-
-    const navigate = useNavigate();
-
-    const goToRegisterAccount = () => {
-        navigate('/register-account');
     };
 
     const handleAgeChange = (e) => {
@@ -42,7 +35,7 @@ function RegisterInfo() {
         e.preventDefault();
 
         if (age.trim() !== '' && gender.trim() !== '' && (selectedOption === 'Ervaring' ? beperking.trim() !== '' : true) && (selectedOption === 'Bedrijf' ? bedrijf.trim() !== '' : true)) {
-            goToRegisterAccount();
+            window.location.href = "/register-account";
         } else {
             console.error("Please fill in all required fields");
         }
@@ -108,7 +101,7 @@ function RegisterInfo() {
                                     </select>
                                 </div>
 
-                                <div id="ErvaringFields" className={selectedOption === 'Ervaring' ? '' : styles.hidden}>
+                                <div id="ErvaringFields" className={selectedOption === 'Ervaring' ? styles.show : styles.hidden}>
                                     <label htmlFor="beperking">Beperking:</label>
                                     <input
                                         style={{ width: '225px' }}
@@ -122,7 +115,7 @@ function RegisterInfo() {
                                     />
                                 </div>
 
-                                <div id="BedrijfFields" className={selectedOption === 'Bedrijf' ? '' : styles.hidden}>
+                                <div id="BedrijfFields" className={selectedOption === 'Bedrijf' ? styles.show : styles.hidden}>
                                     <label htmlFor="bedrijf">Bedrijfsnaam</label>
                                     <input
                                         style={{ width: '225px' }}
@@ -134,7 +127,6 @@ function RegisterInfo() {
                                         onChange={handleBedrijfChange}
                                     />
                                 </div>
-
                             </div>
 
                             <hr></hr>

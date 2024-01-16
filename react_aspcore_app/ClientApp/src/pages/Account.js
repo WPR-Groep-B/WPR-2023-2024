@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styles from '../styles/Account.module.css';
-import { useNavigate } from 'react-router-dom';
 import accountimg from '../images/Account_Icon.png';
 
 function Account() {
-  const [jwt, setJwt] = useState(localStorage.getItem('jwt'));
-  const [decodedToken, setDecodedToken] = useState(null);
-  const navigate = useNavigate();
+//   const [jwt, setJwt] = useState(localStorage.getItem('jwt'));
+//   const [decodedToken, setDecodedToken] = useState(null);
+//   const navigate = useNavigate();
 
   useEffect(() => {
     document.title = 'Account - Stichting Accessibility';

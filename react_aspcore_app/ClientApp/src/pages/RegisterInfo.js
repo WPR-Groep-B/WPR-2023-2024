@@ -50,6 +50,7 @@ function RegisterInfo() {
         e.preventDefault();
 
         if (age.trim() !== '' && gender.trim() !== '' && (selectedOption === 'Ervaring' ? beperking.trim() !== '' : true) && (selectedOption === 'Bedrijf' ? bedrijf.trim() !== '' : true)) {
+          
             // Perform additional checks if necessary before allowing access to RegisterAccount
             goToRegisterAccount();
         } else {

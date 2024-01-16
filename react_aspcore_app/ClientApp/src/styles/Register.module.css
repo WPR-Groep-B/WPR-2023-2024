@@ -190,8 +190,6 @@ input[type='date']:hover {
   flex: 1;
 }
 
-/* styles.module.css or YourStylesheet.css */
-
 .hidden {
   display: none;
 }

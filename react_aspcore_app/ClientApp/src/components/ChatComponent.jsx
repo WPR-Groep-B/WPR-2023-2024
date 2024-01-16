@@ -1,9 +1,8 @@
-﻿import { Form, Button, } from "react-bootstrap";
-import { useState } from "react";
+﻿import { useState } from "react";
 
 
 
-function Chat({ joinRoom }) {
+function PreChat({ joinRoom }) {
 
     const [UserName, setUserName] = useState();
     const [Room, setRoom] = useState();
@@ -26,4 +25,4 @@ function Chat({ joinRoom }) {
         </div>
     );
 }
-export default Chat;
+export default PreChat;

@@ -1,6 +1,7 @@
 ﻿import { useState } from "react";
 
-
+// dit zou eigenlijk moeten worden geregeld door code die bvb bij een onderzoek staat die bij ieder onderzoek een chat genereerd en de gebruiker automatisch in de chat zet
+// maar voor nu is dit een tijdelijke oplossing
 
 function PreChat({ joinRoom }) {
 

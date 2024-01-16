@@ -20,7 +20,7 @@ function Login() {
             alert("Vul alle velden in!" + email + wachtwoord);
         }
       
-        axios.post('/api/user/login', {
+        axios.post('https://localhost:7251/api/user/login', {
             email: email,
             wachtwoord: wachtwoord
         }).then((response) => {

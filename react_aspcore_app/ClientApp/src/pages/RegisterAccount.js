@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Register.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function RegisterAccount() {
   const navigate = useNavigate();
@@ -8,9 +8,17 @@ function RegisterAccount() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const location = useLocation();
+  const isFromRegisterInfo = location.state && location.state.from === '/register-info';
+
   useEffect(() => {
     document.title = "Register - Stichting Accessibility";
-  } );
+
+    // If not coming from RegisterInfo, redirect to RegisterInfo
+    if (!isFromRegisterInfo) {
+      navigate('/register-info');
+    }
+  }, [navigate, isFromRegisterInfo]);
 
   const goToHome = () => {
     navigate('/');

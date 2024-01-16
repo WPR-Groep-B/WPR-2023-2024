@@ -4,7 +4,7 @@
     /* Main text color */
     font-family: Arial, sans-serif;
     /* You can choose the font that matches your design */
-    
+
 }
 
 .homeContainer h1 {
@@ -46,7 +46,6 @@
 
 }
 
-
 .heroSection {
     position: relative;
     width: 100%;
@@ -76,19 +75,7 @@
     overflow: auto;
 }
 
-.onderrzoekContainer {
-    background-color: #FFF;
-    /* Background color for the 'Onderzoek' section */
-    padding: 1em;
-    /* Padding inside the 'Onderzoek' sections */
-    margin-bottom: 1em;
-    /* Space between 'Onderzoek' sections */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Adds subtle shadow for depth */
-    width: 256px;
-}
-
- .homeContainer h2 a {
+.homeContainer h2 a {
     all: unset;
     text-decoration: none;
     color: white;
@@ -96,7 +83,7 @@
     /* Indicates the text is clickable */
 }
 
- .homeContainer h2 :hover {
+.homeContainer h2 :hover {
     text-decoration: underline !important;
     color: white;
     cursor: pointer;
@@ -111,4 +98,83 @@
     /* Indicates the text is clickable trough tabbing navigation */
 }
 
-/* More specific styles for the 'Onderzoek' sections can be added here, such as title styles, etc. */
+.container {
+    display: flex;
+    flex-direction: column;
+    /* Set to row if you want horizontal centering */
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 15px;
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    background-color: #111e55;
+    color: white;
+    padding: 16px;
+    cursor: pointer;
+    width: 40%;
+    margin: auto;
+    font-weight: 600;
+    font-size: large;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #16297e;
+    transform: scale(1.01);
+    text-decoration: underline;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    background-color: #26ecb7;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.button:hover::after {
+    opacity: 0;
+}
+
+.contforond {
+    display: flex;
+    flex-direction: column;
+    /* Set to row if you want horizontal centering */
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 15px;
+}
+
+.onderzoeken {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.onderrzoekContainer {
+    background-color: #FFF;
+    padding: 1em;
+    margin-bottom: 25px;
+    margin-right: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 260px;
+    word-wrap: break-word;
+    align-self: flex-start;
+}
+
+.onderrzoekContainer:last-child {
+    margin-right: 0;
+}

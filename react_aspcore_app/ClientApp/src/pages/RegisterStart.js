@@ -2,72 +2,76 @@ import React, { useState, useEffect } from 'react';
 import styles from '../styles/Register.module.css';
 
 function RegisterName() {
-    useEffect(() => {
-        document.title = "Register - Stichting Accessibility";
-      }, []);
-    const [naam, setNaam] = useState('');
-    const [anaam, setAnaam] = useState('');
+  useEffect(() => {
+    document.title = "Register - Stichting Accessibility";
+  }, []);
 
-    const handleNaamChange = (e) => {
-        setNaam(e.target.value);
-    };
+  const navigate = useNavigate();
+  const [naam, setNaam] = useState('');
+  const [anaam, setAnaam] = useState('');
 
-    const handleAnaamChange = (e) => {
-        setAnaam(e.target.value);
-    };
+  const handleNaamChange = (e) => {
+    setNaam(e.target.value);
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleAnaamChange = (e) => {
+    setAnaam(e.target.value);
+  };
 
-        if (naam.trim() !== '' && anaam.trim() !== '') {
-            window.location.href = "/register-info"
-        } else {
-            console.error("Please fill in all required fields");
-        }
-    }; 
-    
-    return (
-        <div className={styles.body}>
-            <div className={styles.container}>
-                <h1>Stichting Accessibility</h1>
-                <p>Gelieve hier uw Voor- en Achternaam op te geven</p>
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-                <hr></hr>
-            <form className={styles.form} onSubmit={handleSubmit}>
+    if (naam.trim() !== '' && anaam.trim() !== '') {
+      // Use Link to navigate to RegisterInfo and pass state
+      navigate('/register-info', { state: { from: '/register-start' } });
+    } else {
+      console.error("Please fill in both required fields");
+    }
+  };
 
-            <div>
-                <label htmlFor="firstName">Voornaam:</label>
-                <input 
-                    type="text" 
-                    id="firstName" 
-                    name="firstName" 
-                    placeholder="Voornaam" 
-                    required
-                    value={naam}
-                    onChange={handleNaamChange}
-                    />
-            </div>
-            
-            <div>
-                <label htmlFor="lastName">Achternaam:</label>
-                <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    placeholder="Achternaam" 
-                    required
-                    value={anaam}
-                    onChange={handleAnaamChange}
-                    />
-            </div>
+  return (
+    <div className={styles.body}>
+      <div className={styles.container}>
+        <h1>Registratie</h1>
+        <p>Gelieve hier uw Voor- en Achternaam op te geven</p>
 
-            <hr></hr>
-            
-            <button className={styles.registerbtn} type="submit">Volgende</button>
-            </form>
-            </div>
-        </div>
-    );
+        <hr></hr>
+        <form className={styles.form} onSubmit={handleSubmit}>
+
+          <div>
+            <label htmlFor="firstName">Voornaam:</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="Voornaam"
+              required
+              value={naam}
+              onChange={handleNaamChange}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="lastName">Achternaam:</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Achternaam"
+              required
+              value={anaam}
+              onChange={handleAnaamChange}
+            />
+          </div>
+
+          <hr></hr>
+
+          {/* Use Link component to navigate to RegisterInfo */}
+          <button className={styles.registerbtn} type="submit">Volgende</button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default RegisterName;

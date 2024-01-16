@@ -3,11 +3,12 @@ import Home from "../pages/Home"
 import Contact from "../pages/Contact"
 import Privacy from "../pages/Privacy"
 import Login from "../pages/Login"
-import Register from "../pages/Register"
-import RegisterName from "../pages/RegistrationErv/RegisterName"
-import RegisterInfo from "../pages/RegistrationErv/RegisterInfo"
-import RegisterAccount from "../pages/RegistrationErv/RegisterAccount"
+// import RegisterStart from "../pages/RegisterStart"
+// import RegisterInfo from "../pages/RegisterInfo"
+// import RegisterAccount from "../pages/RegisterAccount"
 import AboutUs from "../pages/AboutUs"
+// import OnderzoekAanmaken from "../pages/OnderzoekAanmaken"
+// import Account from "../pages/Account"
 
 function Pages() {
     return (
@@ -16,11 +17,12 @@ function Pages() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="registerStart" element={<RegisterName />} />
-        <Route path="registerInfo" element={<RegisterInfo />} />
-        <Route path="registerAccount" element={<RegisterAccount />} />
-        <Route path="/aboutus" element={<AboutUs />} />
+{/*        <Route path="/register-start" element={<RegisterStart />} />
+        <Route path="/register-info" element={<RegisterInfo />} />
+        <Route path="/register-account" element={<RegisterAccount />} /> */}
+        <Route path="/about-us" element={<AboutUs />} />
+{/*        <Route path="/onderzoek-aanmaken" element={<OnderzoekAanmaken />} />
+        <Route path="/mijn-account" element={<Account />} /> */}
         </Routes>
   );
 }

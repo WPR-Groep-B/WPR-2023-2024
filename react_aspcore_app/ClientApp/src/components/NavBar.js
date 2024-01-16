@@ -30,7 +30,10 @@ function NavBar() {
         </li>
         <li>
           <NavLink to="/privacy">Privacy</NavLink>
-        </li>
+              </li>
+              <li>
+                  <NavLink to="/Chatpage">Chat</NavLink>
+              </li>
         <li>
           <a href="/">
             <img src={search} alt="Search" className={styles.search} />

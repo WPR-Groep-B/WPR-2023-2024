@@ -1,7 +1,11 @@
 ﻿import Chat from "../components/ChatComponent";
 import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import { useState } from "react";
 
 function ChatPage() {
+
+    const [connection, setConnection] = useState();
+    const [messages, setMessages] = useState([]);
 
     const joinRoom = async (UserName, Room) => {
         try {
@@ -11,11 +15,13 @@ function ChatPage() {
                 .build();
 
             connection.on("ReceiveMessage", (user, message) => {
-                console.log(user, message);
+                setMessages(messages => [...messages, { user, message }]);
+                console.log(messages);
             })
 
             await connection.start();
             await connection.invoke("joinroom", { UserName: UserName, Room: Room });
+            setConnection(connection);
         }
         catch (error) {
             console.log(error);

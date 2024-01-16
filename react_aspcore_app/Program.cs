@@ -23,8 +23,9 @@ builder.Services.AddCors(options =>
         options.AddPolicy("AllowAllOrigins",
             builder =>
             {
-                builder.AllowAnyOrigin()
+                builder.WithOrigins("https://localhost:44436")
                        .AllowAnyMethod()
+                        .AllowCredentials()
                        .AllowAnyHeader();
             });
     });
@@ -69,11 +70,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseCors("AllowAllOrigins"); // Use the CORS policy
+
 app.UseRouting();
 
 app.MapHub<ChatHub>("/ChatHub"); // Map SignalR hub
 
-app.UseCors("AllowAllOrigins"); // Use the CORS policy
 
 
 app.UseAuthentication();

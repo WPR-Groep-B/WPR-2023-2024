@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Register.module.css';
-import { useNavigate } from 'react-router-dom';
 
 function RegisterName() {
     useEffect(() => {
         document.title = "Register - Stichting Accessibility";
       }, []);
-    const navigate = useNavigate();
     const [naam, setNaam] = useState('');
     const [anaam, setAnaam] = useState('');
 
@@ -22,15 +20,11 @@ function RegisterName() {
         e.preventDefault();
 
         if (naam.trim() !== '' && anaam.trim() !== '') {
-            goToRegisterInfo();
+            window.location.href = "/register-info"
         } else {
             console.error("Please fill in all required fields");
         }
-    };
-  
-    const goToRegisterInfo = () => {
-      navigate('/register-info');
-    };  
+    }; 
     
     return (
         <div className={styles.body}>

@@ -8,6 +8,7 @@ function Contact() {
   useEffect(() => {
     document.title = "Contact - Stichting Accessibility"
   }, [])
+
     return (
         <html lang='nl'>
         <div className={styles.justifiedText}>

@@ -1,45 +1,64 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/Register.module.css';
 import { useNavigate } from 'react-router-dom';
 
 function RegisterAccount() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-    const goToRegisterInfo = () => {
-        navigate('/registerInfo');
-    };
-    useEffect(() => {
-        document.title = "Register - Stichting Accessibility"
-    }, []);
-    
-    return (
-        <div className={styles.body}>
-            <div className={styles.container}>
-                <h1>Stichting Accessibility</h1>
-                <p>Gelieve hier uw e-mailadres op te geven en wachtwoord aan te maken</p>
+  useEffect(() => {
+    document.title = "Register - Stichting Accessibility";
+  } );
 
-            <form className={styles.form}>
+  const goToHome = () => {
+    navigate('/');
+  };
 
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email"  placeholder="text@email.com" required />
-            </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-            <div>
-                <label htmlFor="password">Wachtwoord:</label>
-                <input type="password" id="password" name="password" minlength="12" placeholder="bv: wachtwoord123" required />
-            </div>
+    if (email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+      alert("Vul alle velden in a.u.b.");
+    } else if (password !== confirmPassword) {
+      alert("Wachtwoorden komen niet overeen");
+    } else {
+      alert("Account succesvol aangemaakt!");
+      goToHome();
+    }
+  };
 
-            <div>
-                <label htmlFor="confirmPassword">Bevestig Wachtwoord:</label>                    
-                <input type="password" id="confirmPassword" name="confirmPassword" minlength="12" placeholder="Herhaal Wachtwoord" required />
-            </div>
+  return (
+    <div className={styles.body}>
+      <div className={styles.container}>
+        <h1>Stichting Accessibility</h1>
+        <p>Gelieve hier uw e-mailadres op te geven en wachtwoord aan te maken</p>
+        <hr></hr>
 
-            <button className={styles.registerbtn} type="submit" onClick={() => goToRegisterInfo()}>Bevestig</button>
-            </form>
-            </div>
-        </div>
-    );
+        <form className={styles.form} onSubmit={handleSubmit}>
+
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="text@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+
+          <div>
+            <label htmlFor="password">Wachtwoord:</label>
+            <input type="password" id="password" name="password" minLength="12" placeholder="bv: wachtwoord123" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          </div>
+
+          <div>
+            <label htmlFor="confirmPassword">Bevestig Wachtwoord:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" minLength="12" placeholder="Herhaal Wachtwoord" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+          </div>
+
+          <hr></hr>
+          <button className={styles.registerbtn} type="button" onClick={handleSubmit}>Bevestig</button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default RegisterAccount;

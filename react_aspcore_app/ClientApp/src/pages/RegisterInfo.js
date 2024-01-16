@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Register.module.css';
-import { Navlink } from 'react-router-dom'
+// import { Navlink } from 'react-router-dom'
 
 function RegisterInfo() {
     useEffect(() => {

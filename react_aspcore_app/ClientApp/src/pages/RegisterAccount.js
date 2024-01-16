@@ -7,8 +7,6 @@ function RegisterAccount() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [showErrorMessage, setShowErrorMessage] = useState(true);
 
   const location = useLocation();
   const isFromRegisterInfo = location.state && location.state.from === '/register-info';
@@ -30,20 +28,13 @@ function RegisterAccount() {
     e.preventDefault();
 
     if (email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
-      setErrorMessage("Vul alle velden in a.u.b.");
-      setShowErrorMessage(true);
+      alert("Vul alle velden in a.u.b.");
     } else if (password !== confirmPassword) {
-      setErrorMessage("Wachtwoorden komen niet overeen");
-      setShowErrorMessage(true);
+      alert("Wachtwoorden komen niet overeen");
     } else {
-      setErrorMessage("");
-      setShowErrorMessage(false);
+      alert("Account succesvol aangemaakt!");
       goToHome();
     }
-  };
-
-  const handleCloseErrorMessage = () => {
-    setShowErrorMessage(false);
   };
 
   return (
@@ -59,15 +50,6 @@ function RegisterAccount() {
             <label htmlFor="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="text@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
           </div>
-
-          {showErrorMessage && errorMessage && (
-            <div className={styles.error}>
-              <span>{errorMessage}</span><br></br>
-              <button className={styles.errorclose} onClick={handleCloseErrorMessage}>
-                Sluit bericht
-              </button>
-            </div>
-          )}
 
           <div>
             <label htmlFor="password">Wachtwoord:</label>

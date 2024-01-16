@@ -1,7 +1,7 @@
 import styles from '../styles/Login.module.css';
 import GoogleLoginComponent from '../components/googleLogin';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -11,11 +11,16 @@ function Login() {
         window.location.href = "/";
     };
 
+    useEffect(() => {
+        document.title ="Login - Stichting Accessibility"
+    }, []);
+
     function HandleLogin() {
         if (email === "" || wachtwoord === "") {
             alert("Vul alle velden in!" + email + wachtwoord);
         }
-        axios.post('api/user/login', {
+      
+        axios.post('/api/user/login', {
             email: email,
             wachtwoord: wachtwoord
         }).then((response) => {

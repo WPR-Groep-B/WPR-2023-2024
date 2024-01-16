@@ -3,8 +3,8 @@ import styles from '../styles/Register.module.css';
 
 function RegisterInfo() {
     useEffect(() => {
-        document.title = "Stichting Accessibility - Register";
-    }, []);
+        document.title = "Register - Stichting Accessibility";
+      }, []);
     const [selectedOption, setSelectedOption] = useState('');
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');

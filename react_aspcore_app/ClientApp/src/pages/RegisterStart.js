@@ -3,7 +3,7 @@ import styles from '../styles/Register.module.css';
 
 function RegisterName() {
     useEffect(() => {
-        document.title = "Stichting Accessibility - Register";
+        document.title = "Register - Stichting Accessibility";
       }, []);
     const [naam, setNaam] = useState('');
     const [anaam, setAnaam] = useState('');

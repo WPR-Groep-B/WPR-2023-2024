@@ -5,16 +5,28 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Google.Apis.Auth;
+using Microsoft.AspNetCore.Identity;
 
 public class LoginModel
 {
     public required string Email { get; set; }
-    public string wachtwoord { get; set; }
+    public required string Wachtwoord { get; set; }
 }
 
+public class RegisterModel
+{
+    public required string Email { get; set; }
+    public required string Wachtwoord { get; set; }
+    public required string Voornaam { get; set; }
+    public required string Achternaam { get; set; }
+
+    public string? BedrijfsNaam { get; set; }
+    public string? Beperking { get; set; }
+    public string? Functie { get; set; }
+}
 public class GoogleLoginModel
 {
-    public string GoogleToken { get; set; }
+    public required string GoogleToken { get; set; }
 }
 
 // Path: react_aspcore_app/Controllers/UserController.cs
@@ -67,11 +79,21 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public ActionResult<gebruiker> Login([FromBody] LoginModel login)
     {
-        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == login.Email && g.wachtwoord == login.wachtwoord);
+        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == login.Email);
 
-        if (gebruiker == null)
+        if (gebruiker == null) return NotFound();
+        if (gebruiker.wachtwoord == null) return Unauthorized();
+
+        // Create a PasswordHasher
+        var passwordHasher = new PasswordHasher<gebruiker>();
+
+        // Verify the hashed password
+        var result = passwordHasher.VerifyHashedPassword(gebruiker, gebruiker.wachtwoord, login.Wachtwoord);
+
+        if (result == PasswordVerificationResult.Failed)
         {
-            return NotFound();
+            // Password verification failed
+            return Unauthorized();
         }
 
         var token = GenerateJwtToken(gebruiker);
@@ -125,63 +147,54 @@ public class UserController : ControllerBase
         return Ok(new { user = gebruiker, token = token });
     }
 
-
-    // POST: api/user/deskundige
-    [HttpPost("deskundige")]
-    public IActionResult Post([FromBody] gebruikerDeskundige nieuwGebruiker)
+    // POST: api/user/
+    [HttpPost]
+    public IActionResult Post([FromBody] RegisterModel nieuwGebruiker)
     {
-        if (nieuwGebruiker == null)
+        if (nieuwGebruiker == null || nieuwGebruiker.Wachtwoord == null)
         {
             return BadRequest();
         }
 
-        if (nieuwGebruiker.wachtwoord == null || nieuwGebruiker.googleId == null)
+        gebruiker gebruiker;
+
+        if (nieuwGebruiker.BedrijfsNaam != null)
         {
-            return BadRequest();
+            gebruiker = new gebruikerBedrijf
+            {
+                bedrijfsnaam = nieuwGebruiker.BedrijfsNaam
+            };
+        }
+        else if (nieuwGebruiker.Beperking != null)
+        {
+            gebruiker = new gebruikerDeskundige
+            {
+                beperking = nieuwGebruiker.Beperking
+            };
+        }
+        else if (nieuwGebruiker.Functie != null)
+        {
+            gebruiker = new gebruikerBeheerder
+            {
+                functie = nieuwGebruiker.Functie
+            };
+        }
+        else
+        {
+            gebruiker = new gebruiker();
         }
 
-        _context.gebruikers.Add(nieuwGebruiker);
+        gebruiker.Voornaam = nieuwGebruiker.Voornaam;
+        gebruiker.Achternaam = nieuwGebruiker.Achternaam;
+        gebruiker.email = nieuwGebruiker.Email;
+        var passwordHasher = new PasswordHasher<gebruiker>();
+        // Hash the password
+        gebruiker.wachtwoord = passwordHasher.HashPassword(gebruiker, nieuwGebruiker.Wachtwoord);
+
+        _context.gebruikers.Add(gebruiker);
         _context.SaveChanges();
-
-        return CreatedAtAction(nameof(Get), new { id = nieuwGebruiker.GebruikerId }, nieuwGebruiker);
-    }
-    // POST: api/user/bedrijf
-    [HttpPost("bedrijf")]
-    public IActionResult Post([FromBody] gebruikerBedrijf nieuwGebruiker)
-    {
-        if (nieuwGebruiker == null)
-        {
-            return BadRequest();
-        }
-
-        if (nieuwGebruiker.wachtwoord == null || nieuwGebruiker.googleId == null)
-        {
-            return BadRequest();
-        }
-
-        _context.gebruikers.Add(nieuwGebruiker);
-        _context.SaveChanges();
-
-        return CreatedAtAction(nameof(Get), new { id = nieuwGebruiker.GebruikerId }, nieuwGebruiker);
-    }
-    // POST: api/user/beheerder
-    [HttpPost("beheerder")]
-    public IActionResult Post([FromBody] gebruikerBeheerder nieuwGebruiker)
-    {
-        if (nieuwGebruiker == null)
-        {
-            return BadRequest();
-        }
-
-        if (nieuwGebruiker.wachtwoord == null && nieuwGebruiker.googleId == null)
-        {
-            return BadRequest();
-        }
-
-        _context.gebruikers.Add(nieuwGebruiker);
-        _context.SaveChanges();
-
-        return CreatedAtAction(nameof(Get), new { id = nieuwGebruiker.GebruikerId }, nieuwGebruiker);
+        var token = GenerateJwtToken(gebruiker);
+        return CreatedAtAction(nameof(Get), new { id = gebruiker.GebruikerId }, new { user = gebruiker, token = token });
     }
 
 

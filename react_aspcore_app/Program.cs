@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using react_aspcore_app.Hubs;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -70,7 +71,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.MapHub<ChatHub>("/chat");
+app.MapHub<ChatHub>("/ChatHub"); // Map SignalR hub
 
 app.UseCors("AllowAllOrigins"); // Use the CORS policy
 

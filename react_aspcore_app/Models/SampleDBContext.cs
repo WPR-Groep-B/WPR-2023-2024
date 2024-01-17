@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
         public DbSet<gebruikerDeskundige> gebruikerDeskundigen { get; set; }
         public DbSet<gebruikerBeheerder> gebruikerBeheerders { get; set; }
         public DbSet<onderzoek> onderzoeken { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +37,12 @@ using Microsoft.EntityFrameworkCore;
                 .WithMany()
                 .HasForeignKey(o => o.GoedgekeurdDoorId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.gebruiker)
+                .WithMany()
+                .HasForeignKey(m => m.GebruikerId)
+                .OnDelete(DeleteBehavior.Cascade);
 
                 modelBuilder.Entity<gebruiker>()
         .ToTable("gebruikers");

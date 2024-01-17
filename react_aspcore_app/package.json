@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "@microsoft/signalr": "^8.0.0",
     "@react-oauth/google": "^0.12.1",
     "axios": "^1.6.5",
+    "jwt-decode": "^4.0.0",
     "react": "^17.0.2",
+    "react-bootstrap": "^2.9.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.11.0"

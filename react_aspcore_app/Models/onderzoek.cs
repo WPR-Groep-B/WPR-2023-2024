@@ -4,6 +4,8 @@ public class onderzoek {
     [Key]
     public int onderzoekId { get; set;}
 
+    public int GebruikerBedrijfId { get; set; }
+
     public string onderzoekNaam { get; set;}
 
     public string onderzoekBeschrijving { get; set;}
@@ -14,9 +16,13 @@ public class onderzoek {
 
     public string onderzoekStatus { get; set;}
 
+    public string onderzoekSoort { get; set;}
+
     public int GoedgekeurdDoorId { get; set; }
 
-    public int GebruikerBedrijfId { get; set; }
+     public string onderzoekLink { get; set;}
+
+      public string onderzoekForm { get; set;}
 
     // public int GebruikerDeskundigeId { get; set; }
     // public gebruikerDeskundige gebruikerDeskundige { get; set;}

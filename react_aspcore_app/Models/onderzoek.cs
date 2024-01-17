@@ -5,6 +5,7 @@ public class onderzoek {
     public int onderzoekId { get; set;}
 
     public int GebruikerBedrijfId { get; set; }
+    public gebruikerBedrijf gebruikerBedrijf { get; set; }
 
     public string onderzoekNaam { get; set;}
 
@@ -19,6 +20,7 @@ public class onderzoek {
     public string onderzoekSoort { get; set;}
 
     public int GoedgekeurdDoorId { get; set; }
+    public gebruikerBeheerder goedgekeurdDoor { get; set; }
 
      public string onderzoekLink { get; set;}
 

@@ -26,12 +26,6 @@ using Microsoft.EntityFrameworkCore;
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<onderzoek>()
-                .HasOne(o => o.gebruikerDeskundige)
-                .WithMany()
-                .HasForeignKey(o => o.GebruikerDeskundigeId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<onderzoek>()
                 .HasOne(o => o.goedgekeurdDoor)
                 .WithMany()
                 .HasForeignKey(o => o.GoedgekeurdDoorId)

@@ -3,11 +3,15 @@ function messageContainer({ messages }) {
     <div className="Message-container">
       {messages.map((message, index) => (
         <div key={index} className={`UserMessage }`}>
-          <div className="Message-content">{message.message}</div>
-          <div className="Message-user">{message.user}</div>
+          <div className="Message-content">
+            <div className="Message-user">
+              {message.user}:
+            </div>
+            {message.message}
+          </div>
         </div>
-      ))    
-    }
+      ))
+      }
     </div>
   );
 }

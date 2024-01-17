@@ -67,7 +67,7 @@
     position: absolute;
     bottom: -2px; /* Adjust this value to center the underline */
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.3s ease;
 }
 
 .navbar ul li a:hover::after {
@@ -77,6 +77,7 @@
 
 .accounticon {
     height: 24px;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .dropdown {
@@ -85,6 +86,7 @@
 
 .search {
     height: 24px;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .button {

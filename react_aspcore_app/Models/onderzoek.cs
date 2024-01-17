@@ -12,13 +12,13 @@ public class onderzoek {
 
     public DateTime onderzoekEindDatum { get; set;}
 
+    public string onderzoekStatus { get; set;}
+
     public int GoedgekeurdDoorId { get; set; }
-    public gebruikerBeheerder? goedgekeurdDoor{ get; set;}
 
     public int GebruikerBedrijfId { get; set; }
-    public gebruikerBedrijf gebruikerBedrijf { get; set;}
 
-    public int GebruikerDeskundigeId { get; set; }
-    public gebruikerDeskundige gebruikerDeskundige { get; set;}
+    // public int GebruikerDeskundigeId { get; set; }
+    // public gebruikerDeskundige gebruikerDeskundige { get; set;}
 
 }

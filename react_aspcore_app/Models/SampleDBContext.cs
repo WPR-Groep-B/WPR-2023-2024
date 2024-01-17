@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
         public DbSet<gebruikerBeheerder> gebruikerBeheerders { get; set; }
         public DbSet<onderzoek> onderzoeken { get; set; }
         public DbSet<deelname> deelnames { get; set; }
+        public DbSet<rol> rollen { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -48,6 +49,12 @@ using Microsoft.EntityFrameworkCore;
                 .HasOne(o => o.beperking)
                 .WithMany()
                 .HasForeignKey(o => o.beperkingId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<gebruiker>()
+                .HasOne(o => o.Rol)
+                .WithMany()
+                .HasForeignKey(o => o.rolId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // Do the same for other relationships that could cause multiple cascade paths

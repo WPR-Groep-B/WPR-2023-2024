@@ -36,7 +36,7 @@ public class UserController : ControllerBase
 {
 
 
-    private string GenerateJwtToken(gebruiker user)
+    public string GenerateJwtToken(gebruiker user)
     {
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("VGhpc0lzQVNlY3JldEtleVRoYXRJc0F0TGVhc3RTaXh0ZWVuQnl0ZXNMb25n")); // Replace "Your_Secret_Key" with your actual secret key
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);

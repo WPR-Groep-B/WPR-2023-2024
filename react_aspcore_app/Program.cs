@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
         options.AddPolicy("AllowAllOrigins",
             builder =>
             {
-                builder.WithOrigins("https://localhost:44436")
+                builder.WithOrigins("https://localhost:44436", "https://appservicewprgroepb.azurewebsites.net")
                        .AllowAnyMethod()
                         .AllowCredentials()
                        .AllowAnyHeader();

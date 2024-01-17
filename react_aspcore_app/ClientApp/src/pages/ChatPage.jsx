@@ -1,4 +1,4 @@
-﻿import Chat from "../components/Chat/ChatComponent";
+import Chat from "../components/Chat/ChatComponent";
 import Message from "../components/Chat/Messager";
 import { HubConnectionBuilder, LogLevel , HttpTransportType} from "@microsoft/signalr";
 import { useState } from "react";

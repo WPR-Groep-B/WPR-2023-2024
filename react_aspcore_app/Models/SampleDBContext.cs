@@ -20,7 +20,7 @@ using Microsoft.EntityFrameworkCore;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+ 
             modelBuilder.Entity<rol>()
                 .ToTable("rollen");
 

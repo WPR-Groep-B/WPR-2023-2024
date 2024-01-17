@@ -22,12 +22,29 @@ public class gebruikerBedrijf : gebruiker
 
     public string bedrijfsnaam { get; set; }
 
+    public string locatie { get; set; }
+
+    public string contactInformatie { get; set; }
+
 }
 
 public class gebruikerDeskundige : gebruiker
 {
 
-    public string beperking { get; set; }
+    public string postcode { get; set; }
+
+    public string telefoonnummer { get; set; }
+
+    public int beperkingId { get; set; }
+    public beperking beperking { get; set; }
+
+    public string aandoening { get; set; }
+
+    public string beschikbaarheid { get; set; }
+
+    public string voorkeur { get; set; }
+
+    public string hulpmiddelen { get; set; }
 
 }
 

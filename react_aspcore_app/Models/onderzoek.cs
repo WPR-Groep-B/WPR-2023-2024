@@ -25,8 +25,4 @@ public class onderzoek {
      public string onderzoekLink { get; set;}
 
       public string onderzoekForm { get; set;}
-
-    // public int GebruikerDeskundigeId { get; set; }
-    // public gebruikerDeskundige gebruikerDeskundige { get; set;}
-
 }

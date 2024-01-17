@@ -9,34 +9,48 @@ function ChatPage() {
 
     const [connection, setConnection] = useState();
     const [messages, setMessages] = useState([]);
-    const [user, setUser] = useState();
 
     const jwt = localStorage.getItem('jwt');
 
-    const joinRoom = async (UserName, Room) => {
+    const joinRoom = async (Room) => {
         if (jwt === null) { return; }
 
         const user = jwtDecode(jwt);
 
+
+        const UserId = user.id;
+        const UserName = user.voornaam + " " + user.achternaam;
+
         try {
             const connection = new HubConnectionBuilder()
-                .withUrl("https://localhost:7251/ChatHub")
+                .withUrl(`https://localhost:7251/ChatHub?access_token=${jwt}`, {
+                    skipNegotiation: true,
+                    transport: signalR.HttpTransportType.WebSockets
+                })
                 .configureLogging(LogLevel.Information)
                 .build();
 
-            connection.on("ReceiveMessage", (user, message) => {
-                setMessages(messages => [...messages, { user, message }]);
+            connection.on("ReceiveMessage", (userName, message) => {
+                setMessages(messages => [...messages, { user: userName, message }]);
+            });
+
+            connection.on("getHistory", (history) => {
+                setMessages(messages => [...history.map(item => ({ user: item.userName, message: item.text }))]);
                 console.log(messages);
-            })
+            });
 
             connection.onclose(e => {
                 setConnection(null);
                 setMessages([]);
             })
 
+
             await connection.start();
-            await connection.invoke("joinroom", {UserName, Room });
+            await connection.invoke("getHistory", Room);
+            await connection.invoke("joinroom", { UserId, UserName, Room });
             setConnection(connection);
+
+
         }
         catch (error) {
             console.log(error);

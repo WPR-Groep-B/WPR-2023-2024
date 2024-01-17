@@ -30,7 +30,7 @@ builder.Services.AddCors(options =>
             });
     });
 
- builder.Services.AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string , UserConnection>());
+builder.Services.AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>());
 
 
 builder.Services.AddAuthentication(options =>
@@ -50,6 +50,19 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = false,
         ValidateIssuerSigningKey = true
+    };
+    o.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var accessToken = context.Request.Query["access_token"];
+            var path = context.HttpContext.Request.Path;
+            if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/ChatHub"))
+            {
+                context.Token = accessToken;
+            }
+            return Task.CompletedTask;
+        }
     };
 });
 

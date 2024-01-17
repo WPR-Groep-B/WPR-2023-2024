@@ -49,13 +49,13 @@ using Microsoft.EntityFrameworkCore;
                 .HasOne(o => o.beperking)
                 .WithMany()
                 .HasForeignKey(o => o.beperkingId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<gebruiker>()
                 .HasOne(o => o.Rol)
                 .WithMany()
                 .HasForeignKey(o => o.rolId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<onderzoek>()
                 .HasOne(o => o.gebruikerBedrijf)

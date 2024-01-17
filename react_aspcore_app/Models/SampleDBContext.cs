@@ -15,14 +15,9 @@ using Microsoft.EntityFrameworkCore;
         public DbSet<gebruikerBeheerder> gebruikerBeheerders { get; set; }
         public DbSet<onderzoek> onderzoeken { get; set; }
         public DbSet<deelname> deelnames { get; set; }
-        public DbSet<rol> rollen { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
- 
-            modelBuilder.Entity<rol>()
-                .ToTable("rollen");
 
             modelBuilder.Entity<beperking>()
                 .ToTable("beperkingen");
@@ -49,37 +44,31 @@ using Microsoft.EntityFrameworkCore;
                 .HasOne(o => o.beperking)
                 .WithMany()
                 .HasForeignKey(o => o.beperkingId)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            modelBuilder.Entity<gebruiker>()
-                .HasOne(o => o.Rol)
-                .WithMany()
-                .HasForeignKey(o => o.rolId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<onderzoek>()
                 .HasOne(o => o.gebruikerBedrijf)
                 .WithMany()
                 .HasForeignKey(o => o.GebruikerBedrijfId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<onderzoek>()
                 .HasOne(o => o.goedgekeurdDoor)
                 .WithMany()
                 .HasForeignKey(o => o.GoedgekeurdDoorId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<deelname>()
                 .HasOne(o => o.gebruikerDeskundige)
                 .WithMany()
                 .HasForeignKey(o => o.GebruikerDeskundigeId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<deelname>()
                 .HasOne(o => o.onderzoek)
                 .WithMany()
                 .HasForeignKey(o => o.OnderzoekId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             // Do the same for other relationships that could cause multiple cascade paths
         }

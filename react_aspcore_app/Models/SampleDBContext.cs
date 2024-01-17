@@ -44,6 +44,12 @@ using Microsoft.EntityFrameworkCore;
                 .HasForeignKey(o => o.OnderzoekId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<gebruikerDeskundige>()
+                .HasOne(o => o.beperking)
+                .WithMany()
+                .HasForeignKey(o => o.beperkingId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             // Do the same for other relationships that could cause multiple cascade paths
 
             modelBuilder.Entity<gebruiker>()

@@ -200,5 +200,9 @@
     .heroText h2 {
         font-size: 1em;
         /* Reduce the font size on small screens */
-    }   
+    }
+    
+    .onderzoeken {
+        width: 100%;
+    }
 }

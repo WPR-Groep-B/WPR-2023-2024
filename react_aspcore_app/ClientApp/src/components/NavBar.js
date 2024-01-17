@@ -32,7 +32,10 @@ function NavBar() {
         </li>
         <li>
           <NavLink to="/privacy">Privacy</NavLink>
-        </li>
+              </li>
+              <li>
+                  <NavLink to="/Chatpage">Chat</NavLink>
+              </li>
         <li>
           <NavLink
             to="/login"

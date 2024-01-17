@@ -2,7 +2,9 @@ import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import logo from '../images/Accessibility-logo-RGB-1024x245.png';
 import accounticon from '../images/Account_Icon.png';
+import accounticonHover from '../images/Account_Icon_Hover.png';
 import search from '../images/Search.png'
+import searchHover from '../images/Search_Hover.png'
 
 function NavBar() {
 
@@ -32,26 +34,86 @@ function NavBar() {
           <NavLink to="/privacy">Privacy</NavLink>
         </li>
         <li>
-          <a href="/">
+          <NavLink
+            to="/login"
+            onMouseEnter={e => {
+              const img = e.currentTarget.children[0];
+              img.src = searchHover;
+              img.style.opacity = 0;
+              setTimeout(() => img.style.opacity = 1, 0);
+            }}
+            onMouseLeave={e => {
+              const img = e.currentTarget.children[0];
+              img.src = search;
+              img.style.opacity = 0;
+              setTimeout(() => img.style.opacity = 1, 0);
+            }}
+          >
             <img src={search} alt="Search" className={styles.search} />
-          </a>
+          </NavLink>
         </li>
         {
           localStorage.getItem("jwt") == null ? (
             <li>
-              <NavLink to="/login">
-                <img src={accounticon} alt="Accounticon" className={styles.accounticon} /> Inloggen</NavLink>
+              <NavLink
+                to="/login"
+                onMouseEnter={e => {
+                  const img = e.currentTarget.children[0];
+                  img.src = accounticonHover;
+                  img.style.opacity = 0;
+                  setTimeout(() => img.style.opacity = 1, 0);
+                }}
+                onMouseLeave={e => {
+                  const img = e.currentTarget.children[0];
+                  img.src = accounticon;
+                  img.style.opacity = 0;
+                  setTimeout(() => img.style.opacity = 1, 0);
+                }}
+              >
+                <img src={accounticon} alt="Accounticon" className={styles.accounticon} /> Inloggen
+              </NavLink>
             </li>
           ) : (
             <>
               <li>
-                <NavLink to="/account">
-                  <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />Account
+                <NavLink
+                  to="/account"
+                  onMouseEnter={e => {
+                    const img = e.currentTarget.children[0];
+                    img.src = accounticonHover;
+                    img.style.opacity = 0;
+                    setTimeout(() => img.style.opacity = 1, 0);
+                  }}
+                  onMouseLeave={e => {
+                    const img = e.currentTarget.children[0];
+                    img.src = accounticon;
+                    img.style.opacity = 0;
+                    setTimeout(() => img.style.opacity = 1, 0);
+                  }}
+                >
+                  <img src={accounticon} alt="Accounticon" className={styles.accounticon} /> Account
                 </NavLink>
               </li>
               <li>
-                <button aria-label="Uitloggen met account icon" className={styles.button} onClick={handleLogout}>
-                  <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />Uitloggen</button>
+                <button
+                  aria-label="Uitloggen met account icon"
+                  className={styles.button}
+                  onClick={handleLogout}
+                  onMouseEnter={e => {
+                    const img = e.currentTarget.children[0];
+                    img.src = accounticonHover;
+                    img.style.opacity = 0;
+                    setTimeout(() => img.style.opacity = 1, 0);
+                  }}
+                  onMouseLeave={e => {
+                    const img = e.currentTarget.children[0];
+                    img.src = accounticon;
+                    img.style.opacity = 0;
+                    setTimeout(() => img.style.opacity = 1, 0);
+                  }}
+                >
+                  <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />Uitloggen
+                </button>
               </li>
             </>
           )}

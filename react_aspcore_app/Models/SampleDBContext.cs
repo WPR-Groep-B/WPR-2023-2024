@@ -25,37 +25,37 @@ using Microsoft.EntityFrameworkCore;
                 .HasOne(o => o.gebruikerBedrijf)
                 .WithMany()
                 .HasForeignKey(o => o.GebruikerBedrijfId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<onderzoek>()
                 .HasOne(o => o.goedgekeurdDoor)
                 .WithMany()
                 .HasForeignKey(o => o.GoedgekeurdDoorId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<deelname>()
                 .HasOne(o => o.gebruikerDeskundige)
                 .WithMany()
                 .HasForeignKey(o => o.GebruikerDeskundigeId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<deelname>()
                 .HasOne(o => o.onderzoek)
                 .WithMany()
                 .HasForeignKey(o => o.OnderzoekId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<gebruikerDeskundige>()
                 .HasOne(o => o.beperking)
                 .WithMany()
                 .HasForeignKey(o => o.beperkingId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<gebruiker>()
                 .HasOne(o => o.Rol)
                 .WithMany()
                 .HasForeignKey(o => o.rolId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             // Do the same for other relationships that could cause multiple cascade paths
 

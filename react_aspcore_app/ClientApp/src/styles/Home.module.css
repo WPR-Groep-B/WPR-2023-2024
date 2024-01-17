@@ -46,6 +46,15 @@
 
 }
 
+@media only screen and (max-width: 600px) {
+    .homeContainer h1 {
+      font-size: 1em; /* Reduce the font size on small screens */
+    }
+    .homeContainer h2 {
+      font-size: 1em; /* Reduce the font size on small screens */
+    }
+  }
+
 .heroSection {
     position: relative;
     width: 100%;
@@ -74,6 +83,15 @@
     max-height: 200px;
     overflow: auto;
 }
+
+@media only screen and (max-width: 600px) {
+    .heroText h1 {
+      font-size: 1em; /* Reduce the font size on small screens */
+    }
+    .heroText h2 {
+        font-size: 1em; /* Reduce the font size on small screens */
+      }
+  }
 
 .homeContainer h2 a {
     all: unset;

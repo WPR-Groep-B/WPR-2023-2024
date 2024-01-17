@@ -23,6 +23,23 @@
     margin-right: 30px;
 }
 
+@media only screen and (max-width: 600px) {
+    .navbar {
+      justify-content: center; /* Center the content horizontally */
+      height: auto; /* Make the height flexible */
+      padding: 10px 0; /* Add some vertical padding */
+    }
+    .navbar ul {
+      flex-direction: row; /* Make the items sit next to each other */
+      flex-wrap: wrap; /* Allow the items to wrap to the next line */
+      justify-content: center; /* Center the items horizontally */
+      align-items: center; /* Center the items vertically */
+    }
+    .navbar li {
+      margin: 10px; /* Add some spacing around the items */
+    }
+  }
+
 .logo {
     height: 60px;
 }

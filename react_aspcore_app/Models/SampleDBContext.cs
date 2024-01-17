@@ -45,6 +45,17 @@ using Microsoft.EntityFrameworkCore;
             modelBuilder.Entity<deelname>()
                 .ToTable("deelname");
 
+            modelBuilder.Entity<gebruikerDeskundige>()
+                .HasOne(o => o.beperking)
+                .WithMany()
+                .HasForeignKey(o => o.beperkingId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<gebruiker>()
+                .HasOne(o => o.Rol)
+                .WithMany()
+                .HasForeignKey(o => o.rolId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<onderzoek>()
                 .HasOne(o => o.gebruikerBedrijf)
@@ -68,18 +79,6 @@ using Microsoft.EntityFrameworkCore;
                 .HasOne(o => o.onderzoek)
                 .WithMany()
                 .HasForeignKey(o => o.OnderzoekId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<gebruikerDeskundige>()
-                .HasOne(o => o.beperking)
-                .WithMany()
-                .HasForeignKey(o => o.beperkingId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<gebruiker>()
-                .HasOne(o => o.Rol)
-                .WithMany()
-                .HasForeignKey(o => o.rolId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Do the same for other relationships that could cause multiple cascade paths

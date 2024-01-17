@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
         public DbSet<gebruikerDeskundige> gebruikerDeskundigen { get; set; }
         public DbSet<gebruikerBeheerder> gebruikerBeheerders { get; set; }
         public DbSet<onderzoek> onderzoeken { get; set; }
+        public DbSet<deelname> deelnames { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,8 +32,22 @@ using Microsoft.EntityFrameworkCore;
                 .HasForeignKey(o => o.GoedgekeurdDoorId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-                modelBuilder.Entity<gebruiker>()
-        .ToTable("gebruikers");
+            modelBuilder.Entity<deelname>()
+                .HasOne(o => o.gebruikerDeskundige)
+                .WithMany()
+                .HasForeignKey(o => o.GebruikerDeskundigeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<deelname>()
+                .HasOne(o => o.onderzoek)
+                .WithMany()
+                .HasForeignKey(o => o.OnderzoekId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Do the same for other relationships that could cause multiple cascade paths
+
+            modelBuilder.Entity<gebruiker>()
+                .ToTable("gebruikers");
 
             modelBuilder.Entity<gebruikerBedrijf>()
                 .ToTable("gebruikerBedrijven");
@@ -43,6 +58,5 @@ using Microsoft.EntityFrameworkCore;
             modelBuilder.Entity<gebruikerBeheerder>()
                 .ToTable("gebruikerBeheerders");
 
-            // Do the same for other relationships that could cause multiple cascade paths
         }
     }

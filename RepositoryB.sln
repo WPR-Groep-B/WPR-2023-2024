@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "react_aspcore_app", "react_aspcore_app\react_aspcore_app.csproj", "{C296D583-E700-4F74-A7EB-BCC70306C7C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "react_aspcore_appTests2", "react_aspcore_appTests2\react_aspcore_appTests2.csproj", "{3782FBC1-24ED-4DB4-857B-A4B5673E495B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C296D583-E700-4F74-A7EB-BCC70306C7C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C296D583-E700-4F74-A7EB-BCC70306C7C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C296D583-E700-4F74-A7EB-BCC70306C7C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3782FBC1-24ED-4DB4-857B-A4B5673E495B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3782FBC1-24ED-4DB4-857B-A4B5673E495B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3782FBC1-24ED-4DB4-857B-A4B5673E495B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3782FBC1-24ED-4DB4-857B-A4B5673E495B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,109 +1,130 @@
 .container {
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 0 20px;
-  }
-  
-  .divfoot {
-    padding: 0 0 0 50px;
-  }
-  
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.divfoot {
+  padding: 0 50px 0 50px;
+}
+
+.divfootBeg {
+  padding: 0 60px 0 0;
+}
+
+footer {
+  display: flex;
+  margin: auto;
+  width: auto;
+  padding: 100px 100px 60px 200px;
+  background: #111e55;
+  color: #26ecb7;
+  text-align: left;
+  font-weight: 500;
+  font-family: var(--bs-body-font-family);
+}
+
+button {
+  background: #111e55;
+  color: #fff;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  text-decoration: none;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+button:hover::after {
+  opacity: 1;
+}
+
+.flex {
+  box-sizing: flex;
+}
+
+.button {
+  background-color: #fff;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  margin: 0 0 0 5px;
+}
+
+.button::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  position: absolute;
+  border: 3.75px solid #1fc396;
+  border-radius: 50%;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button:hover::after {
+  opacity: 1;
+}
+
+
+.logo {
+  height: 80px;
+}
+
+.sclogo {
+  height: 40px;
+  width: 40px;
+}
+
+.divsocialslogo {
+  display: flex;
+  flex-direction: column;
+  /* Set flex-direction to column */
+  padding-top: 50px;
+}
+
+.divsocials {
+  display: flex;
+  justify-content: flex-end;
+  align-items: justify;
+  padding-top: 75px;
+}
+
+.socialbtn {
+  padding: 0 30px;
+}
+
+.parentDiv {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column; /* Reverse the order of the child elements */
+}
+
+@media only screen and (max-width: 600px) {
   footer {
-    display: flex;
-    margin: auto;
-    width: auto;
-    padding: 100px 100px 60px 200px;
-    background: #111e55;
-    color: #26ecb7;
-    text-align: left;
-    font-weight: 500;
-    font-family: var(--bs-body-font-family);
+    flex-direction: row; /* Make the items sit next to each other */
+    flex-wrap: wrap; /* Allow the items to wrap to the next line */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Center the items vertically */
+    padding: 50px 20px; /* Reduce the padding */
   }
-  
-  button {
-    background: #111e55;
-    color: #fff;
-    margin: 0;
-    border: 0;
-    padding: 0;
-    text-decoration: none;
-    position: relative;
-    transition: transform 0.3s ease;
-  }
-  
-  button:hover {
-    transform: scale(1.1);
-  }
-  
-  button::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color: #fff;
-    position: absolute;
-    bottom: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  button:hover::after {
-    opacity: 1;
-  }
-  
-  .flex {
-    box-sizing: flex;
-  }
-  
-  .button {
-    background-color: #fff;
-    border-radius: 50px;
-    height: 50px;
-    width: 50px;
-    margin: 0 0 0 5px;
-  }
-  
-  .button::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    position: absolute;
-    border: 3.75px solid #1fc396;
-    border-radius: 50%;
-    box-sizing: border-box;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .button:hover::after {
-    opacity: 1;
-  }
-  
-  
-  .logo {
-    height: 80px;
-  }
-  
-  .sclogo {
-    height: 40px;
-    width: 40px;
-  }
-  
-  .divsocialslogo {
-    display: flex;
-    flex-direction: column; /* Set flex-direction to column */
-    padding-top: 50px;
-  }
-  
-  .divsocials {
-    display: flex;
-    justify-content: flex-end;
-    align-items: justify;
-    padding-top: 75px;
-  }
-  
-  .socialbtn {
-    padding: 0 30px;
-  }
+}

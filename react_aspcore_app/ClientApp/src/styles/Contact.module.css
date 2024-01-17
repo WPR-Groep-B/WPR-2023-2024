@@ -9,8 +9,8 @@
 }
 
 .mapContainer {
-  width:100%;
-  height:100vh;
+  width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +27,7 @@ a {
   transition: color 0.2s ease;
 }
 
-a:hover {    
+a:hover {
   color: #1fc396;
 }
 
@@ -64,7 +64,8 @@ a:hover {
 
 .divsocialslogo {
   display: flex;
-  flex-direction: column; /* Set flex-direction to column */
+  flex-direction: column;
+  /* Set flex-direction to column */
   padding-top: 50px;
 }
 
@@ -79,4 +80,25 @@ a:hover {
 
 .socialsdiv {
   width: 60%;
+}
+
+.buttondiv {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .divsocials {
+    display: flex;
+    flex-direction: column; /* Align children in a row */
+    align-items: center; /* Center children vertically */
+  }
+
+  .socialsdiv{
+    width: 100%;
+  }
+
+  .socialbtn:first-child {
+    padding-left: 0;
+  }
 }

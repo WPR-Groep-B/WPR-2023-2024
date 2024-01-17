@@ -2,7 +2,7 @@ import Chat from "../components/Chat/ChatComponent";
 import Message from "../components/Chat/Messager";
 import { HubConnectionBuilder, LogLevel , HttpTransportType} from "@microsoft/signalr";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+//import { NavLink } from "react-router-dom";
 import { jwtDecode } from 'jwt-decode';
 
 function ChatPage() {

@@ -21,6 +21,12 @@ using Microsoft.EntityFrameworkCore;
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<rol>()
+                .ToTable("rollen");
+
+            modelBuilder.Entity<beperking>()
+                .ToTable("beperkingen");
+
             modelBuilder.Entity<onderzoek>()
                 .HasOne(o => o.gebruikerBedrijf)
                 .WithMany()
@@ -58,12 +64,6 @@ using Microsoft.EntityFrameworkCore;
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Do the same for other relationships that could cause multiple cascade paths
-
-            modelBuilder.Entity<rol>()
-                .ToTable("rollen");
-
-            modelBuilder.Entity<beperking>()
-                .ToTable("beperkingen");
 
             modelBuilder.Entity<gebruiker>()
                 .ToTable("gebruikers");

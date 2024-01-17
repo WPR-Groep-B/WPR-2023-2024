@@ -29,11 +29,25 @@ function ChatPage() {
                 console.log(messages);
             })
 
+            connection.onclose(e => {
+                setConnection(null);
+                setMessages([]);
+            })
+
             await connection.start();
             await connection.invoke("joinroom", {UserName, Room });
             setConnection(connection);
         }
         catch (error) {
+            console.log(error);
+        }
+    }
+
+    const closeConnection = async () => {
+        try {
+            await connection.stop();
+            setConnection(null);
+        } catch (error) {
             console.log(error);
         }
     }
@@ -56,7 +70,7 @@ function ChatPage() {
                     ? <NavLink to="/login">Login</NavLink>
                     : !connection
                         ? <Chat joinRoom={joinRoom} />
-                        : <Message messages={messages} sendMessage={sendMessage} />
+                        : <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
             }
         </div>
     )

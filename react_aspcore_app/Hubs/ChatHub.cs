@@ -6,13 +6,26 @@ namespace react_aspcore_app.Hubs
     {
         
         private readonly IDictionary<string , UserConnection> _Connections;
+        private readonly String _System; 
 
         public ChatHub(IDictionary<string , UserConnection> Connections) {
             _Connections = Connections;
+            _System = "Systeem";
         }
 
-        public async Task sendMessage(string message) {
-            if (_Connections.TryGetValue(Context.ConnectionId, out UserConnection userConnection)) {
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            if (_Connections.TryGetValue(Context.ConnectionId, out UserConnection? userConnection))
+            {
+                _Connections.Remove(Context.ConnectionId);
+                await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _System, $"{userConnection.UserName} has left {userConnection.Room}");
+            }
+        }
+
+        public async Task sendMessage(string message)
+        {
+            if (_Connections.TryGetValue(Context.ConnectionId, out UserConnection? userConnection))
+            {
                 await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", userConnection.UserName, message);
             }
         }
@@ -23,7 +36,7 @@ namespace react_aspcore_app.Hubs
             _Connections[Context.ConnectionId] = userConnection;
 
             await Groups.AddToGroupAsync(Context.ConnectionId, userConnection.Room); // Add user to group
-            await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", userConnection.UserName , $"{userConnection.UserName} has joined {userConnection.Room}"); // Send message to all clients in group
+            await Clients.Group(userConnection.Room).SendAsync("ReceiveMessage", _System , $"{userConnection.UserName} has joined {userConnection.Room}"); // Send message to all clients in group
         }
     }
 }

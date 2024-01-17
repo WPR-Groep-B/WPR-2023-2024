@@ -51,14 +51,17 @@ namespace react_aspcore_app.Controllers
             {
                 return NotFound();
             }
-
+            
+            onderzoek.GebruikerBedrijfId = onderzoekUpdate.GebruikerBedrijfId;
             onderzoek.onderzoekNaam = onderzoekUpdate.onderzoekNaam;
             onderzoek.onderzoekBeschrijving = onderzoekUpdate.onderzoekBeschrijving;
             onderzoek.onderzoekStartDatum = onderzoekUpdate.onderzoekStartDatum;
             onderzoek.onderzoekEindDatum = onderzoekUpdate.onderzoekEindDatum;
+            onderzoek.onderzoekStatus = onderzoekUpdate.onderzoekStatus;
+            onderzoek.onderzoekSoort = onderzoekUpdate.onderzoekSoort;
             onderzoek.GoedgekeurdDoorId = onderzoekUpdate.GoedgekeurdDoorId;
-            onderzoek.GebruikerBedrijfId = onderzoekUpdate.GebruikerBedrijfId;
-            onderzoek.GebruikerDeskundigeId = onderzoekUpdate.GebruikerDeskundigeId;
+            onderzoek.onderzoekLink = onderzoekUpdate.onderzoekLink;
+            onderzoek.onderzoekForm = onderzoekUpdate.onderzoekForm;
 
             _context.onderzoeken.Update(onderzoek);
             _context.SaveChanges();

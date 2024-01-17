@@ -30,7 +30,7 @@ function ChatPage() {
             })
 
             await connection.start();
-            await connection.invoke("joinroom", { UserId: user.id, UserName:  user.voornaam + " " + user.achternaam, Room : Room });
+            await connection.invoke("joinroom", {UserName, Room });
             setConnection(connection);
         }
         catch (error) {
@@ -38,7 +38,7 @@ function ChatPage() {
         }
     }
 
-    function sendMessage(message) {
+    const sendMessage = async (message) => {
         try {
             connection.invoke("SendMessage", message);
         } catch (error) {

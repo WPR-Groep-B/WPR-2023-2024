@@ -27,6 +27,25 @@ using Microsoft.EntityFrameworkCore;
             modelBuilder.Entity<beperking>()
                 .ToTable("beperkingen");
 
+            modelBuilder.Entity<gebruiker>()
+                .ToTable("gebruikers");
+
+            modelBuilder.Entity<gebruikerBedrijf>()
+                .ToTable("gebruikerBedrijven");
+
+            modelBuilder.Entity<gebruikerDeskundige>()
+                .ToTable("gebruikerDeskundigen");
+
+            modelBuilder.Entity<gebruikerBeheerder>()
+                .ToTable("gebruikerBeheerders");
+
+            modelBuilder.Entity<onderzoek>()
+                .ToTable("onderzoek");
+
+            modelBuilder.Entity<deelname>()
+                .ToTable("deelname");
+
+
             modelBuilder.Entity<onderzoek>()
                 .HasOne(o => o.gebruikerBedrijf)
                 .WithMany()
@@ -64,18 +83,5 @@ using Microsoft.EntityFrameworkCore;
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Do the same for other relationships that could cause multiple cascade paths
-
-            modelBuilder.Entity<gebruiker>()
-                .ToTable("gebruikers");
-
-            modelBuilder.Entity<gebruikerBedrijf>()
-                .ToTable("gebruikerBedrijven");
-
-            modelBuilder.Entity<gebruikerDeskundige>()
-                .ToTable("gebruikerDeskundigen");
-
-            modelBuilder.Entity<gebruikerBeheerder>()
-                .ToTable("gebruikerBeheerders");
-
         }
     }

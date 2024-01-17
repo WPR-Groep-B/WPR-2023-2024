@@ -1,6 +1,6 @@
 ﻿import Chat from "../components/Chat/ChatComponent";
 import Message from "../components/Chat/Messager";
-import { HubConnectionBuilder, LogLevel , signalR} from "@microsoft/signalr";
+import { HubConnectionBuilder, LogLevel , HttpTransportType} from "@microsoft/signalr";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { jwtDecode } from 'jwt-decode';
@@ -23,9 +23,9 @@ function ChatPage() {
 
         try {
             const connection = new HubConnectionBuilder()
-                .withUrl(`https://localhost:7251/ChatHub?access_token=${jwt}`, {
+                .withUrl(`/ChatHub?access_token=${jwt}`, {
                     skipNegotiation: true,
-                    transport: signalR.HttpTransportType.WebSockets
+                    transport: HttpTransportType.WebSockets
                 })
                 .configureLogging(LogLevel.Information)
                 .build();

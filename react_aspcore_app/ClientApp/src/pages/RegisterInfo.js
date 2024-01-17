@@ -15,16 +15,31 @@ function RegisterInfo() {
 
     useEffect(() => {
         document.title = "Register - Stichting Accessibility";
-    
+
         // If not coming from RegisterInfo, redirect to RegisterInfo
         if (!isFromRegisterStart) {
-          navigate('/register-start');
+            navigate('/register-start');
         }
-      }, [navigate, isFromRegisterStart]);
+    }, [navigate, isFromRegisterStart]);
 
     const showFields = (option) => {
         setSelectedOption(option);
     };
+
+    const [inputWidth, setInputWidth] = useState(window.innerWidth <= 600 ? '100%' : '225px');
+
+    useEffect(() => {
+        const handleResize = () => {
+            setInputWidth(window.innerWidth <= 600 ? '100%' : '225px');
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup function
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const goToRegisterAccount = () => {
         navigate('/register-account', { state: { from: '/register-info' } });
@@ -50,7 +65,7 @@ function RegisterInfo() {
         e.preventDefault();
 
         if (age.trim() !== '' && gender.trim() !== '' && (selectedOption === 'Ervaring' ? beperking.trim() !== '' : true) && (selectedOption === 'Bedrijf' ? bedrijf.trim() !== '' : true)) {
-          
+
             // Perform additional checks if necessary before allowing access to RegisterAccount
             goToRegisterAccount();
         } else {
@@ -67,6 +82,7 @@ function RegisterInfo() {
                 <hr />
 
                 <form className={styles.form} onSubmit={handleSubmit}>
+
                     <div className={styles.displayCntr}>
 
                         <div>
@@ -118,7 +134,7 @@ function RegisterInfo() {
                         <div id="ErvaringFields" className={selectedOption === 'Ervaring' ? styles.show : styles.hidden}>
                             <label htmlFor="beperking">Beperking:</label>
                             <input
-                                style={{ width: '225px' }}
+                                style={{ width: inputWidth }}
                                 type="text"
                                 id="beperking"
                                 name="beperking"
@@ -132,7 +148,7 @@ function RegisterInfo() {
                         <div id="BedrijfFields" className={selectedOption === 'Bedrijf' ? styles.show : styles.hidden}>
                             <label htmlFor="bedrijf">Bedrijfsnaam</label>
                             <input
-                                style={{ width: '225px' }}
+                                style={{ width: inputWidth }}
                                 type="text"
                                 id="bedrijf"
                                 name="bedrijf"
@@ -143,8 +159,8 @@ function RegisterInfo() {
                         </div>
                     </div>
                     {errorMessage && <div className={styles.error}>{errorMessage}</div>}
-                    <button className={styles.registerbtn} type="submit">Volgende</button>
                     <hr />
+                    <button className={styles.registerbtn} type="submit">Volgende</button>
                 </form>
             </div>
         </div>

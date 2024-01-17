@@ -8,7 +8,7 @@ function Contact() {
   useEffect(() => {
     document.title = "Contact - Stichting Accessibility"
   }, [])
-  
+
   return (
     <html lang='nl'>
       <div className={styles.justifiedText}>
@@ -40,22 +40,24 @@ function Contact() {
               <p>Benieuw naar onze ervaringen en op de hoogte willen blijven van actuele gebeurtenissen van ons, dat kan! Wij zijn op de volgende kanalen te vinden:</p>
             </div>
 
-            <div className={styles.socialbtn}>
-              <button aria-label="Linkedin pagina Stichting Accessibility" className={styles.button} onClick={() => { window.open("https://nl.linkedin.com/company/accessibilitynl", "_blank"); }}>
-                <img className={styles.sclogo} src={linkedinlogo} alt="LinkedIn logo" />
-              </button>
-            </div>
+            <div className={styles.buttondiv}>
+              <div className={styles.socialbtn}>
+                <button aria-label="Linkedin pagina Stichting Accessibility" className={styles.button} onClick={() => { window.open("https://nl.linkedin.com/company/accessibilitynl", "_blank"); }}>
+                  <img className={styles.sclogo} src={linkedinlogo} alt="LinkedIn logo" />
+                </button>
+              </div>
 
-            <div className={styles.socialbtn}>
-              <button aria-label="Twitter (nu X) pagina Stichting Accessibility" className={styles.button} onClick={() => { window.open("https://twitter.com/AccessibilityNL", "_blank"); }}>
-                <img className={styles.sclogo} src={xlogo} alt="X/Twitter Logo" />
-              </button>
-            </div>
+              <div className={styles.socialbtn}>
+                <button aria-label="Twitter (nu X) pagina Stichting Accessibility" className={styles.button} onClick={() => { window.open("https://twitter.com/AccessibilityNL", "_blank"); }}>
+                  <img className={styles.sclogo} src={xlogo} alt="X/Twitter Logo" />
+                </button>
+              </div>
 
-            <div className={styles.socialbtn}>
-              <button aria-label="Youtube pagina Stichting Accessibility" className={styles.button} onClick={() => { window.open("https://www.youtube.com/channel/UCSFsnRBNIDCgYJEW_ZLfTrg", "_blank"); }}>
-                <img className={styles.sclogo} src={ytlogo} alt="Youtube Logo" />
-              </button>
+              <div className={styles.socialbtn}>
+                <button aria-label="Youtube pagina Stichting Accessibility" className={styles.button} onClick={() => { window.open("https://www.youtube.com/channel/UCSFsnRBNIDCgYJEW_ZLfTrg", "_blank"); }}>
+                  <img className={styles.sclogo} src={ytlogo} alt="Youtube Logo" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -5,7 +5,11 @@
 }
 
 .divfoot {
-  padding: 0 0 0 50px;
+  padding: 0 50px 0 50px;
+}
+
+.divfootBeg {
+  padding: 0 60px 0 0;
 }
 
 footer {
@@ -18,16 +22,6 @@ footer {
   text-align: left;
   font-weight: 500;
   font-family: var(--bs-body-font-family);
-}
-
-@media only screen and (max-width: 600px) {
-  footer {
-    flex-direction: row; /* Make the items sit next to each other */
-    flex-wrap: wrap; /* Allow the items to wrap to the next line */
-    justify-content: center; /* Center the items horizontally */
-    align-items: center; /* Center the items vertically */
-    padding: 50px 20px; /* Reduce the padding */
-  }
 }
 
 button {
@@ -117,4 +111,20 @@ button:hover::after {
 
 .socialbtn {
   padding: 0 30px;
+}
+
+.parentDiv {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column; /* Reverse the order of the child elements */
+}
+
+@media only screen and (max-width: 600px) {
+  footer {
+    flex-direction: row; /* Make the items sit next to each other */
+    flex-wrap: wrap; /* Allow the items to wrap to the next line */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Center the items vertically */
+    padding: 50px 20px; /* Reduce the padding */
+  }
 }

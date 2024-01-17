@@ -95,7 +95,6 @@ select:hover {
 input[type='text'],
 input[type='password'],
 input[type='email'],
-input[type='tel'],
 input[type='tel'] {
   width: 100%;
   padding: 15px;
@@ -196,5 +195,35 @@ input[type='date']:hover {
 
 .show {
   display: block;
-  /* or inline, inline-block, etc. based on your layout needs */
+  /* .
+  or inline, inline-block, etc. based on your layout needs */
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100%; /* Increase the width of the container */
+  }
+
+  .displayCntr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .labelFlex {
+    margin-left: 0px;
+  }
+
+  select {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  input[type='date'] {
+    width: 100%;
+  }
+
+  .select {
+    width: 100%;
+    margin-left: 0px;
+  }
 }

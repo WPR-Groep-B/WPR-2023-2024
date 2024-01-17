@@ -15,8 +15,8 @@ public class gebruiker
     public string? wachtwoord { get; set; }
     public int? googleId { get; set; }
 
-    public int? rolId { get; set; }
     public rol Rol { get; set; }
+    public int? rolId { get; set; }
 
 }
 
@@ -38,8 +38,9 @@ public class gebruikerDeskundige : gebruiker
 
     public string telefoonnummer { get; set; }
 
-    public int beperkingId { get; set; }
     public beperking beperking { get; set; }
+    public int beperkingId { get; set; }
+    
 
     public string aandoening { get; set; }
 

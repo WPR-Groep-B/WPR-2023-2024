@@ -6,8 +6,8 @@ public class deelname {
     [Key]
     public gebruikerDeskundige gebruikerDeskundige { get; set; }
 
-    public int OnderzoekId { get; set; }
     public onderzoek onderzoek { get; set; }
+    public int OnderzoekId { get; set; }
 
     public DateTime deelnameDatum { get; set;}
 

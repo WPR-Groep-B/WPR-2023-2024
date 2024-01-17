@@ -1,6 +1,7 @@
 import Chat from "../components/Chat/ChatComponent";
 import Message from "../components/Chat/Messager";
-import { HubConnectionBuilder, LogLevel , HttpTransportType} from "@microsoft/signalr";
+import styles from "../styles/Chat.module.css";
+import { HubConnectionBuilder, LogLevel, HttpTransportType } from "@microsoft/signalr";
 import { useState } from "react";
 //import { NavLink } from "react-router-dom";
 import { jwtDecode } from 'jwt-decode';
@@ -76,12 +77,17 @@ function ChatPage() {
 
 
     return (
-        <div>
+        <div className={styles.container}>
             <h2>ChatPagina</h2>
-            <hr className="line" />
+            <hr />
             {
                 !localStorage.getItem('jwt')
-                    ? <NavLink to="/login">Login</NavLink>
+                    ?
+                    <div className={styles.contforond}>
+                        <button alt="Login voor weergave onderzoeken" className={styles.button} onClick={() => { window.location.href = "/login"; }}>
+                            Log hier in om je chats te zien
+                        </button>
+                    </div>
                     : !connection
                         ? <Chat joinRoom={joinRoom} />
                         : <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />

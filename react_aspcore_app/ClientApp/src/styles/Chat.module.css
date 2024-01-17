@@ -1,0 +1,59 @@
+.container {
+    text-align: center;
+    color: #1A2E83;
+    background-color: white;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.button {
+    position: relative;
+    overflow: hidden;
+    background-color: #111e55;
+    color: white;
+    padding: 16px;
+    cursor: pointer;
+    width: 40%;
+    margin: auto;
+    font-weight: 600;
+    font-size: large;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #16297e;
+    transform: scale(1.01);
+    text-decoration: underline;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    background-color: #26ecb7;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.button:hover::after {
+    opacity: 0;
+}
+
+.contforond {
+    display: flex;
+    flex-direction: column;
+    /* Set to row if you want horizontal centering */
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 15px;
+}

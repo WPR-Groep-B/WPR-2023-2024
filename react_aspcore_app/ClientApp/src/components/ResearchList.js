@@ -15,16 +15,33 @@ async function getData() {
 }
 
 async function updateData(id, updatedOnderzoek) {
+    // Format the dates and include the IDs for gebruikerBedrijf and gebruikerDeskundige
+    const formattedData = {
+        ...updatedOnderzoek,
+        onderzoekStartDatum: updatedOnderzoek.onderzoekStartDatum 
+            ? new Date(updatedOnderzoek.onderzoekStartDatum).toISOString() 
+            : null,
+        onderzoekEindDatum: updatedOnderzoek.onderzoekEindDatum 
+            ? new Date(updatedOnderzoek.onderzoekEindDatum).toISOString() 
+            : null,
+        GebruikerBedrijfId: updatedOnderzoek.GebruikerBedrijfId,
+        GebruikerDeskundigeId: updatedOnderzoek.GebruikerDeskundigeId,
+    };
+
     const response = await fetch(`https://localhost:7251/api/research/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedOnderzoek),
+        body: JSON.stringify(formattedData),
     });
+
     if (!response.ok) {
-        throw new Error('Failed to update the research');
+        const errorBody = await response.text();
+        console.error('Failed to update the research:', errorBody);
+        throw new Error(`Failed to update the research: ${errorBody}`);
     }
+
     return await response.json();
 }
 

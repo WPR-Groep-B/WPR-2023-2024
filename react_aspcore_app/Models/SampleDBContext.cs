@@ -15,14 +15,9 @@ using Microsoft.EntityFrameworkCore;
         public DbSet<gebruikerBeheerder> gebruikerBeheerders { get; set; }
         public DbSet<onderzoek> onderzoeken { get; set; }
         public DbSet<deelname> deelnames { get; set; }
-        public DbSet<rol> rollen { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<rol>()
-                .ToTable("rollen");
 
             modelBuilder.Entity<beperking>()
                 .ToTable("beperkingen");
@@ -49,12 +44,6 @@ using Microsoft.EntityFrameworkCore;
                 .HasOne(o => o.beperking)
                 .WithMany()
                 .HasForeignKey(o => o.beperkingId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<gebruiker>()
-                .HasOne(o => o.Rol)
-                .WithMany()
-                .HasForeignKey(o => o.rolId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<onderzoek>()

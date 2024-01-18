@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
         {
         }
 
-        public DbSet<Customer> Customers { get; set; }
         public DbSet<gebruiker> gebruikers { get; set; }
         public DbSet<gebruikerBedrijf> gebruikerBedrijven { get; set; }
         public DbSet<gebruikerDeskundige> gebruikerDeskundigen { get; set; }

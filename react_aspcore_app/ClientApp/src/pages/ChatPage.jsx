@@ -10,6 +10,9 @@ function ChatPage() {
 
     const [connection, setConnection] = useState();
     const [messages, setMessages] = useState([]);
+    
+    const user = jwtDecode(jwt);
+    const UserName = user.voornaam + " " + user.achternaam;
 
     const jwt = localStorage.getItem('jwt');
 
@@ -77,7 +80,7 @@ function ChatPage() {
 
     useEffect(() => {
         document.title = 'Chat - Stichting Accessibility';
-      }, []);
+    }, []);
 
 
     return (
@@ -94,7 +97,7 @@ function ChatPage() {
                     </div>
                     : !connection
                         ? <Chat joinRoom={joinRoom} />
-                        : <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
+                        : <Message messages={messages} currentUser={UserName} sendMessage={sendMessage} closeConnection={closeConnection} />
             }
         </div>
     )

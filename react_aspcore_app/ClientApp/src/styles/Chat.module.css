@@ -182,3 +182,7 @@ form {
     justify-content: space-between;
     height: 86px;
 }
+
+.currentUserMessage {
+    justify-content: flex-end;
+  }

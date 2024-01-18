@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import styles from '../styles/ResearchList.module.css';
 
 async function getData() {
     const response = await fetch('https://localhost:7251/api/research/', {
@@ -58,7 +59,19 @@ function OnderzoekEdit({ onderzoek, onSave, onCancel }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
+            <input
+                type="text"
+                name="onderzoekId"
+                value={editedOnderzoek.onderzoekId}
+                onChange={handleChange}
+            />
+            <input
+                type="text"
+                name="GebruikerBedrijfId"
+                value={editedOnderzoek.gebruikerBedrijfId}
+                onChange={handleChange}
+            />
             <input
                 type="text"
                 name="onderzoekNaam"
@@ -82,7 +95,36 @@ function OnderzoekEdit({ onderzoek, onSave, onCancel }) {
                 value={editedOnderzoek.onderzoekEindDatum.split('T')[0]} // Format the date for input[type=date]
                 onChange={handleChange}
             />
-            {/* Voeg hier indien nodig andere velden toe */}
+            <input
+                type="text"
+                name="onderzoekStatus"
+                value={editedOnderzoek.onderzoekStatus}
+                onChange={handleChange}
+            />
+            <input
+                type="text"
+                name="onderzoekSoort"
+                value={editedOnderzoek.onderzoekSoort}
+                onChange={handleChange}
+            />
+            <input
+                type="text"
+                name="GoedgekeurdDoorId"
+                value={editedOnderzoek.goedgekeurdDoorId}
+                onChange={handleChange}
+            />
+            <input
+                type="text"
+                name="onderzoekLink"
+                value={editedOnderzoek.onderzoekLink}
+                onChange={handleChange}
+            />
+            <input
+                type="text"
+                name="onderzoekNaam"
+                value={editedOnderzoek.onderzoekForm}
+                onChange={handleChange}
+            />
             <button type="submit">Accept</button>
             <button type="button" onClick={onCancel}>Cancel</button>
         </form>
@@ -92,8 +134,17 @@ function OnderzoekEdit({ onderzoek, onSave, onCancel }) {
 function OnderzoekDetails({ onderzoek, onEdit }) {
     return (
         <div>
+            <div>{onderzoek.onderzoekId}</div>
+            <div>{onderzoek.gebruikerBedrijfId}</div>
             <div>{onderzoek.onderzoekNaam}</div>
-            {/* Toon hier andere details */}
+            <div>{onderzoek.onderzoekBeschrijving}</div>
+            <div>{onderzoek.onderzoekStartDatum}</div>
+            <div>{onderzoek.onderzoekEindDatum}</div>
+            <div>{onderzoek.onderzoekStatus}</div>
+            <div>{onderzoek.onderzoekSoort}</div>
+            <div>{onderzoek.goedgekeurdDoorId}</div>
+            <div>{onderzoek.onderzoekLink}</div>
+            <div>{onderzoek.onderzoekForm}</div>
             <button type="button" onClick={() => onEdit(onderzoek)}>Edit</button>
         </div>
     );

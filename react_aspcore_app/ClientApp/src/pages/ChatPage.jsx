@@ -80,7 +80,7 @@ function ChatPage() {
 
     useEffect(() => {
         document.title = 'Chat - Stichting Accessibility';
-    }, []);
+      }, []);
 
 
     return (
@@ -97,7 +97,7 @@ function ChatPage() {
                     </div>
                     : !connection
                         ? <Chat joinRoom={joinRoom} />
-                        : <Message messages={messages} currentUser={UserName} sendMessage={sendMessage} closeConnection={closeConnection} />
+                        : <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
             }
         </div>
     )

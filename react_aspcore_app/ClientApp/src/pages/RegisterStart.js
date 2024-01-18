@@ -11,6 +11,7 @@ function RegisterName() {
   const [naam, setNaam] = useState('');
   const [anaam, setAnaam] = useState('');
 
+
   const handleNaamChange = (e) => {
     setNaam(e.target.value);
   };
@@ -25,10 +26,15 @@ function RegisterName() {
     if (naam.trim() !== '' && anaam.trim() !== '') {
       // Use Link to navigate to RegisterInfo and pass state
       navigate('/register-info', { state: { from: '/register-start' } });
+      localStorage.clear();
+      localStorage.setItem('naam', naam);
+      localStorage.setItem('anaam', anaam);
+
     } else {
       console.error("Please fill in both required fields");
     }
   };
+
 
   return (
     <div className={styles.body}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Register.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Axios from 'axios';
 
 function RegisterAccount() {
   const navigate = useNavigate();
@@ -32,8 +33,39 @@ function RegisterAccount() {
     } else if (password !== confirmPassword) {
       alert("Wachtwoorden komen niet overeen");
     } else {
-      alert("Account succesvol aangemaakt!");
-      goToHome();
+
+      const payload = {
+        Voornaam: localStorage.getItem('naam'),
+        Achternaam: localStorage.getItem('anaam'),
+        Geboortedatum: localStorage.getItem('age'),
+        AccountType: localStorage.getItem('accountType'),
+        BeperkingsType: localStorage.getItem('beperking'),
+        Aandoening: localStorage.getItem('aandoening'),
+        Beschikbaarheid: localStorage.getItem('beschikbaarheid'),
+        Hulpmiddelen: localStorage.getItem('hulpmiddelen'),
+        Postcode: localStorage.getItem('postcode'),
+        Telefoonnummer: localStorage.getItem('telefoon'),
+        BedrijfsNaam: localStorage.getItem('bedrijf'),
+        Locatie: localStorage.getItem('locatie'),
+        ContactInformatie: localStorage.getItem('contactinformatie'),
+        Email: email,
+        Wachtwoord: password
+      };
+      console.log(payload);
+      Axios.post('/api/User', payload, { headers: { 'Content-Type': 'application/json' } })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 201) {
+          
+          localStorage.setItem('jwt', response.data.token);
+          localStorage.clear();
+          console.log(response.data.token);
+          alert("Account succesvol aangemaakt!");
+          goToHome();
+        } else {
+          alert("Er is iets fout gegaan!");
+        }
+      })
     }
   };
 

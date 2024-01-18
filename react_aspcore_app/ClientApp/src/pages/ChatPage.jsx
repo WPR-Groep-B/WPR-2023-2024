@@ -82,7 +82,7 @@ function ChatPage() {
 
     return (
         <div className={styles.container}>
-            <h2>ChatPagina</h2>
+            <h1>ChatPagina</h1>
             <hr />
             {
                 !localStorage.getItem('jwt')
@@ -96,6 +96,7 @@ function ChatPage() {
                         ? <Chat joinRoom={joinRoom} />
                         : <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
             }
+            <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
         </div>
     )
 }

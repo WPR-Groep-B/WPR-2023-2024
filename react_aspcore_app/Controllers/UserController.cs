@@ -20,8 +20,10 @@ public class RegisterModel
     public required string Wachtwoord { get; set; }
     public required string Voornaam { get; set; }
     public required string Achternaam { get; set; }
-    public DateOnly Geboortedatum { get; set; }
-    
+    public DateTime Geboortedatum { get; set; }
+
+    public required string AccountType { get; set; }
+
     //Eigenschappen voor gebruikerBedrijf
     public string? BedrijfsNaam { get; set; }
     public string? Locatie { get; set; }
@@ -188,93 +190,62 @@ public class UserController : ControllerBase
         {
             return BadRequest("Email is required.");
         }
-        if (nieuwGebruiker.BedrijfsNaam == null && nieuwGebruiker.Aandoening == null && nieuwGebruiker.Functie == null)
+        if (nieuwGebruiker.AccountType == null)
         {
             return BadRequest("Account type is required.");
-        }
-        if (nieuwGebruiker.BedrijfsNaam != null && nieuwGebruiker.Locatie == null)
-        {
-            return BadRequest("Location is required.");
-        }
-        if (nieuwGebruiker.BedrijfsNaam != null && nieuwGebruiker.ContactInformatie == null)
-        {
-            return BadRequest("Contact information is required.");
-        }
-        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Postcode == null)
-        {
-            return BadRequest("Postal code is required.");
-        }
-        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Telefoonnummer == null)
-        {
-            return BadRequest("Phone number is required.");
-        }
-        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.BeperkingsType == null)
-        {
-            return BadRequest("Disability type is required.");
-        }
-        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Beschikbaarheid == null)
-        {
-            return BadRequest("Availability is required.");
-        }
-        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Voorkeur == null)
-        {
-            return BadRequest("Preference is required.");
-        }
-        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Hulpmiddelen == null)
-        {
-            return BadRequest("Aids is required.");
-        }
-        if (nieuwGebruiker.Functie != null && nieuwGebruiker.Functie == null)
-        {
-            return BadRequest("Function is required.");
         }
 
         gebruiker gebruiker;
 
-        if (nieuwGebruiker.BedrijfsNaam != null)
+        switch (nieuwGebruiker.AccountType)
         {
-            gebruiker = new gebruikerBedrijf
-            {
-                bedrijfsnaam = nieuwGebruiker.BedrijfsNaam, locatie = nieuwGebruiker.Locatie, contactInformatie = nieuwGebruiker.ContactInformatie
-            };
-        }
-        else if (nieuwGebruiker.Aandoening != null)
-        {
-        gebruiker = new gebruikerDeskundige
-        {
-            postcode = nieuwGebruiker.Postcode,
-            telefoonnummer = nieuwGebruiker.Telefoonnummer,
-            aandoening = nieuwGebruiker.Aandoening,
-            beperkingId = _context.beperkingen.First(b => b.beperkingType == nieuwGebruiker.BeperkingsType).beperkingId,
-            beschikbaarheid = nieuwGebruiker.Beschikbaarheid,
-            voorkeur = nieuwGebruiker.Voorkeur,
-            hulpmiddelen = nieuwGebruiker.Hulpmiddelen
-        };
+            case "Bedrijf":
+                gebruiker = new gebruikerBedrijf
+                {
+                    bedrijfsnaam = nieuwGebruiker.BedrijfsNaam,
+                    locatie = nieuwGebruiker.Locatie,
+                    contactInformatie = nieuwGebruiker.ContactInformatie
+                };
+                break;
+            case "Ervaring":
+                gebruiker = new gebruikerDeskundige
+                {
 
-        }
-        else if (nieuwGebruiker.Functie != null)
-        {
-            gebruiker = new gebruikerBeheerder
-            {
-                functie = nieuwGebruiker.Functie
-            };
-        }
-        else
-        {
-            gebruiker = new gebruiker();
+                    postcode = nieuwGebruiker.Postcode,
+                    telefoonnummer = nieuwGebruiker.Telefoonnummer,
+                    aandoening = nieuwGebruiker.Aandoening,
+                    beperkingId = _context.beperkingen.First(b => b.beperkingType == nieuwGebruiker.BeperkingsType).beperkingId,
+                    beschikbaarheid = nieuwGebruiker.Beschikbaarheid,
+                    voorkeur = "test",
+                    hulpmiddelen = nieuwGebruiker.Hulpmiddelen
+                };
+                break;
+            case "beheerder":
+                gebruiker = new gebruikerBeheerder
+                {
+                    functie = nieuwGebruiker.Functie
+                };
+                break;
+            default:
+                return BadRequest("Invalid account type.");
         }
 
         gebruiker.Voornaam = nieuwGebruiker.Voornaam;
         gebruiker.Achternaam = nieuwGebruiker.Achternaam;
         gebruiker.email = nieuwGebruiker.Email;
-        var passwordHasher = new PasswordHasher<gebruiker>();
+        gebruiker.geboortedatum = nieuwGebruiker.Geboortedatum;
+
+        var Hasher = new PasswordHasher<gebruiker>();
         // Hash the password
-        gebruiker.wachtwoord = passwordHasher.HashPassword(gebruiker, nieuwGebruiker.Wachtwoord);
+        gebruiker.wachtwoord = Hasher.HashPassword(gebruiker, nieuwGebruiker.Wachtwoord);
 
         _context.gebruikers.Add(gebruiker);
         _context.SaveChanges();
         var token = GenerateJwtToken(gebruiker);
-        return CreatedAtAction(nameof(Get), new { id = gebruiker.GebruikerId }, new { user = gebruiker, token = token });
+        return CreatedAtAction(nameof(Get), new
+        {
+            id = gebruiker.GebruikerId
+        }, new { user = gebruiker, token = token });
     }
 
 

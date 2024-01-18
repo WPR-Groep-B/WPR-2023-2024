@@ -26,6 +26,7 @@ function RegisterName() {
     if (naam.trim() !== '' && anaam.trim() !== '') {
       // Use Link to navigate to RegisterInfo and pass state
       navigate('/register-info', { state: { from: '/register-start' } });
+      localStorage.clear();
       localStorage.setItem('naam', naam);
       localStorage.setItem('anaam', anaam);
 

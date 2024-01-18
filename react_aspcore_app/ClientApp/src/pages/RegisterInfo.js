@@ -7,8 +7,9 @@ function RegisterInfo() {
     const [selectedOption, setSelectedOption] = useState('');
     const [age, setAge] = useState('');
     const [beperking, setBeperking] = useState('');
-    const [Aandoening, setAandoening] = useState('');
+    const [aandoening, setAandoening] = useState('');
     const [beschikbaarheid, setBeschikbaarheid] = useState('');
+    const [AccoutType, setAccoutType] = useState('');
     const [hulpmiddelen, setHulpmiddelen] = useState('');
     const [Postcode, setPostcode] = useState('');
     const [telefoon, setTelefoon] = useState('');
@@ -55,7 +56,7 @@ function RegisterInfo() {
         setAge(e.target.value);
     };
 
-    const handleAandoenignChange = (e) => {
+    const handleAandoeningChange = (e) => {
         setAandoening(e.target.value);
     };
 
@@ -65,6 +66,12 @@ function RegisterInfo() {
 
     const handleBeschikbaarheidChange = (e) => {
         setBeschikbaarheid(e.target.value);
+    };
+
+    const HandleAcountTypeChange = (e) => {
+        showFields(e.target.value);
+        setAccoutType(e.target.value);
+        console.log(e.target.value);
     };
 
     const handleHulpmiddelenChange = (e) => {
@@ -99,7 +106,8 @@ function RegisterInfo() {
                 Postcode.trim() !== '' &&
                 telefoon.trim() !== '' &&
                 beperking.trim() !== '' &&
-                Aandoening.trim() !== '' &&
+                aandoening.trim() !== '' &&
+                aandoening.trim() !== null &&
                 beschikbaarheid.trim() !== '' &&
                 hulpmiddelen.trim() !== ''
             )) ||
@@ -116,10 +124,11 @@ function RegisterInfo() {
             localStorage.setItem('beperking', beperking);
             localStorage.setItem('bedrijf', bedrijf);
             localStorage.setItem('beschikbaarheid', beschikbaarheid);
+            localStorage.setItem('accountType', AccoutType);
             localStorage.setItem('hulpmiddelen', hulpmiddelen);
             localStorage.setItem('postcode', Postcode);
             localStorage.setItem('telefoon', telefoon);
-            localStorage.setItem('aandoening', Aandoening);
+            localStorage.setItem('aandoening', aandoening);
             localStorage.setItem('locatie', Locatie);
             localStorage.setItem('contactinformatie', ContactInformatie);
 
@@ -149,7 +158,7 @@ function RegisterInfo() {
                             <select
                                 className={styles.select}
                                 id="options"
-                                onChange={(e) => showFields(e.target.value)}
+                                onChange={HandleAcountTypeChange}
                                 required
                             >
                                 <option value="">Kies een optie</option>
@@ -201,8 +210,8 @@ function RegisterInfo() {
                                 id="Aandoening"
                                 name="Aandoening"
                                 placeholder="bijv. blind, slechtziend of doof"
-                                value={Aandoening}
-                                onChange={handleAandoenignChange}
+                                value={aandoening}
+                                onChange={handleAandoeningChange}
                             />
 
                             <label htmlFor="ErvaringFields">beschikbaarheid:</label>

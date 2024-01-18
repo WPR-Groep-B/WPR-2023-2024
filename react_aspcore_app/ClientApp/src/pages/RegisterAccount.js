@@ -33,43 +33,33 @@ function RegisterAccount() {
     } else if (password !== confirmPassword) {
       alert("Wachtwoorden komen niet overeen");
     } else {
-      console.log({
-        voornaam: localStorage.getItem('naam'),
-        Achternaam: localStorage.getItem('anaam'),
-        geboortedatum: localStorage.getItem('age'),
-        beperkingsType: localStorage.getItem('beperking'),
-        aandoening: localStorage.getItem('Aandoening'),
-        beschikbaarheid: localStorage.getItem('beschikbaarheid'),
-        hulpmiddelen: localStorage.getItem('hulpmiddelen'),
-        postcode: localStorage.getItem('Postcode'),
-        telefoon: localStorage.getItem('telefoon'),
-        bedrijfsNaam: localStorage.getItem('bedrijf'),
-        locatie: localStorage.getItem('locatie'),
-        contactinfomatie: localStorage.getItem('contactinformatie'),
-        Email: email,
-        Password: password
-      })
-      Axios.post('https://localhost:7251/api/User', {
+
+      const payload = {
         Voornaam: localStorage.getItem('naam'),
         Achternaam: localStorage.getItem('anaam'),
         Geboortedatum: localStorage.getItem('age'),
-        beperkingsType: localStorage.getItem('beperking'),
-        aandoening: localStorage.getItem('Aandoening'),
-        beschikbaarheid: localStorage.getItem('beschikbaarheid'),
-        hulpmiddelen: localStorage.getItem('hulpmiddelen'),
-        postcode: localStorage.getItem('Postcode'),
-        telefoon: localStorage.getItem('telefoon'),
-        bedrijfsNaam: localStorage.getItem('bedrijf'),
-        locatie: localStorage.getItem('locatie'),
-        contactinfomatie: localStorage.getItem('contactinformatie'),
+        AccountType: localStorage.getItem('accountType'),
+        BeperkingsType: localStorage.getItem('beperking'),
+        Aandoening: localStorage.getItem('aandoening'),
+        Beschikbaarheid: localStorage.getItem('beschikbaarheid'),
+        Hulpmiddelen: localStorage.getItem('hulpmiddelen'),
+        Postcode: localStorage.getItem('postcode'),
+        Telefoonnummer: localStorage.getItem('telefoon'),
         BedrijfsNaam: localStorage.getItem('bedrijf'),
         Locatie: localStorage.getItem('locatie'),
-        Contactinformatie: localStorage.getItem('contactinformatie'),
+        ContactInformatie: localStorage.getItem('contactinformatie'),
         Email: email,
         Wachtwoord: password
-      }).then((response) => {
+      };
+      console.log(payload);
+      Axios.post('/api/User', payload, { headers: { 'Content-Type': 'application/json' } })
+      .then((response) => {
         console.log(response);
-        if (response.status === 200) {
+        if (response.status === 201) {
+          
+          localStorage.setItem('jwt', response.data.token);
+          localStorage.clear();
+          console.log(response.data.token);
           alert("Account succesvol aangemaakt!");
           goToHome();
         } else {

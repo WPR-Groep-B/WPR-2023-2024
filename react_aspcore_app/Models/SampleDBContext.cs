@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using static gebruiker;
 
 
     public class SampleDBContext : DbContext

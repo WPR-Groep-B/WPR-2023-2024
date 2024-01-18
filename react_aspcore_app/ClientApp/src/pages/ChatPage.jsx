@@ -3,7 +3,6 @@ import Message from "../components/Chat/Messager";
 import styles from "../styles/Chat.module.css";
 import { HubConnectionBuilder, LogLevel, HttpTransportType } from "@microsoft/signalr";
 import { useState } from "react";
-//import { NavLink } from "react-router-dom";
 import { jwtDecode } from 'jwt-decode';
 
 function ChatPage() {

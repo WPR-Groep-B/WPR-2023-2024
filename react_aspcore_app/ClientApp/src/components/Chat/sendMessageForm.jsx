@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import styles from '../../styles/Chat.module.css';
+import sendIcon from '../../images/send_icon.png';
+
 
 function SendMessageForm({ sendMessage }) {
 
@@ -18,7 +21,9 @@ function SendMessageForm({ sendMessage }) {
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
             />
-            <button type="submit" disabled={!message}>Send</button>
+            <button className={styles.sendButton} type="submit" disabled={!message}>
+                <img className={styles.send} src={sendIcon}></img>
+            </button>
         </form>
     )
 }

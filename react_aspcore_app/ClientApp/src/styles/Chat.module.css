@@ -1,7 +1,6 @@
 .container {
-    text-align: center;
-    color: #1A2E83;
-    background-color: white;
+    color: white;
+    background-color: #111e55;
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 2rem;
@@ -11,22 +10,22 @@
 .button {
     position: relative;
     overflow: hidden;
-    background-color: #111e55;
-    color: white;
+    background-color: #1fc396;
+    color: #111e55;
     padding: 16px;
     cursor: pointer;
-    width: 40%;
+    width: 30%;
     margin: auto;
-    font-weight: 600;
+    opacity: 0.8;
+    font-weight: 800;
     font-size: large;
     border-radius: 25px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .button:hover {
-    background-color: #16297e;
+    background-color: #26ecb7;
     transform: scale(1.01);
-    text-decoration: underline;
 }
 
 .button::before {
@@ -56,4 +55,73 @@
     align-items: center;
     padding-top: 40px;
     padding-bottom: 15px;
+}
+
+.sendButton {
+    position: relative;
+    overflow: hidden;
+    background-color: #26ecb7;
+    color: #111e55;
+    padding: 12px;
+    cursor: pointer;
+    width: 5%;
+    margin-left: 1%;
+    opacity: 0.8;
+    font-weight: 800;
+    font-size: large;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sendButton:hover {
+    background-color: #26ecb7;
+    transform: scale(1.05);
+}
+
+.sendButton::before {
+    content: '';
+    position: absolute;
+    background-color: #26ecb7;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sendButton:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.sendButton:hover::after {
+    opacity: 0;
+}
+
+.messageContainer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.currentUserMessage {
+    justify-content: flex-end;
+}
+
+.messageForm {
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type=text] {
+    width: 94%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #1fc396;
+    border-radius: 4px;
+    background-color: whitesmoke;
+}
+
+.send {
+    height: 30px;
+    margin-left: 2px;
 }

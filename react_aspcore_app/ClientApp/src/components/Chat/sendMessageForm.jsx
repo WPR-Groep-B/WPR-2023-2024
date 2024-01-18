@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from '../../styles/Chat.module.css';
 import sendIcon from '../../images/send_icon.png';
 

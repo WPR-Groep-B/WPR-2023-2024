@@ -96,7 +96,6 @@ function ChatPage() {
                         ? <Chat joinRoom={joinRoom} />
                         : <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
             }
-            <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
         </div>
     )
 }

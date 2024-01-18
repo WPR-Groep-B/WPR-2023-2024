@@ -1,6 +1,5 @@
 import MessageContainer from "./messageContainer"
 import SendMessageForm from "./sendMessageForm"
-import styles from '../../styles/Chat.module.css';
 
 function Chat({ messages, sendMessage, closeConnection }) {
     return (<>

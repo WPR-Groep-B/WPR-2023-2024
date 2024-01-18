@@ -7,9 +7,13 @@ import RegisterStart from "../pages/RegisterStart"
 import RegisterInfo from "../pages/RegisterInfo"
 import RegisterAccount from "../pages/RegisterAccount"
 import AboutUs from "../pages/AboutUs"
+
+// import OnderzoekAanmaken from "../pages/OnderzoekAanmaken"
+import ResearchOverview from "../pages/ResearchOverview"
 import ChatPage from "../pages/ChatPage"
 // import OnderzoekAanmaken from "../pages/OnderzoekAanmaken"
 // import Account from "../pages/Account"
+
 
 function Pages() {
     return (
@@ -18,10 +22,12 @@ function Pages() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/onderzoekaanmaken" element={<OnderzoekAanmaken />} /> */}
+        <Route path="/onderzoeken" element={<ResearchOverview />} />
         <Route path="/register-start" element={<RegisterStart />} />
         <Route path="/register-info" element={<RegisterInfo />} />
         <Route path="/register-account" element={<RegisterAccount />} />
-            <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/chatpage" element={<ChatPage />} />
         {/*<Route path="/onderzoek-aanmaken" element={<OnderzoekAanmaken />} />
         <Route path="/mijn-account" element={<Account />} /> */}

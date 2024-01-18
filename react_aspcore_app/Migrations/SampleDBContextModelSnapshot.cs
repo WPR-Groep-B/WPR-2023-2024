@@ -21,32 +21,43 @@ namespace react_aspcore_app.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Customer", b =>
+            modelBuilder.Entity("beperking", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("beperkingId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("beperkingId"));
 
-                    b.Property<string>("Email")
+                    b.Property<string>("beperkingType")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
+                    b.HasKey("beperkingId");
+
+                    b.ToTable("beperkingen", (string)null);
+                });
+
+            modelBuilder.Entity("deelname", b =>
+                {
+                    b.Property<int>("GebruikerDeskundigeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OnderzoekId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("deelnameDatum")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("deelnameFeedback")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.HasKey("GebruikerDeskundigeId");
 
-                    b.HasKey("CustomerId");
+                    b.HasIndex("OnderzoekId");
 
-                    b.ToTable("Customers");
+                    b.ToTable("deelname", (string)null);
                 });
 
             modelBuilder.Entity("Message", b =>
@@ -101,10 +112,15 @@ namespace react_aspcore_app.Migrations
                     b.Property<string>("googleId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("rolId")
+                        .HasColumnType("int");
+
                     b.Property<string>("wachtwoord")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GebruikerId");
+
+                    b.HasIndex("rolId");
 
                     b.ToTable("gebruikers", (string)null);
 
@@ -122,9 +138,6 @@ namespace react_aspcore_app.Migrations
                     b.Property<int>("GebruikerBedrijfId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GebruikerDeskundigeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("GoedgekeurdDoorId")
                         .HasColumnType("int");
 
@@ -135,22 +148,53 @@ namespace react_aspcore_app.Migrations
                     b.Property<DateTime>("onderzoekEindDatum")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("onderzoekForm")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("onderzoekLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("onderzoekNaam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("onderzoekSoort")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("onderzoekStartDatum")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("onderzoekStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("onderzoekId");
 
                     b.HasIndex("GebruikerBedrijfId");
 
-                    b.HasIndex("GebruikerDeskundigeId");
-
                     b.HasIndex("GoedgekeurdDoorId");
 
-                    b.ToTable("onderzoeken");
+                    b.ToTable("onderzoek", (string)null);
+                });
+
+            modelBuilder.Entity("rol", b =>
+                {
+                    b.Property<int>("rolId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rolId"));
+
+                    b.Property<string>("rolNaam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("rolId");
+
+                    b.ToTable("rollen", (string)null);
                 });
 
             modelBuilder.Entity("gebruikerBedrijf", b =>
@@ -158,6 +202,14 @@ namespace react_aspcore_app.Migrations
                     b.HasBaseType("gebruiker");
 
                     b.Property<string>("bedrijfsnaam")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("contactInformatie")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("locatie")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -179,13 +231,37 @@ namespace react_aspcore_app.Migrations
                 {
                     b.HasBaseType("gebruiker");
 
-                    b.Property<string>("beperking")
+                    b.Property<string>("aandoening")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("beperkingId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("beschikbaarheid")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("hulpmiddelen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("postcode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("telefoonnummer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("voorkeur")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("beperkingId");
+
                     b.ToTable("gebruikerDeskundigen", (string)null);
                 });
-
             modelBuilder.Entity("Message", b =>
                 {
                     b.HasOne("gebruiker", "gebruiker")
@@ -196,30 +272,51 @@ namespace react_aspcore_app.Migrations
 
                     b.Navigation("gebruiker");
                 });
+            modelBuilder.Entity("deelname", b =>
+                {
+                    b.HasOne("gebruikerDeskundige", "gebruikerDeskundige")
+                        .WithMany()
+                        .HasForeignKey("GebruikerDeskundigeId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("onderzoek", "onderzoek")
+                        .WithMany()
+                        .HasForeignKey("OnderzoekId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("gebruikerDeskundige");
+
+                    b.Navigation("onderzoek");
+                });
+
+            modelBuilder.Entity("gebruiker", b =>
+                {
+                    b.HasOne("rol", "Rol")
+                        .WithMany()
+                        .HasForeignKey("rolId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Rol");
+                });
 
             modelBuilder.Entity("onderzoek", b =>
                 {
                     b.HasOne("gebruikerBedrijf", "gebruikerBedrijf")
                         .WithMany()
                         .HasForeignKey("GebruikerBedrijfId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("gebruikerDeskundige", "gebruikerDeskundige")
-                        .WithMany()
-                        .HasForeignKey("GebruikerDeskundigeId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("gebruikerBeheerder", "goedgekeurdDoor")
                         .WithMany()
                         .HasForeignKey("GoedgekeurdDoorId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("gebruikerBedrijf");
-
-                    b.Navigation("gebruikerDeskundige");
 
                     b.Navigation("goedgekeurdDoor");
                 });
@@ -249,6 +346,14 @@ namespace react_aspcore_app.Migrations
                         .HasForeignKey("gebruikerDeskundige", "GebruikerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("beperking", "beperking")
+                        .WithMany()
+                        .HasForeignKey("beperkingId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("beperking");
                 });
 #pragma warning restore 612, 618
         }

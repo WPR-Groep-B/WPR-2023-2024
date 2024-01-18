@@ -1,6 +1,6 @@
 .container {
-    color: white;
-    background-color: #111e55;
+    color: #1A2E83;
+    background-color: white;
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 2rem;
@@ -10,13 +10,12 @@
 .button {
     position: relative;
     overflow: hidden;
-    background-color: #1fc396;
-    color: #111e55;
+    background-color: #111e55;
+    color: white;
     padding: 16px;
     cursor: pointer;
     width: 30%;
     margin: auto;
-    opacity: 0.8;
     font-weight: 800;
     font-size: large;
     border-radius: 25px;
@@ -24,14 +23,14 @@
 }
 
 .button:hover {
-    background-color: #26ecb7;
+    background-color: #1A2E83;
     transform: scale(1.01);
 }
 
 .button::before {
     content: '';
     position: absolute;
-    background-color: #26ecb7;
+    background-color: #1A2E83;
     border-radius: 50%;
     opacity: 0;
     transform: scale(0);
@@ -60,14 +59,13 @@
 .sendButton {
     position: relative;
     overflow: hidden;
-    background-color: #26ecb7;
+    background-color: #111e55;
     color: #111e55;
     padding: 12px;
     cursor: pointer;
     width: 5%;
     height: 100%;
     margin-top: 5px;
-    opacity: 0.8;
     font-weight: 800;
     font-size: large;
     border-radius: 50px;
@@ -75,14 +73,14 @@
 }
 
 .sendButton:hover {
-    background-color: #26ecb7;
+    background-color: #1A2E83;
     transform: scale(1.05);
 }
 
 .sendButton::before {
     content: '';
     position: absolute;
-    background-color: #26ecb7;
+    background-color: #1A2E83;
     border-radius: 50%;
     opacity: 0;
     transform: scale(0);
@@ -101,28 +99,27 @@
 .closeButton {
     position: relative;
     overflow: hidden;
-    background-color: #26ecb7;
-    color: #111e55;
+    background-color: #111e55;
+    color: white;
     padding: 12px;
     cursor: pointer;
     width: 100%;
     height: 75%;
-    opacity: 0.8;
-    font-weight: 800;
+    font-weight: 700;
     font-size: large;
     border-radius: 50px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .closeButton:hover {
-    background-color: #26ecb7;
-    transform: scale(1.05);
+    background-color: #1A2E83;
+    transform: scale(1.03);
 }
 
 .closeButton::before {
     content: '';
     position: absolute;
-    background-color: #26ecb7;
+    background-color: #1A2E83;
     border-radius: 50%;
     opacity: 0;
     transform: scale(0);
@@ -162,10 +159,20 @@
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
-  border: 2px solid #1fc396;
-  background: whitesmoke;
+  border: 2px solid #1A2E83;
+  background-color: #cacaca;
   border-radius: 8px;
   transition: background-color 0.2s ease;
+}
+
+input[type='text']:focus {
+  background-color: #a5a5a5d9;
+  outline: none;
+}
+
+input[type='text']:hover {
+  background-color: #a5a5a5d9;
+  outline: none;
 }
 
 form {

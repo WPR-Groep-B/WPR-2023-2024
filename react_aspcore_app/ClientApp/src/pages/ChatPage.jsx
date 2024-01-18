@@ -11,9 +11,6 @@ function ChatPage() {
     const [connection, setConnection] = useState();
     const [messages, setMessages] = useState([]);
     
-    const user = jwtDecode(jwt);
-    const UserName = user.voornaam + " " + user.achternaam;
-
     const jwt = localStorage.getItem('jwt');
 
     const joinRoom = async (Room) => {

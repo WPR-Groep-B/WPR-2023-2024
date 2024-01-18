@@ -15,13 +15,26 @@ public class LoginModel
 
 public class RegisterModel
 {
+    //Eigenschappen voor Elke gebruiker
     public required string Email { get; set; }
     public required string Wachtwoord { get; set; }
     public required string Voornaam { get; set; }
     public required string Achternaam { get; set; }
-
+    public DateOnly geboortedatum { get; set; }
+    
+    //Eigenschappen voor gebruikerBedrijf
     public string? BedrijfsNaam { get; set; }
-    public string? Beperking { get; set; }
+    public string? Locatie { get; set; }
+    public string? ContactInformatie { get; set; }
+    //Eigenschappen voor gebruikerDeskundige
+    public string? Postcode { get; set; }
+    public string? Telefoonnummer { get; set; }
+    public string? BeperkingsType { get; set; }
+    public string? Aandoening { get; set; }
+    public string? Beschikbaarheid { get; set; }
+    public string? Voorkeur { get; set; }
+    public string? Hulpmiddelen { get; set; }
+    //Eigenschappen voor gebruikerBeheerder
     public string? Functie { get; set; }
 }
 public class GoogleLoginModel
@@ -162,18 +175,21 @@ public class UserController : ControllerBase
         {
             gebruiker = new gebruikerBedrijf
             {
-                bedrijfsnaam = nieuwGebruiker.BedrijfsNaam
+                bedrijfsnaam = nieuwGebruiker.BedrijfsNaam, locatie = nieuwGebruiker.Locatie, contactInformatie = nieuwGebruiker.ContactInformatie
             };
         }
-        else if (nieuwGebruiker.Beperking != null)
+        else if (nieuwGebruiker.Aandoening != null)
         {
-gebruiker = new gebruikerDeskundige
-{
-    beperking = new beperking
-    {
-        beperkingType = nieuwGebruiker.Beperking
-    }
-};
+        gebruiker = new gebruikerDeskundige
+        {
+            postcode = nieuwGebruiker.Postcode,
+            telefoonnummer = nieuwGebruiker.Telefoonnummer,
+            aandoening = nieuwGebruiker.Aandoening,
+            beperkingId = _context.beperkingen.First(b => b.beperkingType == nieuwGebruiker.BeperkingsType).beperkingId,
+            beschikbaarheid = nieuwGebruiker.Beschikbaarheid,
+            voorkeur = nieuwGebruiker.Voorkeur,
+            hulpmiddelen = nieuwGebruiker.Hulpmiddelen
+        };
 
         }
         else if (nieuwGebruiker.Functie != null)

@@ -15,6 +15,7 @@ using static gebruiker;
         public DbSet<gebruikerBeheerder> gebruikerBeheerders { get; set; }
         public DbSet<onderzoek> onderzoeken { get; set; }
         public DbSet<deelname> deelnames { get; set; }
+        public DbSet<beperking> beperkingen { get; set; }
         public DbSet<rol> rollen { get; set; }
         public DbSet<Message> Messages { get; set; }
 

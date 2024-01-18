@@ -43,7 +43,7 @@ async function updateData(id, updatedOnderzoek) {
         throw new Error(`Failed to update the research: ${errorBody}`);
     }
 
-    return await response.json();
+    // return await response.json();
 }
 
 function OnderzoekEdit({ onderzoek, onSave, onCancel }) {

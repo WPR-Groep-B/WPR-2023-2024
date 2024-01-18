@@ -1,7 +1,11 @@
+import React, { useEffect } from 'react';
 import styles from '../styles/Home.module.css';
 import wheelchair from '../images/Computer-User-Wheelchair-2.jpeg';
 
 function Home() {
+    useEffect(() => {
+        document.title = 'Home - Stichting Accessibility';
+    }, []);
     return (
         <div className={styles.homeContainer}>
             <div className={styles.heroSection}>
@@ -11,21 +15,50 @@ function Home() {
                         Samen met onze partners en klanten werken we aan een inclusieve samenleving die toegankelijk is voor iedereen.
                     </h1>
                     <h2>
-                        <a href="./aboutus"> Meer over Accessibility &gt;</a>
+                        <a href="./about-us"> Meer over Accessibility &gt;</a>
                     </h2>
                 </div>
             </div>
-            <div className={styles.onderrzoekContainer}>
-                {/* Your 'Onderzoek' sections would go here */}
-                <p>
-                    Onderzoek
-                </p>
-                <p>
-                    Titel van Onderzoek
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostr
-                </p>
+
+            <div className={styles.contforond}>
+                {
+                    localStorage.getItem("jwt") == null ? (
+                        <button alt="Login voor weergave onderzoeken" className={styles.button} onClick={() => { window.location.href = "/login"; }}>
+                            Log hier in om je onderzoeken te zien
+                        </button>
+                    ) : (
+                        <> {/*Dit zijn placeholderonderzoeken, de implementatie hiervan moet nog toegepast worden*/}
+                            <div className={styles.onderzoeken}>
+                                <div className={styles.onderrzoekContainer}>
+                                    <p>Hier komen alle onderzoeken te staan</p>
+                                </div>
+
+                                <div className={styles.onderrzoekContainer}>
+                                    <p>Het kunnen oneindig veel containers worden met allemaal andere soorten onderzoeken</p>
+                                </div>
+
+                                <div className={styles.onderrzoekContainer}>
+                                    <p>Ze kunnen verschillende teksten en formatting hebben, maar het kunnen ook verschillende onderzoeken zijn, zoals een enquête of om en afspraak te maken</p>
+                                </div>
+
+                                <div className={styles.onderrzoekContainer}>
+                                    <p>Hieronder heb je een voorbeeld van een onderzoek:</p>
+                                </div>
+
+                                <div className={styles.onderrzoekContainer}>
+                                    <p>
+                                        Test Onderzoek
+                                        <hr></hr>
+                                        Locatie: nog te bepalen <br></br>
+                                        Datum: 21 januari 2024 <br></br>
+                                        Tijdstip: 23:59 <br></br>
+                                        <hr></hr>
+                                        Inhoud: Kijken of deze website af is
+                                    </p>
+                                </div>
+                            </div>
+                        </>
+                    )}
             </div>
         </div>
     );

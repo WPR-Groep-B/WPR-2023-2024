@@ -1,5 +1,6 @@
 // import { useQuery } from "@tanstack/react-query"
 
+
 // async function getData(){
 //     const data = await fetch('https://localhost:7251/api/research/', {mode: "cors", headers: {
 //       "Access-Control-Allow-Origin": "*"
@@ -37,3 +38,4 @@
 //     function OnderzoekDetails({onderzoek}) {
 //       return <div><button type="button">Edit</button><div>{onderzoek.onderzoekNaam}</div></div>
 //     }
+

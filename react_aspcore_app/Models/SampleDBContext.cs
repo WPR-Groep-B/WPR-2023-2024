@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
         public DbSet<onderzoek> onderzoeken { get; set; }
         public DbSet<deelname> deelnames { get; set; }
         public DbSet<rol> rollen { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -67,6 +68,18 @@ using Microsoft.EntityFrameworkCore;
                 .WithMany()
                 .HasForeignKey(o => o.GoedgekeurdDoorId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.gebruiker)
+                .WithMany()
+                .HasForeignKey(m => m.GebruikerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+                modelBuilder.Entity<gebruiker>()
+        .ToTable("gebruikers");
+
+            modelBuilder.Entity<gebruikerBedrijf>()
+                .ToTable("gebruikerBedrijven");
 
             modelBuilder.Entity<deelname>()
                 .HasOne(o => o.gebruikerDeskundige)

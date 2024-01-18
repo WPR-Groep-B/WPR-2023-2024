@@ -167,10 +167,14 @@ public class UserController : ControllerBase
         }
         else if (nieuwGebruiker.Beperking != null)
         {
-            gebruiker = new gebruikerDeskundige
-            {
-                beperking = nieuwGebruiker.Beperking
-            };
+gebruiker = new gebruikerDeskundige
+{
+    beperking = new beperking
+    {
+        beperkingType = nieuwGebruiker.Beperking
+    }
+};
+
         }
         else if (nieuwGebruiker.Functie != null)
         {

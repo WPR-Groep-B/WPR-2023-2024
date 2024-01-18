@@ -3,7 +3,7 @@ import Message from "../components/Chat/Messager";
 import styles from "../styles/Chat.module.css";
 import { HubConnectionBuilder, LogLevel, HttpTransportType } from "@microsoft/signalr";
 import { useState } from "react";
-//import { NavLink } from "react-router-dom";
+import React, { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 
 function ChatPage() {
@@ -74,6 +74,10 @@ function ChatPage() {
             console.log(error);
         }
     }
+
+    useEffect(() => {
+        document.title = 'Chat - Stichting Accessibility';
+      }, []);
 
 
     return (

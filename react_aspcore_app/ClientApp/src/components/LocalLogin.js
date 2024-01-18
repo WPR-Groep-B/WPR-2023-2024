@@ -19,7 +19,7 @@ function Login() {
         if (email === "" || wachtwoord === "") {
             alert("Vul alle velden in!" + email + wachtwoord);
         }
-      
+      //https://localhost:7251/api/user/login
         axios.post('/api/user/login', {
             email: email,
             wachtwoord: wachtwoord

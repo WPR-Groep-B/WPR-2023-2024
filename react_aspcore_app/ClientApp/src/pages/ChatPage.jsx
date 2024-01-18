@@ -3,13 +3,14 @@ import Message from "../components/Chat/Messager";
 import styles from "../styles/Chat.module.css";
 import { HubConnectionBuilder, LogLevel, HttpTransportType } from "@microsoft/signalr";
 import { useState } from "react";
+import React, { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 
 function ChatPage() {
 
     const [connection, setConnection] = useState();
     const [messages, setMessages] = useState([]);
-
+    
     const jwt = localStorage.getItem('jwt');
 
     const joinRoom = async (Room) => {
@@ -46,6 +47,7 @@ function ChatPage() {
 
 
             await connection.start();
+            setConnection(connection);
             await connection.invoke("getHistory", Room);
             await connection.invoke("joinroom", { UserId, UserName, Room });
             setConnection(connection);
@@ -74,6 +76,10 @@ function ChatPage() {
         }
     }
 
+    useEffect(() => {
+        document.title = 'Chat - Stichting Accessibility';
+      }, []);
+
 
     return (
         <div className={styles.container}>
@@ -91,7 +97,6 @@ function ChatPage() {
                         ? <Chat joinRoom={joinRoom} />
                         : <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
             }
-            <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
         </div>
     )
 }

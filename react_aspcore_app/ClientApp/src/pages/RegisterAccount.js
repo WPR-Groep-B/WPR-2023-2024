@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Register.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Axios from 'axios';
 
 function RegisterAccount() {
   const navigate = useNavigate();
@@ -32,8 +33,49 @@ function RegisterAccount() {
     } else if (password !== confirmPassword) {
       alert("Wachtwoorden komen niet overeen");
     } else {
-      alert("Account succesvol aangemaakt!");
-      goToHome();
+      console.log({
+        voornaam: localStorage.getItem('naam'),
+        Achternaam: localStorage.getItem('anaam'),
+        geboortedatum: localStorage.getItem('age'),
+        beperkingsType: localStorage.getItem('beperking'),
+        aandoening: localStorage.getItem('Aandoening'),
+        beschikbaarheid: localStorage.getItem('beschikbaarheid'),
+        hulpmiddelen: localStorage.getItem('hulpmiddelen'),
+        postcode: localStorage.getItem('Postcode'),
+        telefoon: localStorage.getItem('telefoon'),
+        bedrijfsNaam: localStorage.getItem('bedrijf'),
+        locatie: localStorage.getItem('locatie'),
+        contactinfomatie: localStorage.getItem('contactinformatie'),
+        Email: email,
+        Password: password
+      })
+      Axios.post('https://localhost:7251/api/User', {
+        Voornaam: localStorage.getItem('naam'),
+        Achternaam: localStorage.getItem('anaam'),
+        Geboortedatum: localStorage.getItem('age'),
+        beperkingsType: localStorage.getItem('beperking'),
+        aandoening: localStorage.getItem('Aandoening'),
+        beschikbaarheid: localStorage.getItem('beschikbaarheid'),
+        hulpmiddelen: localStorage.getItem('hulpmiddelen'),
+        postcode: localStorage.getItem('Postcode'),
+        telefoon: localStorage.getItem('telefoon'),
+        bedrijfsNaam: localStorage.getItem('bedrijf'),
+        locatie: localStorage.getItem('locatie'),
+        contactinfomatie: localStorage.getItem('contactinformatie'),
+        BedrijfsNaam: localStorage.getItem('bedrijf'),
+        Locatie: localStorage.getItem('locatie'),
+        Contactinformatie: localStorage.getItem('contactinformatie'),
+        Email: email,
+        Wachtwoord: password
+      }).then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          alert("Account succesvol aangemaakt!");
+          goToHome();
+        } else {
+          alert("Er is iets fout gegaan!");
+        }
+      })
     }
   };
 

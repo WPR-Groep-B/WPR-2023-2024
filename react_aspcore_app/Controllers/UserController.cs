@@ -20,7 +20,7 @@ public class RegisterModel
     public required string Wachtwoord { get; set; }
     public required string Voornaam { get; set; }
     public required string Achternaam { get; set; }
-    public DateOnly geboortedatum { get; set; }
+    public DateOnly Geboortedatum { get; set; }
     
     //Eigenschappen voor gebruikerBedrijf
     public string? BedrijfsNaam { get; set; }
@@ -164,9 +164,69 @@ public class UserController : ControllerBase
     [HttpPost]
     public IActionResult Post([FromBody] RegisterModel nieuwGebruiker)
     {
-        if (nieuwGebruiker == null || nieuwGebruiker.Wachtwoord == null)
+        if (nieuwGebruiker == null)
         {
-            return BadRequest();
+            return BadRequest("Empty user data.");
+        }
+        if (_context.gebruikers.FirstOrDefault(g => g.email == nieuwGebruiker.Email) != null)
+        {
+            return BadRequest("Email already exists.");
+        }
+        if (nieuwGebruiker.Wachtwoord == null)
+        {
+            return BadRequest("Password is required.");
+        }
+        if (nieuwGebruiker.Voornaam == null)
+        {
+            return BadRequest("First name is required.");
+        }
+        if (nieuwGebruiker.Achternaam == null)
+        {
+            return BadRequest("Last name is required.");
+        }
+        if (nieuwGebruiker.Email == null)
+        {
+            return BadRequest("Email is required.");
+        }
+        if (nieuwGebruiker.BedrijfsNaam == null && nieuwGebruiker.Aandoening == null && nieuwGebruiker.Functie == null)
+        {
+            return BadRequest("Account type is required.");
+        }
+        if (nieuwGebruiker.BedrijfsNaam != null && nieuwGebruiker.Locatie == null)
+        {
+            return BadRequest("Location is required.");
+        }
+        if (nieuwGebruiker.BedrijfsNaam != null && nieuwGebruiker.ContactInformatie == null)
+        {
+            return BadRequest("Contact information is required.");
+        }
+        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Postcode == null)
+        {
+            return BadRequest("Postal code is required.");
+        }
+        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Telefoonnummer == null)
+        {
+            return BadRequest("Phone number is required.");
+        }
+        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.BeperkingsType == null)
+        {
+            return BadRequest("Disability type is required.");
+        }
+        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Beschikbaarheid == null)
+        {
+            return BadRequest("Availability is required.");
+        }
+        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Voorkeur == null)
+        {
+            return BadRequest("Preference is required.");
+        }
+        if (nieuwGebruiker.Aandoening != null && nieuwGebruiker.Hulpmiddelen == null)
+        {
+            return BadRequest("Aids is required.");
+        }
+        if (nieuwGebruiker.Functie != null && nieuwGebruiker.Functie == null)
+        {
+            return BadRequest("Function is required.");
         }
 
         gebruiker gebruiker;

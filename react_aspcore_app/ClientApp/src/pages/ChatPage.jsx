@@ -3,7 +3,6 @@ import Message from "../components/Chat/Messager";
 import styles from "../styles/Chat.module.css";
 import { HubConnectionBuilder, LogLevel, HttpTransportType } from "@microsoft/signalr";
 import { useState } from "react";
-//import { NavLink } from "react-router-dom";
 import { jwtDecode } from 'jwt-decode';
 
 function ChatPage() {
@@ -78,7 +77,7 @@ function ChatPage() {
 
     return (
         <div className={styles.container}>
-            <h2>ChatPagina</h2>
+            <h1>ChatPagina</h1>
             <hr />
             {
                 !localStorage.getItem('jwt')
@@ -92,6 +91,7 @@ function ChatPage() {
                         ? <Chat joinRoom={joinRoom} />
                         : <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
             }
+            <Message messages={messages} sendMessage={sendMessage} closeConnection={closeConnection} />
         </div>
     )
 }

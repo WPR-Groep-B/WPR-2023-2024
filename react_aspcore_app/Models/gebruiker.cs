@@ -12,7 +12,7 @@ public class gebruiker
 
     public string email { get; set; }
 
-    public DateTime geboortedatum { get; set; }
+    public DateTime? geboortedatum { get; set; }
 
     public string? wachtwoord { get; set; }
     public string? googleId { get; set; }

@@ -13,10 +13,10 @@ public class gebruiker
     public string email { get; set; }
 
     public string? wachtwoord { get; set; }
-    public int? googleId { get; set; }
+    public string? googleId { get; set; }
     public rol Rol { get; set; }
     public int rolId { get; set; }
-
+}
 public class gebruikerBedrijf : gebruiker
 {
 

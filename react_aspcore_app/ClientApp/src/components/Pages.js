@@ -12,7 +12,7 @@ import AboutUs from "../pages/AboutUs"
 import ResearchOverview from "../pages/ResearchOverview"
 import ChatPage from "../pages/ChatPage"
 // import OnderzoekAanmaken from "../pages/OnderzoekAanmaken"
-// import Account from "../pages/Account"
+import Account from "../pages/Account"
 
 
 function Pages() {
@@ -29,8 +29,8 @@ function Pages() {
         <Route path="/register-account" element={<RegisterAccount />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/chatpage" element={<ChatPage />} />
-        {/*<Route path="/onderzoek-aanmaken" element={<OnderzoekAanmaken />} />
-        <Route path="/mijn-account" element={<Account />} /> */}
+        {/*<Route path="/onderzoek-aanmaken" element={<OnderzoekAanmaken />} /> */}
+        <Route path="/Account" element={<Account />} />
         </Routes>
   );
 }

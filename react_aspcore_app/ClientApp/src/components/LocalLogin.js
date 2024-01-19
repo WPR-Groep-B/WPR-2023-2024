@@ -15,12 +15,13 @@ function Login() {
         document.title ="Login - Stichting Accessibility"
     }, []);
 
-    function HandleLogin() {
+    function HandleLogin(e) {
+        e.preventDefault();
         if (email === "" || wachtwoord === "") {
             alert("Vul alle velden in!" + email + wachtwoord);
         }
       //https://localhost:7251/api/user/login
-        axios.post('/api/user/login', {
+        axios.post('https://localhost:7251/api/user/login', {
             email: email,
             wachtwoord: wachtwoord
         }).then((response) => {
@@ -32,7 +33,7 @@ function Login() {
                 goToLogInPage();
             }
             else {
-                alert("Er is iets fout gegaan!");
+                alert("Er is iets fout gegaan!" + response.status);
             }
         })
     }
@@ -41,7 +42,7 @@ function Login() {
             <div className={styles.body}>
                 <div className={styles.container}>
                     <h1>Login</h1>
-                    <div className={styles.form}>
+                    <form className={styles.form}>
                         <hr></hr>
                         <label className={styles.label} htmlFor="email">Email:</label>
                         <input
@@ -68,8 +69,8 @@ function Login() {
                         />
 
                         <hr></hr>
-                        <button className={styles.button} type="submit" onClick={HandleLogin}>Login</button>
-                    </div>
+                        <button className={styles.button} type="submit" onClick={(e) => HandleLogin(e)}>Login</button>
+                    </form>
                 </div>
             </div>
             <div className={styles.linkcontainer}>

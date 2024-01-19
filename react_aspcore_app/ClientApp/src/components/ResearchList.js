@@ -43,8 +43,11 @@ async function updateData(id, updatedOnderzoek) {
     if (!response.ok) {
         const errorBody = await response.text();
         console.error('Failed to update the research:', errorBody);
+        alert('Onderzoek is niet succesvol aangepast! Probeer opnieuw of neem anders contact op met de beheerder.');
         throw new Error(`Failed to update the research: ${errorBody}`);
     }
+
+    alert('Onderzoek is succesvol aangepast!');
 
     //return await response.json();
 }
@@ -67,9 +70,11 @@ async function createData(newOnderzoek) {
 
     if (!response.ok) {
         const errorBody = await response.text();
+        alert('Onderzoek is niet succesvol aangemaakt! Probeer opnieuw of neem anders contact op met de beheerder.');
         throw new Error(`Failed to create the research: ${errorBody}`);
     }
 
+    alert('Onderzoek is succesvol aangemaakt!');
     return await response.json();
 }
 // tot hier

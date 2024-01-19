@@ -96,6 +96,7 @@ function RegisterBeperking() {
                             <select
                                 className={styles.select}
                                 id="TypeBeperkingen"
+                                value={beperking}
                                 onChange={handleBeperkingChange}
                             >
                                 <option value="">Kies een optie</option>
@@ -151,7 +152,11 @@ function RegisterBeperking() {
                     <hr></hr>
 
                     {/* Use Link component to navigate to RegisterInfo */}
-                    <button className={styles.registerbtn} type="submit">Volgende</button>
+                    <button
+                        className={styles.registerbtn}
+                        type="submit"
+                        disabled={beperking === "" || aandoening === "" || beschikbaarheid === "" || hulpmiddelen === ""}
+                        >Volgende</button>
                 </form>
             </div >
         </div >

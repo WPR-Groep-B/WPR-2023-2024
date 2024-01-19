@@ -10,6 +10,7 @@ export default function ResearchOverview() {
         <div className={styles.container}>
             <div>
                 <h1>Onderzoek beheer</h1>
+                <hr></hr>
                 <p>Hierond staat een lijstweergave van de onderzoeken. <br></br>Onderzoeken kunnen worden bewerkt of verwijderd. <br></br>En nieuwe onderzoeken kunnen worden geplaatst.</p>
             </div>
             {

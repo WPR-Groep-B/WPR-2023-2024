@@ -16,7 +16,7 @@ function WachtWoordChanger({ setCurrentWindow, ChangePassword }) {
         }
 
         ChangePassword(oldPassword, newPassword);
-
+        alert("Wachtwoord succesvol veranderd!");
         setCurrentWindow("AccountInfo");
     }
 
@@ -41,12 +41,11 @@ function WachtWoordChanger({ setCurrentWindow, ChangePassword }) {
                             <label className={styles.label}>Herhaal nieuw wachtwoord</label>
                             <input className={styles.input} type="password" name="repeatnewpassword" value={repeatNewPassword} onChange={e => setRepeatNewPassword(e.target.value)} />
                         </div>
-                        <div>
-                            <button className={styles.button}
-                                onClick={(e) => HandlePasswordChange(e)}
-                                disabled={oldPassword === "" || newPassword === "" || repeatNewPassword === ""}
-                            >Wachtwoord veranderen</button>
-                        </div>
+
+                        <button className={styles.confirmButton}
+                            onClick={(e) => HandlePasswordChange(e)}
+                            disabled={oldPassword === "" || newPassword === "" || repeatNewPassword === ""}
+                        >Wachtwoord veranderen</button>
                     </form>
 
                     <hr />

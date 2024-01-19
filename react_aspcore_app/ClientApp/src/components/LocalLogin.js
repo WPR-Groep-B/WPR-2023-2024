@@ -12,7 +12,7 @@ function Login() {
     };
 
     useEffect(() => {
-        document.title ="Login - Stichting Accessibility"
+        document.title = "Login - Stichting Accessibility"
     }, []);
 
     function HandleLogin(e) {
@@ -20,7 +20,7 @@ function Login() {
         if (email === "" || wachtwoord === "") {
             alert("Vul alle velden in!" + email + wachtwoord);
         }
-      //https://localhost:7251/api/user/login
+        //https://localhost:7251/api/user/login
         axios.post('/api/user/login', {
             email: email,
             wachtwoord: wachtwoord
@@ -69,7 +69,12 @@ function Login() {
                         />
 
                         <hr></hr>
-                        <button className={styles.button} type="submit" onClick={(e) => HandleLogin(e)}>Login</button>
+                        <button
+                            className={styles.confirmButton}
+                            type="submit"
+                            disabled={!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email) || wachtwoord === ""}
+                            onClick={(e) => HandleLogin(e)}
+                        >Login</button>
                     </form>
                 </div>
             </div>

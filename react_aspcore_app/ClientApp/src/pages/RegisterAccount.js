@@ -21,6 +21,20 @@ function RegisterAccount() {
     }
   }, [navigate, isFromRegisterInfo]);
 
+  // If user tries to leave page, ask for confirmation
+  useEffect(() => {
+    const handleUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, []);
+
   const goToHome = () => {
     navigate('/');
   };
@@ -53,19 +67,19 @@ function RegisterAccount() {
       };
       console.log(payload);
       Axios.post('/api/User', payload, { headers: { 'Content-Type': 'application/json' } })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 201) {
-          
-          localStorage.setItem('jwt', response.data.token);
-          localStorage.clear();
-          console.log(response.data.token);
-          alert("Account succesvol aangemaakt!");
-          goToHome();
-        } else {
-          alert("Er is iets fout gegaan!");
-        }
-      })
+        .then((response) => {
+          console.log(response);
+          if (response.status === 201) {
+
+            localStorage.setItem('jwt', response.data.token);
+            localStorage.clear();
+            console.log(response.data.token);
+            alert("Account succesvol aangemaakt!");
+            goToHome();
+          } else {
+            alert("Er is iets fout gegaan!");
+          }
+        })
     }
   };
 

@@ -6,17 +6,12 @@ function RegisterInfo() {
     const navigate = useNavigate();
     const [selectedOption, setSelectedOption] = useState('');
     const [age, setAge] = useState('');
-    const [beperking, setBeperking] = useState('');
-    const [aandoening, setAandoening] = useState('');
-    const [beschikbaarheid, setBeschikbaarheid] = useState('');
     const [AccoutType, setAccoutType] = useState('');
-    const [hulpmiddelen, setHulpmiddelen] = useState('');
     const [Postcode, setPostcode] = useState('');
     const [telefoon, setTelefoon] = useState('');
     const [bedrijf, setBedrijf] = useState('');
     const [Locatie, setLocatie] = useState('');
     const [ContactInformatie, setContactInformatie] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
     const location = useLocation();
     const isFromRegisterStart = location.state && location.state.from === '/register-start';
 
@@ -28,6 +23,20 @@ function RegisterInfo() {
             navigate('/register-start');
         }
     }, [navigate, isFromRegisterStart]);
+
+    // If user tries to leave page, ask for confirmation
+    useEffect(() => {
+        const handleUnload = (event) => {
+            event.preventDefault();
+            event.returnValue = '';
+        };
+
+        window.addEventListener('beforeunload', handleUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleUnload);
+        };
+    }, []);
 
     const showFields = (option) => {
         setSelectedOption(option);
@@ -52,30 +61,18 @@ function RegisterInfo() {
         navigate('/register-account', { state: { from: '/register-info' } });
     };
 
+    const goToRegisterBeperking = () => {
+        navigate('/register-beperking', { state: { from: '/register-info' } });
+    };
+
     const handleAgeChange = (e) => {
         setAge(e.target.value);
-    };
-
-    const handleAandoeningChange = (e) => {
-        setAandoening(e.target.value);
-    };
-
-    const handleBeperkingChange = (e) => {
-        setBeperking(e.target.value);
-    };
-
-    const handleBeschikbaarheidChange = (e) => {
-        setBeschikbaarheid(e.target.value);
     };
 
     const HandleAcountTypeChange = (e) => {
         showFields(e.target.value);
         setAccoutType(e.target.value);
         console.log(e.target.value);
-    };
-
-    const handleHulpmiddelenChange = (e) => {
-        setHulpmiddelen(e.target.value);
     };
 
     const handlePostcodeChange = (e) => {
@@ -104,12 +101,7 @@ function RegisterInfo() {
         if (age.trim() !== '' && (
             (selectedOption === 'Ervaring' && (
                 Postcode.trim() !== '' &&
-                telefoon.trim() !== '' &&
-                beperking.trim() !== '' &&
-                aandoening.trim() !== '' &&
-                aandoening.trim() !== null &&
-                beschikbaarheid.trim() !== '' &&
-                hulpmiddelen.trim() !== ''
+                telefoon.trim() !== ''
             )) ||
             (selectedOption === 'Bedrijf' && (
                 bedrijf.trim() !== '' &&
@@ -121,21 +113,20 @@ function RegisterInfo() {
 
             // Perform additional checks if necessary before allowing access to RegisterAccount
             localStorage.setItem('age', age);
-            localStorage.setItem('beperking', beperking);
             localStorage.setItem('bedrijf', bedrijf);
-            localStorage.setItem('beschikbaarheid', beschikbaarheid);
             localStorage.setItem('accountType', AccoutType);
-            localStorage.setItem('hulpmiddelen', hulpmiddelen);
             localStorage.setItem('postcode', Postcode);
             localStorage.setItem('telefoon', telefoon);
-            localStorage.setItem('aandoening', aandoening);
             localStorage.setItem('locatie', Locatie);
             localStorage.setItem('contactinformatie', ContactInformatie);
 
-
-            goToRegisterAccount();
+            if (selectedOption === 'Ervaring') {
+                goToRegisterBeperking();
+            } else if (selectedOption === 'Bedrijf') {
+                goToRegisterAccount();
+            }
         } else {
-            setErrorMessage("Please fill in all required fields");
+            alert("Please fill in all required fields");
         }
     };
 
@@ -189,52 +180,6 @@ function RegisterInfo() {
                                 value={telefoon}
                                 onChange={handleTelefoonChange}
                             />
-
-                            <label htmlFor="ErvaringFields">Type beperking</label>
-                            <select
-                                className={styles.select}
-                                id="TypeBeperkingen"
-                                onChange={handleBeperkingChange}
-                            >
-                                <option value="">Kies een optie</option>
-                                <option value="Zicht">Zicht</option>
-                                <option value="Gehoor">Gehoor</option>
-                                <option value="Mobiliteit">Mobiliteit</option>
-                                <option value="Geestlijk">Geestlijk</option>
-                            </select>
-
-                            <label htmlFor="ErvaringFields">Aandoening:</label>
-                            <input
-                                style={{ width: inputWidth }}
-                                type="text"
-                                id="Aandoening"
-                                name="Aandoening"
-                                placeholder="bijv. blind, slechtziend of doof"
-                                value={aandoening}
-                                onChange={handleAandoeningChange}
-                            />
-
-                            <label htmlFor="ErvaringFields">beschikbaarheid:</label>
-                            <input
-                                style={{ width: inputWidth }}
-                                type="text"
-                                id="beschikbaarheid"
-                                name="beschikbaarheid"
-                                placeholder="bijv. maandag en vrijdag ochtend"
-                                value={beschikbaarheid}
-                                onChange={handleBeschikbaarheidChange}
-                            />
-
-                            <label htmlFor="ErvaringFields">hulpmiddelen:</label>
-                            <input
-                                style={{ width: inputWidth }}
-                                type="text"
-                                id="hulpmiddelen"
-                                name="hulpmiddelen"
-                                placeholder="bijv. wandelstok of rolstoel"
-                                value={hulpmiddelen}
-                                onChange={handleHulpmiddelenChange}
-                            />
                         </div>
 
                         <div id="BedrijfFields" className={selectedOption === 'Bedrijf' ? styles.show : styles.hidden}>
@@ -270,7 +215,6 @@ function RegisterInfo() {
                             />
                         </div>
                     </div>
-                    {errorMessage && <div className={styles.error}>{errorMessage}</div>}
                     <hr />
                     <button className={styles.registerbtn} type="submit">Volgende</button>
                 </form>

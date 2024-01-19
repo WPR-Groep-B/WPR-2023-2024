@@ -182,3 +182,9 @@ form {
     justify-content: space-between;
     height: 86px;
 }
+
+@media only screen and (max-width: 600px) {
+    .textarea {
+      width: 100%; /* Increase the width of the container */
+    } 
+}

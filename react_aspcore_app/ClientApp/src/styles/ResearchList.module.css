@@ -1,0 +1,11 @@
+/* ResearchList.module.css */
+.formContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.formContainer input,
+.formContainer textarea,
+.formContainer button {
+    margin-bottom: 10px; /* voeg ruimte toe tussen velden */
+}

@@ -147,7 +147,7 @@
 
 .editButton {
     position: absolute;
-    top: 80%;
+    bottom: 0px;
     right: 0;
     overflow: hidden;
     background-color: #1fc396;
@@ -155,7 +155,7 @@
     padding: 8px;
     cursor: pointer;
     width: 12%;
-    margin:  0 20px 20px 20px;
+    margin: 0 20px 20px 20px;
     font-weight: 800;
     font-size: large;
     border-radius: 15px;
@@ -231,4 +231,8 @@
 
 .createButton:hover::after {
     opacity: 0;
+}
+
+.researchContainer div {
+    word-wrap: break-word;
 }

@@ -139,10 +139,9 @@ input[type='date']:hover {
 .registerbtn {
   position: relative;
   overflow: hidden;
-  background-color: #1fc396;
+  background-color: #61c31f;
   color: #111e55;
   padding: 16px;
-  border: none;
   cursor: pointer;
   width: 100%;
   margin: auto;
@@ -153,15 +152,24 @@ input[type='date']:hover {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+.registerbtn:disabled {
+  background-color: #12755b;
+  color: #111e55;
+}
+
 .registerbtn:hover {
-  background-color: #26ecb7;
+  background-color: #6cdd21;
   transform: scale(1.01);
+}
+
+.registerbtn:hover:disabled {
+  background-color: #19af87;
 }
 
 .registerbtn::before {
   content: '';
   position: absolute;
-  background-color: #26ecb7;
+  background-color: #61c31f;
   border-radius: 50%;
   opacity: 0;
   transform: scale(0);

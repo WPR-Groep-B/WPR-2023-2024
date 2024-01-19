@@ -150,6 +150,7 @@ function RegisterInfo() {
                                 className={styles.select}
                                 id="options"
                                 onChange={HandleAcountTypeChange}
+                                value={AccoutType}
                                 required
                             >
                                 <option value="">Kies een optie</option>
@@ -216,7 +217,15 @@ function RegisterInfo() {
                         </div>
                     </div>
                     <hr />
-                    <button className={styles.registerbtn} type="submit">Volgende</button>
+                    <button
+                        className={styles.registerbtn}
+                        type="submit"
+                        disabled={
+                            age === "" ||
+                            AccoutType === "" ||
+                            ((Postcode.trim().length < 6 || telefoon.trim().length < 11) && (bedrijf === "" || Locatie === "" || ContactInformatie === ""))
+                        }
+                    >Volgende</button>
                 </form>
             </div>
         </div>

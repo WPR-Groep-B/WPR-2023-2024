@@ -67,19 +67,19 @@ function RegisterAccount() {
       };
       console.log(payload);
       Axios.post('/api/User', payload, { headers: { 'Content-Type': 'application/json' } })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 201) {
-          localStorage.clear();
-          localStorage.setItem('jwt', response.data.token);
-          
-          console.log(response.data.token);
-          alert("Account succesvol aangemaakt!");
-          goToHome();
-        } else {
-          alert("Er is iets fout gegaan!");
-        }
-      })
+        .then((response) => {
+          console.log(response);
+          if (response.status === 201) {
+            localStorage.clear();
+            localStorage.setItem('jwt', response.data.token);
+
+            console.log(response.data.token);
+            alert("Account succesvol aangemaakt!");
+            goToHome();
+          } else {
+            alert("Er is iets fout gegaan!");
+          }
+        })
     }
   };
 
@@ -98,7 +98,7 @@ function RegisterAccount() {
           </div>
 
           <div>
-            <label htmlFor="password">Wachtwoord:</label>
+            <label htmlFor="password">Wachtwoord: (Moet minstens 12 characters lang zijn)</label>
             <input type="password" id="password" name="password" minLength="12" placeholder="bv: wachtwoord123" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
 
@@ -108,7 +108,12 @@ function RegisterAccount() {
           </div>
 
           <hr></hr>
-          <button className={styles.registerbtn} type="button" onClick={handleSubmit}>Bevestig</button>
+          <button
+            className={styles.registerbtn}
+            type="button"
+            onClick={handleSubmit}
+            disabled={email === "" || password.length < 12 || confirmPassword.length < 12 || password !== confirmPassword}
+          >Bevestig</button>
         </form>
       </div>
     </div>

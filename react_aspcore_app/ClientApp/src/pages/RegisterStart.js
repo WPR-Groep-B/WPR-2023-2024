@@ -88,7 +88,11 @@ function RegisterName() {
           <hr></hr>
 
           {/* Use Link component to navigate to RegisterInfo */}
-          <button className={styles.registerbtn} type="submit">Volgende</button>
+          <button
+            className={styles.registerbtn}
+            type="submit"
+            disabled={naam === "" || anaam === ""}
+            >Volgende</button>
         </form>
       </div>
     </div>

@@ -211,52 +211,52 @@ function OnderzoekCreate({ onSave, onCancel }) {
             name="gebruikerBedrijfId"
             value={newOnderzoek.gebruikerBedrijfId}
             onChange={handleChange}
-            placeholder="gebruikerBedrijfId"
+            placeholder="ID van Bedrijf"
         />
         <input
             type="text"
             name="onderzoekNaam"
             value={newOnderzoek.onderzoekNaam}
             onChange={handleChange}
-            placeholder="onderzoekNaam"
+            placeholder="Naam van het onderzoek"
         />
         <textarea
             name="onderzoekBeschrijving"
             value={newOnderzoek.onderzoekBeschrijving}
             onChange={handleChange}
-            placeholder="onderzoekBeschrijving"
+            placeholder="Beschrijving van het onderzoek"
         />
         <input
             type="date"
             name="onderzoekStartDatum"
             value={newOnderzoek.onderzoekStartDatum.split('T')[0]}
             onChange={handleChange}
-            placeholder="onderzoekStartDatum"
+            placeholder="Start Datum"
         />
         <input
             type="date"
             name="onderzoekEindDatum"
             value={newOnderzoek.onderzoekEindDatum.split('T')[0]}
             onChange={handleChange}
-            placeholder="onderzoekEindDatum"
+            placeholder="Eind Datum"
         />
         <input
             type="text"
             name="onderzoekStatus"
             value={newOnderzoek.onderzoekStatus}
             onChange={handleChange}
-            placeholder="onderzoekStatus"
+            placeholder="Status van het onderzoek"
         />
         <input
             type="text"
             name="onderzoekSoort"
             value={newOnderzoek.onderzoekSoort}
             onChange={handleChange}
-            placeholder="onderzoekSoort"
+            placeholder="Soort onderzoek"
         />
         <input
             type="text"
-            name="GoedgekeurdDoorId"
+            name="goedgekeurdDoorId"
             value={newOnderzoek.goedgekeurdDoorId}
             onChange={handleChange}
             placeholder="GoedgekeurdDoorId"
@@ -266,14 +266,14 @@ function OnderzoekCreate({ onSave, onCancel }) {
             name="onderzoekLink"
             value={newOnderzoek.onderzoekLink}
             onChange={handleChange}
-            placeholder="onderzoekLink"
+            placeholder="Link naar de website"
         />
         <input
             type="text"
             name="onderzoekForm"
             value={newOnderzoek.onderzoekForm}
             onChange={handleChange}
-            placeholder="onderzoekForm"
+            placeholder="Link naar het formulier"
         />
         <button type="submit">Accept</button>
         <button type="button" onClick={onCancel}>Cancel</button>

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import styles from '../styles/Account.module.css';
+//import styles from '../styles/Account.module.css'; //niet gebruikte bullshit maar wel build error ??!!
 import { useState } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';

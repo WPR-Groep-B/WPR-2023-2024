@@ -204,19 +204,21 @@ form {
     margin: 5px 2% 22px 0;
     display: inline-block;
     border: 2px solid #1A2E83;
-    background-color: #cacaca;
+    background-color: white;
     border-radius: 8px;
-    transition: background-color 0.2s ease;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;   
 }
 
 .inputChatRoom[type='text']:focus {
-    background-color: #ddddddd9;
+    background-color: #ededed;
     outline: none;
+    box-shadow: 0 0 0 2.1px #1A2E83;
 }
 
 .inputChatRoom[type='text']:hover {
-    background-color: #ddddddd9;
+    background-color: #ededed;
     outline: none;
+    box-shadow: 0 0 0 2.1px #1A2E83;
 }
 
 .joinButton {

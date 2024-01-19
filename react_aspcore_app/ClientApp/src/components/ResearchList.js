@@ -3,13 +3,13 @@ import { useQuery } from '@tanstack/react-query';
 import styles from '../styles/ResearchList.module.css';
 
 
-//https://localhost:7251/api/research/
-export async function getData() {
+//https://localhost:7251
+async function getData() {
     const response = await fetch('https://localhost:7251/api/research/', {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*',
-            'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
         },
     });
     if (!response.ok) {
@@ -32,12 +32,12 @@ async function updateData(id, updatedOnderzoek) {
         GebruikerDeskundigeId: updatedOnderzoek.GebruikerDeskundigeId,
     };
 
-    //https://localhost:7251/api/research/${id}
+    //https://localhost:7251
     const response = await fetch(`https://localhost:7251/api/research/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
         },
         body: JSON.stringify(formattedData),
     });
@@ -58,12 +58,12 @@ async function createData(newOnderzoek) {
         // additional formatting if needed
     };
 
-    //https://localhost:7251/api/research/
+    //https://localhost:7251
     const response = await fetch('https://localhost:7251/api/research/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
         },
         body: JSON.stringify(formattedData),
     });

@@ -66,20 +66,22 @@ function RegisterAccount() {
         Wachtwoord: password
       };
       console.log(payload);
-      Axios.post('/api/User', payload, { headers: { 'Content-Type': 'application/json' } })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 201) {
-          localStorage.clear();
-          localStorage.setItem('jwt', response.data.token);
-          
-          console.log(response.data.token);
-          alert("Account succesvol aangemaakt!");
-          goToHome();
-        } else {
-          alert("Er is iets fout gegaan!");
-        }
-      })
+
+      //https://localhost:7251/api/User
+      Axios.post('https://localhost:7251/api/User', payload, { headers: { 'Content-Type': 'application/json' } })
+        .then((response) => {
+          console.log(response);
+          if (response.status === 201) {
+            localStorage.clear();
+            localStorage.setItem('jwt', response.data.token);
+
+            console.log(response.data.token);
+            alert("Account succesvol aangemaakt!");
+            goToHome();
+          } else {
+            alert("Er is iets fout gegaan!");
+          }
+        })
     }
   };
 

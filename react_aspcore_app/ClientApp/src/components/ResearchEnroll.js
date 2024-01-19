@@ -9,7 +9,7 @@ export default function ResearchEnroll() {
     });
 
     const handleJoin = async (onderzoekId) => {
-        const gebruikerId = /* Haal de gebruiker ID uit de JWT token of gebruiker state */;
+        const gebruikerId = jwt_decode(localStorage.getItem('jwt')).id;
         const deelnameData = {
             GebruikerDeskundigeId: gebruikerId,
             OnderzoekId: onderzoekId,

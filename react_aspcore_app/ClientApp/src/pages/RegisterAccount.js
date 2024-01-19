@@ -56,9 +56,9 @@ function RegisterAccount() {
       .then((response) => {
         console.log(response);
         if (response.status === 201) {
-          
-          localStorage.setItem('jwt', response.data.token);
           localStorage.clear();
+          localStorage.setItem('jwt', response.data.token);
+
           console.log(response.data.token);
           alert("Account succesvol aangemaakt!");
           goToHome();

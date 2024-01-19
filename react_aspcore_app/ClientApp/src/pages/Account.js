@@ -41,8 +41,8 @@ function Account() {
     const Email = user.sub;
 
     console.log(Email);
-    
-    axios.put('https://localhost:7251/api/User/ChangePassword', {
+    //https://localhost:7251/api/User/ChangePassword
+    axios.put('/api/User/ChangePassword', {
       Email: Email,
       wachtwoord: oldPassword,
       nieuwWachtwoord: newPassword

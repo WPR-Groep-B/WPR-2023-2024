@@ -83,7 +83,7 @@ function NavBar() {
             <>
               <li>
                 <NavLink
-                  to="/account"
+                  to="/Account"
                   onMouseEnter={e => {
                     const img = e.currentTarget.children[0];
                     img.src = accounticonHover;

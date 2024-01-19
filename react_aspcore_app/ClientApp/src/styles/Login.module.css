@@ -32,7 +32,11 @@
 }
 
 .form {
+  display: flex;
   text-align: left;
+  /* Align form elements to the left */
+  flex-direction: column;
+  height: auto;
 }
 
 .h1 {
@@ -65,9 +69,19 @@ input {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+.button:disabled {
+  background-color: #353535;
+  color: #fff;
+}
+
 .button:hover {
   background-color: #26ecb7;
   transform: scale(1.01);
+}
+
+.button:hover:disabled {
+  background-color: #353535;
+  color: #fff;
 }
 
 .button::before {

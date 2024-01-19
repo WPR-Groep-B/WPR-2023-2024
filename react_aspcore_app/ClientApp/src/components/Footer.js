@@ -9,57 +9,57 @@ function Footer() {
     <footer>
       <div className={styles.divfootBeg}>
         <h2>Snel naar...</h2>
-        <ul>
-          <li>
-            <button onClick={() => { window.location.href = "/"; }}>Home</button>
-          </li><br></br>
-          <li>
-            <button onClick={() => { window.location.href = "/about-us"; }}>Over Ons</button>
-          </li><br></br>
-          <li>
-            <button onClick={() => { window.location.href = "/privacy"; }}>Privacy verklaring</button>
-          </li><br></br>
-          <li>
-            <button onClick={() => { window.location.href = "/login"; }}>Login</button>
-          </li><br></br>
-        </ul>
+        <div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.location.href = "/"; }}>Home</button>
+          </div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.location.href = "/about-us"; }}>Over Ons</button>
+          </div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.location.href = "/privacy"; }}>Privacy verklaring</button>
+          </div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.location.href = "/login"; }}>Login</button>
+          </div>
+        </div>
       </div>
 
       <div className={styles.divfoot}>
         <h2>Hoe wij helpen</h2>
-        <ul>
-          <li>
-            <button onClick={() => { window.open("https://www.accessibility.nl/audits", "_blank"); }}>Audits</button>
-          </li><br></br>
-          <li>
-            <button onClick={() => { window.open("https://www.accessibility.nl/gebruikersonderzoek", "_blank"); }}>Gebruikersonderzoeken</button>
-          </li><br></br>
-          <li>
-            <button onClick={() => { window.open("https://www.accessibility.nl/hoe-wij-helpen/trainingen", "_blank"); }}>Trainingen</button>
-          </li><br></br>
-          <li>
-            <button onClick={() => { window.open("https://www.accessibility.nl/advies", "_blank"); }}>Advies</button>
-          </li><br></br>
-        </ul>
+        <div className={styles.buttonDiv}>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.open("https://www.accessibility.nl/audits", "_blank"); }}>Audits</button>
+          </div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.open("https://www.accessibility.nl/gebruikersonderzoek", "_blank"); }}>Gebruikersonderzoeken</button>
+          </div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.open("https://www.accessibility.nl/hoe-wij-helpen/trainingen", "_blank"); }}>Trainingen</button>
+          </div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.open("https://www.accessibility.nl/advies", "_blank"); }}>Advies</button>
+          </div>
+        </div>
       </div>
 
       <div className={styles.divfoot}>
         <h2>Contact</h2>
-        <ul>
-          <li>
-            <button onClick={() => { window.location.href = "/contact"; }}>Contact</button>
-          </li><br></br>
-          <li>
-            <button onClick={() => { window.location.href = "Tel: +31 30 239 82 70"; }}>Tel: +31 30 239 82 70</button>
-          </li><br></br>
-          <li>
-            <button onClick={() => { window.location.href = "mailto:info@accessibility.nl"; }}>info@accessibility.nl</button>
-          </li><br></br>
-          <li>
-            <button onClick={() => { window.open("https://www.accessibility.nl/werken-bij-accessibility", "_blank"); }}>
+        <div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.location.href = "/contact"; }}>Contact</button>
+          </div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.location.href = "Tel: +31 30 239 82 70"; }}>Tel: +31 30 239 82 70</button>
+          </div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.location.href = "mailto:info@accessibility.nl"; }}>info@accessibility.nl</button>
+          </div>
+          <div className={styles.bulletPoint}>
+            <button className={styles.buttonMargin} onClick={() => { window.open("https://www.accessibility.nl/werken-bij-accessibility", "_blank"); }}>
               Onze vacatures</button>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
 
       <div className={styles.parentDiv}>
@@ -88,7 +88,7 @@ function Footer() {
           <img alt="Stichting Accessibility logo" className={styles.logo} src={logo}></img>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 }
 

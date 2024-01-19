@@ -28,6 +28,9 @@ function NavBar() {
           <NavLink to="/onderzoekbeheer">Onderzoek Beheer</NavLink>
         </li>
         <li>
+          <NavLink to="/onderzoekaanmelden">Onderzoek Aanmelden</NavLink>
+        </li>
+        <li>
           <NavLink to="/contact">Contact</NavLink>
         </li>
         <li>

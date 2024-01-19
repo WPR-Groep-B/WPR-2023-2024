@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
         {
         }
 
-        public DbSet<gebruiker> gebruikers { get; set; }
+        public DbSet<Gebruiker> gebruikers { get; set; }
         public DbSet<gebruikerBedrijf> gebruikerBedrijven { get; set; }
         public DbSet<gebruikerDeskundige> gebruikerDeskundigen { get; set; }
         public DbSet<gebruikerBeheerder> gebruikerBeheerders { get; set; }
@@ -27,7 +27,7 @@ using Microsoft.EntityFrameworkCore;
             modelBuilder.Entity<beperking>()
                 .ToTable("beperkingen");
 
-            modelBuilder.Entity<gebruiker>()
+            modelBuilder.Entity<Gebruiker>()
                 .ToTable("gebruikers");
 
             modelBuilder.Entity<gebruikerBedrijf>()
@@ -51,7 +51,7 @@ using Microsoft.EntityFrameworkCore;
                 .HasForeignKey(o => o.beperkingId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<gebruiker>()
+            modelBuilder.Entity<Gebruiker>()
                 .HasOne(o => o.Rol)
                 .WithMany()
                 .HasForeignKey(o => o.rolId)
@@ -75,7 +75,7 @@ using Microsoft.EntityFrameworkCore;
                 .HasForeignKey(m => m.GebruikerId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-                modelBuilder.Entity<gebruiker>()
+                modelBuilder.Entity<Gebruiker>()
         .ToTable("gebruikers");
 
             modelBuilder.Entity<gebruikerBedrijf>()

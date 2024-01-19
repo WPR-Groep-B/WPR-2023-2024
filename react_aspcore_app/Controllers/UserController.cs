@@ -36,7 +36,7 @@ public class UserController : ControllerBase
 {
 
 
-    private string GenerateJwtToken(gebruiker user)
+    private string GenerateJwtToken(Gebruiker user)
     {
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("VGhpc0lzQVNlY3JldEtleVRoYXRJc0F0TGVhc3RTaXh0ZWVuQnl0ZXNMb25n")); // Replace "Your_Secret_Key" with your actual secret key
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -70,14 +70,14 @@ public class UserController : ControllerBase
 
     // GET: api/user
     [HttpGet]
-    public ActionResult<IEnumerable<gebruiker>> Get()
+    public ActionResult<IEnumerable<Gebruiker>> Get()
     {
         return Ok(_context.gebruikers.ToList());
     }
 
     // Post: api/user/login
     [HttpPost("login")]
-    public ActionResult<gebruiker> Login([FromBody] LoginModel login)
+    public ActionResult<Gebruiker> Login([FromBody] LoginModel login)
     {
         var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == login.Email);
 
@@ -85,7 +85,7 @@ public class UserController : ControllerBase
         if (gebruiker.wachtwoord == null) return Unauthorized();
 
         // Create a PasswordHasher
-        var passwordHasher = new PasswordHasher<gebruiker>();
+        var passwordHasher = new PasswordHasher<Gebruiker>();
 
         // Verify the hashed password
         var result = passwordHasher.VerifyHashedPassword(gebruiker, gebruiker.wachtwoord, login.Wachtwoord);
@@ -102,7 +102,7 @@ public class UserController : ControllerBase
 
     // POST: api/user/googlelogin
     [HttpPost("googlelogin")]
-    public async Task<ActionResult<gebruiker>> GoogleLogin([FromBody] GoogleLoginModel GoogleToken)
+    public async Task<ActionResult<Gebruiker>> GoogleLogin([FromBody] GoogleLoginModel GoogleToken)
     {
         // Verify the Google token
         GoogleJsonWebSignature.Payload payload;
@@ -131,7 +131,7 @@ public class UserController : ControllerBase
                 return BadRequest("Email already exists.");
             }
 
-            gebruiker = new gebruiker
+            gebruiker = new Gebruiker
             {
                 email = payload.Email,
                 googleId = payload.Subject,
@@ -156,7 +156,7 @@ public class UserController : ControllerBase
             return BadRequest();
         }
 
-        gebruiker gebruiker;
+        Gebruiker gebruiker;
 
         if (nieuwGebruiker.BedrijfsNaam != null)
         {
@@ -181,13 +181,13 @@ public class UserController : ControllerBase
         }
         else
         {
-            gebruiker = new gebruiker();
+            gebruiker = new Gebruiker();
         }
 
         gebruiker.Voornaam = nieuwGebruiker.Voornaam;
         gebruiker.Achternaam = nieuwGebruiker.Achternaam;
         gebruiker.email = nieuwGebruiker.Email;
-        var passwordHasher = new PasswordHasher<gebruiker>();
+        var passwordHasher = new PasswordHasher<Gebruiker>();
         // Hash the password
         gebruiker.wachtwoord = passwordHasher.HashPassword(gebruiker, nieuwGebruiker.Wachtwoord);
 
@@ -201,7 +201,7 @@ public class UserController : ControllerBase
     // PUT: api/user/{id}
     [Authorize]
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody] gebruiker gebruiker)
+    public IActionResult Put(int id, [FromBody] Gebruiker gebruiker)
     {
         if (gebruiker == null || gebruiker.GebruikerId != id)
         {

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-public class gebruiker
+public class Gebruiker
 {
 
     [Key]
@@ -17,7 +17,9 @@ public class gebruiker
     public rol Rol { get; set; }
     public int rolId { get; set; }
 
-public class gebruikerBedrijf : gebruiker
+}
+
+public class gebruikerBedrijf : Gebruiker
 {
 
     public string bedrijfsnaam { get; set; }
@@ -28,7 +30,7 @@ public class gebruikerBedrijf : gebruiker
 
 }
 
-public class gebruikerDeskundige : gebruiker
+public class gebruikerDeskundige : Gebruiker
 {
 
     public string postcode { get; set; }
@@ -47,7 +49,7 @@ public class gebruikerDeskundige : gebruiker
 
 }
 
-public class gebruikerBeheerder : gebruiker
+public class gebruikerBeheerder : Gebruiker
 {
 
     public string functie { get; set; }

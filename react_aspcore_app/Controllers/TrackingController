@@ -1,0 +1,29 @@
+public class TrackingController : ControllerBase
+{
+    private readonly AppDbContext _dbContext;
+
+    public TrackingController(AppDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
+    [HttpPost("/tracking")]
+    public async Task<IActionResult> LogTrackingData([FromBody] TrackingData trackingData)
+    {
+        try
+        {
+            Console.WriteLine($"Received tracking data: {trackingData}");
+
+            // Save the tracking data to the database
+            _dbContext.TrackingData.Add(trackingData);
+            await _dbContext.SaveChangesAsync();
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error processing tracking data: {ex.Message}");
+            return StatusCode(500);
+        }
+    }
+}

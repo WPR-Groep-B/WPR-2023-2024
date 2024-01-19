@@ -47,7 +47,6 @@ function ChatPage() {
 
 
             await connection.start();
-            setConnection(connection);
             await connection.invoke("getHistory", Room);
             await connection.invoke("joinroom", { UserId, UserName, Room });
             setConnection(connection);

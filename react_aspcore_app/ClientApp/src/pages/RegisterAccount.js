@@ -21,6 +21,20 @@ function RegisterAccount() {
     }
   }, [navigate, isFromRegisterInfo]);
 
+  // If user tries to leave page, ask for confirmation
+  useEffect(() => {
+    const handleUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, []);
+
   const goToHome = () => {
     navigate('/');
   };

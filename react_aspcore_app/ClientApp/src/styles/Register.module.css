@@ -23,7 +23,7 @@
   background: #111e55;
   color: #fff;
   border-radius: 25px;
-  text-align: center;
+  text-align: center;;
 }
 
 .displayCntr {
@@ -35,6 +35,7 @@
   text-align: left;
   /* Align form elements to the left */
   flex-direction: column;
+  height: auto;
 }
 
 .h1 {
@@ -197,6 +198,15 @@ input[type='date']:hover {
   display: block;
   /* .
   or inline, inline-block, etc. based on your layout needs */
+}
+
+.parentDiv {
+  display: flex;
+  justify-content: column;
+}
+
+.inputPadding {
+  margin: 0 0 0 55px;
 }
 
 @media only screen and (max-width: 600px) {

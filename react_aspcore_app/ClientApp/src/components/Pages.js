@@ -7,6 +7,7 @@ import RegisterStart from "../pages/RegisterStart"
 import RegisterInfo from "../pages/RegisterInfo"
 import RegisterAccount from "../pages/RegisterAccount"
 import AboutUs from "../pages/AboutUs"
+import RegisterBeperking from "../pages/RegisterBeperking"
 
 // import OnderzoekAanmaken from "../pages/OnderzoekAanmaken"
 import ResearchOverview from "../pages/ResearchOverview"
@@ -31,6 +32,10 @@ function Pages() {
         <Route path="/chatpage" element={<ChatPage />} />
         {/*<Route path="/onderzoek-aanmaken" element={<OnderzoekAanmaken />} /> */}
         <Route path="/Account" element={<Account />} />
+        <Route path="/register-beperking" element={<RegisterBeperking />} />
+        {/*<Route path="/onderzoek-aanmaken" element={<OnderzoekAanmaken />} />
+        <Route path="/mijn-account" element={<Account />} /> */}
+
         </Routes>
   );
 }

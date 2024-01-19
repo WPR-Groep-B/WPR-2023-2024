@@ -7,6 +7,20 @@ function RegisterName() {
     document.title = "Register - Stichting Accessibility";
   }, []);
 
+  // If user tries to leave page, ask for confirmation
+  useEffect(() => {
+    const handleUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, []);
+
   const navigate = useNavigate();
   const [naam, setNaam] = useState('');
   const [anaam, setAnaam] = useState('');

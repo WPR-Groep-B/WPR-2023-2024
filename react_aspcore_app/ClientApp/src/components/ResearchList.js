@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import styles from '../styles/ResearchList.module.css';
 
+
+//https://localhost:7251/api/research/
 async function getData() {
-    const response = await fetch('https://localhost:7251/api/research/', {
+    const response = await fetch('/api/research/', {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -29,7 +31,8 @@ async function updateData(id, updatedOnderzoek) {
         GebruikerDeskundigeId: updatedOnderzoek.GebruikerDeskundigeId,
     };
 
-    const response = await fetch(`https://localhost:7251/api/research/${id}`, {
+    //https://localhost:7251
+    const response = await fetch(`/api/research/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -53,7 +56,8 @@ async function createData(newOnderzoek) {
         // additional formatting if needed
     };
 
-    const response = await fetch('https://localhost:7251/api/research/', {
+    //https://localhost:7251
+    const response = await fetch('/api/research/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

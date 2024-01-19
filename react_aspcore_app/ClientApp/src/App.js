@@ -17,7 +17,6 @@ export default class App extends Component {
 
   render() {
     return (
-      <html lang='nl'>
       <Router>
         <QueryClientProvider client={queryClient}>
         <div className={styles.container}>
@@ -28,7 +27,6 @@ export default class App extends Component {
         <Footer />
         </QueryClientProvider>
     </Router>
-    </html>
     );
   }
 }

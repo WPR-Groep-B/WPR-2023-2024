@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import styles from '../styles/ResearchList.module.css';
 
 
-//https://localhost:7251/api/research/
+//https://localhost:7251
 async function getData() {
     const response = await fetch('/api/research/', {
         mode: 'cors',
@@ -46,7 +46,7 @@ async function updateData(id, updatedOnderzoek) {
         throw new Error(`Failed to update the research: ${errorBody}`);
     }
 
-    // return await response.json();
+    //return await response.json();
 }
 
 //dit is die create data
@@ -87,6 +87,7 @@ function OnderzoekEdit({ onderzoek, onSave, onCancel }) {
     };
 
     return (
+        <div>
         <form onSubmit={handleSubmit} className={styles.formContainer}>
             <input
                 type="text"
@@ -156,6 +157,7 @@ function OnderzoekEdit({ onderzoek, onSave, onCancel }) {
             <button type="submit">Accept</button>
             <button type="button" onClick={onCancel}>Cancel</button>
         </form>
+        </div>
     );
 }
 
@@ -209,6 +211,7 @@ function OnderzoekCreate({ onSave, onCancel }) {
     };
 
     return(
+        <div>
     <form onSubmit={handleSubmit} className={styles.formContainer}>
         <input
             type="text"
@@ -282,6 +285,7 @@ function OnderzoekCreate({ onSave, onCancel }) {
         <button type="submit">Accept</button>
         <button type="button" onClick={onCancel}>Cancel</button>
     </form>
+    </div>
     );
 }
 

@@ -140,6 +140,20 @@
     justify-content: flex-start;
 }
 
+.message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: 2px solid #1A2E83;
+    background-color: #cacaca;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    word-wrap: break-word;
+}
 .currentUserMessage {
     justify-content: flex-end;
 }

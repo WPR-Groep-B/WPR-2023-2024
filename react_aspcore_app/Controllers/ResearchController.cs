@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace react_aspcore_app.Controllers
         }
 
         // GET: api/research
+        [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<onderzoek>> Get()
         {
@@ -23,6 +25,7 @@ namespace react_aspcore_app.Controllers
         }
 
         // POST: api/research
+        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody] onderzoek nieuwOnderzoek)
         {
@@ -38,6 +41,7 @@ namespace react_aspcore_app.Controllers
         }
 
         // PUT: api/research/{id}
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] onderzoek onderzoekUpdate)
         {
@@ -70,6 +74,7 @@ namespace react_aspcore_app.Controllers
         }
 
         // DELETE: api/research/{id}
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

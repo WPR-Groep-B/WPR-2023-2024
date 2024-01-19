@@ -9,6 +9,7 @@ async function getData() {
         mode: 'cors',
         headers: {
             'Access-Control-Allow-Origin': '*',
+            'Authorization': 'Bearer ' + localStorage.getItem('jwt')
         },
     });
     if (!response.ok) {
@@ -36,6 +37,7 @@ async function updateData(id, updatedOnderzoek) {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('jwt')
         },
         body: JSON.stringify(formattedData),
     });
@@ -61,6 +63,7 @@ async function createData(newOnderzoek) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('jwt')
         },
         body: JSON.stringify(formattedData),
     });
@@ -81,6 +84,7 @@ async function deleteData(id) {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('jwt')
         },
     });
 

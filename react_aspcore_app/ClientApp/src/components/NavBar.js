@@ -25,7 +25,7 @@ function NavBar() {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/onderzoeken">Onderzoeken</NavLink>
+          <NavLink to="/onderzoekbeheer">Onderzoek Beheer</NavLink>
         </li>
         <li>
           <NavLink to="/contact">Contact</NavLink>

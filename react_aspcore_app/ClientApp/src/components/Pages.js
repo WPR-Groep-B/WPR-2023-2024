@@ -24,7 +24,7 @@ function Pages() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/login" element={<Login />} />
         {/* <Route path="/onderzoekaanmaken" element={<OnderzoekAanmaken />} /> */}
-        <Route path="/onderzoeken" element={<ResearchOverview />} />
+        <Route path="/onderzoekbeheer" element={<ResearchOverview />} />
         <Route path="/register-start" element={<RegisterStart />} />
         <Route path="/register-info" element={<RegisterInfo />} />
         <Route path="/register-account" element={<RegisterAccount />} />

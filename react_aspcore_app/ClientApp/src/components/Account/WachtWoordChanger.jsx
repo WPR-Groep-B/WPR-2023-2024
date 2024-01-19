@@ -30,21 +30,26 @@ function WachtWoordChanger({ setCurrentWindow, ChangePassword }) {
 
                     <form className={styles.form}>
                         <div>
-                            <label className={styles.label}>Oud wachtwoord</label>
+                            <label className={styles.label}>Oud wachtwoord:</label>
                             <input className={styles.input} type="password" name="oldpassword" value={oldPassword} onChange={e => setOldPassword(e.target.value)} />
                         </div>
                         <div>
-                            <label className={styles.label}>Nieuw wachtwoord</label>
+                            <label className={styles.label}>Nieuw wachtwoord: (Moet minstens 12 karakters lang zijn en een van de volgende tekens bevatten: ! " @ # $ % ^ & * ( ) , . ? " : { } | &lt; &gt; )</label>
                             <input className={styles.input} type="password" name="newpassword" value={newPassword} onChange={e => setNewPassword(e.target.value)} />
                         </div>
                         <div>
-                            <label className={styles.label}>Herhaal nieuw wachtwoord</label>
+                            <label className={styles.label}>Herhaal nieuw wachtwoord:</label>
                             <input className={styles.input} type="password" name="repeatnewpassword" value={repeatNewPassword} onChange={e => setRepeatNewPassword(e.target.value)} />
                         </div>
 
                         <button className={styles.confirmButton}
                             onClick={(e) => HandlePasswordChange(e)}
-                            disabled={oldPassword === "" || newPassword === "" || repeatNewPassword === ""}
+                            disabled={
+                                oldPassword === "" ||
+                                newPassword.length < 12 ||
+                                repeatNewPassword.length < 12 ||
+                                newPassword !== repeatNewPassword ||
+                                !/[!@#$%^&*(),.?":{}|<>]/g.test(newPassword)}
                         >Wachtwoord veranderen</button>
                     </form>
 

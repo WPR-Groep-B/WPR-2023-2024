@@ -13,6 +13,13 @@ public class LoginModel
     public required string Wachtwoord { get; set; }
 }
 
+public class PasswordChangeModel
+{
+    public required string Email { get; set; }
+    public required string Wachtwoord { get; set; }
+    public required string NieuwWachtwoord { get; set; }
+}
+
 public class RegisterModel
 {
     //Eigenschappen voor Elke gebruiker
@@ -249,32 +256,40 @@ public class UserController : ControllerBase
     }
 
 
-    // PUT: api/user/{id}
+    // PUT: api/user/ChangePassword
     [Authorize]
-    [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody] gebruiker gebruiker)
+    [HttpPut("ChangePassword")]
+    public IActionResult ChangePassword([FromBody] PasswordChangeModel passwordChangeModel)
     {
-        if (gebruiker == null || gebruiker.GebruikerId != id)
-        {
-            return BadRequest();
-        }
+        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == passwordChangeModel.Email);
 
-        var gebruikerToUpdate = _context.gebruikers.FirstOrDefault(g => g.GebruikerId == id);
-
-        if (gebruikerToUpdate == null)
+        if (gebruiker == null)
         {
             return NotFound();
         }
 
-        gebruikerToUpdate.Voornaam = gebruiker.Voornaam;
-        gebruikerToUpdate.Achternaam = gebruiker.Achternaam;
-        gebruikerToUpdate.email = gebruiker.email;
-        gebruikerToUpdate.wachtwoord = gebruiker.wachtwoord;
-        gebruikerToUpdate.googleId = gebruiker.googleId;
+        if (gebruiker.wachtwoord == null && gebruiker.googleId != null)
+        {
+            return Unauthorized("Je kan het wachtwoord van een google account niet veranderen.");
+        }
 
-        _context.gebruikers.Update(gebruikerToUpdate);
+        // Create a PasswordHasher
+        var passwordHasher = new PasswordHasher<gebruiker>();
+
+        // Verify the hashed password
+        var result = passwordHasher.VerifyHashedPassword(gebruiker, gebruiker.wachtwoord, passwordChangeModel.Wachtwoord);
+
+        if (result == PasswordVerificationResult.Failed)
+        {
+            // Password verification failed
+            return Unauthorized("Het huidige wachtwoord is onjuist.");
+        }
+
+        // Hash the password
+        gebruiker.wachtwoord = passwordHasher.HashPassword(gebruiker, passwordChangeModel.NieuwWachtwoord);
         _context.SaveChanges();
-        return NoContent();
+
+        return Ok("Wachtwoord succesvol veranderd.");
     }
 
     // Delete: api/user/{id}
@@ -293,5 +308,12 @@ public class UserController : ControllerBase
         _context.SaveChanges();
 
         return NoContent();
+    }
+
+    [Authorize]
+    [HttpPost("Authorize")]
+    public IActionResult Authorize()
+    {
+        return Ok();
     }
 }

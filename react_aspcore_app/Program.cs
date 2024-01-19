@@ -48,7 +48,7 @@ builder.Services.AddAuthentication(options =>
         (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? "")),
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidateLifetime = false,
+        ValidateLifetime = true,
         ValidateIssuerSigningKey = true
     };
     o.Events = new JwtBearerEvents

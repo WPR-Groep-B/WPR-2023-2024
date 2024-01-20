@@ -91,6 +91,7 @@ public class UserController : ControllerBase
     }
 
     // GET: api/user
+    [Authorize]
     [HttpGet]
     public ActionResult<IEnumerable<gebruiker>> Get()
     {

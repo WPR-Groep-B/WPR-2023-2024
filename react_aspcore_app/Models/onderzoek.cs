@@ -19,8 +19,11 @@ public class onderzoek {
 
     public string onderzoekSoort { get; set;}
 
-    public int GoedgekeurdDoorId { get; set; }
-    public gebruikerBeheerder goedgekeurdDoor { get; set; }
+    public int? gebruikerDeskundigeId { get; set; }
+    public gebruikerDeskundige? gebruikerDeskundige { get; set; }
+
+    public int? GoedgekeurdDoorId { get; set; }
+    public gebruikerBeheerder? goedgekeurdDoor { get; set; }
 
      public string onderzoekLink { get; set;}
 

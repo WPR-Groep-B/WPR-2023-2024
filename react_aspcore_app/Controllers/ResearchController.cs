@@ -24,6 +24,38 @@ namespace react_aspcore_app.Controllers
             return Ok(_context.onderzoeken.ToList());
         }
 
+
+        [HttpGet("valid")]
+        public ActionResult<IEnumerable<onderzoek>> valid()
+        {
+            return Ok(_context.onderzoeken.Where(o => o.gebruikerDeskundigeId == null && o.GoedgekeurdDoorId != null).ToList());
+        }
+
+        [HttpGet("valid/{id}")]
+        public ActionResult<IEnumerable<onderzoek>> valid(int id)
+        {
+            return Ok(_context.onderzoeken.Where(o => o.gebruikerDeskundigeId == id).ToList());
+        }
+
+        [HttpGet("Bedrijf/{id}/valid")]
+        public ActionResult<IEnumerable<onderzoek>> BedrijfValid(int id)
+        {
+            return Ok(_context.onderzoeken.Where(o => o.GebruikerBedrijfId == id && o.GoedgekeurdDoorId != null).ToList());
+        }
+
+        [HttpGet("Bedrijf/{id}/unvalid")]
+        public ActionResult<IEnumerable<onderzoek>> BedrijfUnvalid(int id)
+        {
+            return Ok(_context.onderzoeken.Where(o => o.GebruikerBedrijfId == id && o.GoedgekeurdDoorId == null).ToList());
+        }
+
+        [HttpGet("Bedrijf/{id}/Goed")]
+        public ActionResult<IEnumerable<onderzoek>> BedrijfGoed(int id)
+        {
+            return Ok(_context.onderzoeken.Where(o => o.GebruikerBedrijfId == id && o.gebruikerDeskundigeId != null).ToList());
+        }
+
+
         // POST: api/research
         [Authorize]
         [HttpPost]
@@ -55,7 +87,7 @@ namespace react_aspcore_app.Controllers
             {
                 return NotFound();
             }
-            
+
             onderzoek.GebruikerBedrijfId = onderzoekUpdate.GebruikerBedrijfId;
             onderzoek.onderzoekNaam = onderzoekUpdate.onderzoekNaam;
             onderzoek.onderzoekBeschrijving = onderzoekUpdate.onderzoekBeschrijving;

@@ -6,6 +6,7 @@ import Login from "../pages/Login"
 import RegisterStart from "../pages/RegisterStart"
 import RegisterInfo from "../pages/RegisterInfo"
 import RegisterAccount from "../pages/RegisterAccount"
+import Researches from "../pages/Researches"
 import AboutUs from "../pages/AboutUs"
 import RegisterBeperking from "../pages/RegisterBeperking"
 import ResearchOverview from "../pages/ResearchOverview"
@@ -23,6 +24,7 @@ function Pages() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/login" element={<Login />} />
         <Route path="/onderzoekbeheer" element={<ResearchOverview />} />
+        <Route path="/onderzoeken" element={<Researches />} />
         <Route path="/onderzoekaanmelden" element={<ResearchJoin />} />
         <Route path="/register-start" element={<RegisterStart />} />
         <Route path="/register-info" element={<RegisterInfo />} />

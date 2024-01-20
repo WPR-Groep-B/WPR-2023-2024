@@ -24,7 +24,8 @@ function ChatPage() {
 
         try {
             const connection = new HubConnectionBuilder()
-                .withUrl(`/ChatHub?access_token=${jwt}`, {
+            //https://localhost:7251/ChatHub
+                .withUrl(`https://localhost:7251/ChatHub?access_token=${jwt}`, {
                     skipNegotiation: true,
                     transport: HttpTransportType.WebSockets
                 })

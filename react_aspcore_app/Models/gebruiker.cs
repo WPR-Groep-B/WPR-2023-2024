@@ -16,7 +16,7 @@ public class gebruiker
 
     public string? wachtwoord { get; set; }
     public string? googleId { get; set; }
-    public rol? Rol { get; set; }
+    public virtual rol Rol { get; set; }
     public int? rolId { get; set; }
 }
 public class gebruikerBedrijf : gebruiker

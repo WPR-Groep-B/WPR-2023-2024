@@ -7,10 +7,11 @@ import ResearchContainer from './ResearchContainer';
 
 function ResearchList() {
 
+    const [editOnderzoekId, setEditOnderzoekId] = useState(null); // Nieuwe state voor het tonen van het edit formulier
+
     const [Status, setStatus] = useState(''); // Nieuwe state voor het tonen van de status van het onderzoek
     const [data, setData] = useState([]); 
 
-    const [editOnderzoekId, setEditOnderzoekId] = useState(null);
     const [isCreating, setIsCreating] = useState(false); // Nieuwe state voor het tonen van create formulier
 
     useEffect(() => {
@@ -25,26 +26,10 @@ function ResearchList() {
         };
 
         fetchData();
-    }, [data]);
+    }, []);
 
     const handleCreate = () => {
         setIsCreating(true);
-    };
-
-    const handleCreateSave = async (newOnderzoek) => {
-        Axios.post('https://localhost:7251/api/research/', {
-            newOnderzoek
-        }, {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
-            }
-        })
-            .then((response) => {
-                console.log(response);
-                setIsCreating(false);
-            }, (error) => {
-                console.log(error);
-            });
     };
 
     const handleSave = async (onderzoek) => {
@@ -84,6 +69,22 @@ function ResearchList() {
             );
     };
 
+    const handleCreateSave = async (newOnderzoek) => {
+        Axios.post('https://localhost:7251/api/research/', {
+            newOnderzoek
+        }, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            }
+        })
+            .then((response) => {
+                console.log(response);
+                setIsCreating(false);
+            }, (error) => {
+                console.log(error);
+            });
+    };
+
     const handleCancelCreate = () => {
         setIsCreating(false);
     };
@@ -101,7 +102,11 @@ function ResearchList() {
                 />
             )}
             {data && data.map((onderzoek) =>
-                <ResearchContainer onderzoek={onderzoek} handleSave={() => handleSave} handleDelete={() => handleSave} setEditOnderzoekId={() => setEditOnderzoekId}/>
+                <ResearchContainer 
+                onderzoek={onderzoek}
+                onSave={handleSave}
+                onCancel={() => setEditOnderzoekId(null)}
+                />
             )}
         </div>
     );

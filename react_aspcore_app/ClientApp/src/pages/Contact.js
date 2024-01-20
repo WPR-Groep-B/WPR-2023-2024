@@ -10,7 +10,6 @@ function Contact() {
   }, [])
 
   return (
-    <html lang='nl'>
       <div className={styles.justifiedText}>
         <h1>Contact</h1>
         <p>Stichting Accessibility is gevestigd in het bedrijfsverzamelgebouw de Krammstate op een paar minuten lopen van Station Utrecht Overvecht.</p>
@@ -67,7 +66,6 @@ function Contact() {
 
         <p>Bekijk <a href="https://www.accessibility.nl/werken-bij-accessibility" target="_blank" rel="noreferrer">op deze pagina</a> de vacatures die we momenteel open hebben staan. We bieden ook stageplekken!</p>
       </div>
-    </html>
   );
 }
 

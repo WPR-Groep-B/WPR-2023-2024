@@ -119,6 +119,15 @@ button:hover::after {
   flex-direction: column; /* Reverse the order of the child elements */
 }
 
+.buttonMargin {
+  margin: 10px; /* Adjust as needed */
+}
+
+.bulletPoint::before {
+  content: "• ";
+  color: #26ecb7; /* Adjust color as needed */
+}
+
 @media only screen and (max-width: 600px) {
   footer {
     flex-direction: row; /* Make the items sit next to each other */

@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using react_aspcore_app.Authorization;
 using react_aspcore_app.Hubs;
 using System.Text;
 
@@ -16,7 +19,14 @@ builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SampleDBContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireBedrijf", policy => policy.RequireClaim("Rol", "Bedrijf"));
+    options.AddPolicy("RequirePanellid", policy => policy.RequireClaim("Rol", "Panellid"));
+    options.AddPolicy("RequireBeheerder", policy => policy.RequireClaim("Rol", "Beheerder"));
+    options.AddPolicy("RequireAdmin", policy => policy.RequireClaim("Rol", "Admin"));
+    // Add more policies as needed for other roles
+});
 
 builder.Services.AddCors(options =>
     {
@@ -25,13 +35,12 @@ builder.Services.AddCors(options =>
             {
                 builder.WithOrigins("https://localhost:44436", "https://appservicewprgroepb.azurewebsites.net")
                        .AllowAnyMethod()
-                        .AllowCredentials()
+                       .AllowCredentials()
                        .AllowAnyHeader();
             });
     });
 
 builder.Services.AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>());
-
 
 builder.Services.AddAuthentication(options =>
 {
@@ -48,7 +57,7 @@ builder.Services.AddAuthentication(options =>
         (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? "")),
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidateLifetime = false,
+        ValidateLifetime = true,
         ValidateIssuerSigningKey = true
     };
     o.Events = new JwtBearerEvents
@@ -71,8 +80,6 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
 });
-
-builder.Services.AddAuthorization();
 
 var app = builder.Build();
 

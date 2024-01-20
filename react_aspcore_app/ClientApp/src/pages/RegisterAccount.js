@@ -100,7 +100,8 @@ function RegisterAccount() {
           </div>
 
           <div>
-            <label htmlFor="password">Wachtwoord:</label>
+            <label htmlFor="password">Wachtwoord: <br />
+              (Moet minstens 12 karakters lang zijn en een van de volgende tekens bevatten: ! " @ # $ % ^ & * ( ) , . ? " : { } | &lt; &gt; )</label>
             <input type="password" id="password" name="password" minLength="12" placeholder="bv: wachtwoord123" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
 
@@ -110,7 +111,18 @@ function RegisterAccount() {
           </div>
 
           <hr></hr>
-          <button className={styles.registerbtn} type="button" onClick={handleSubmit}>Bevestig</button>
+          <button
+            className={styles.registerbtn}
+            type="button"
+            onClick={handleSubmit}
+            disabled={
+              !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email) ||
+              password.length < 12 ||
+              confirmPassword.length < 12 ||
+              password !== confirmPassword ||
+              !/[!@#$%^&*(),.?":{}|<>]/g.test(password)
+            }
+          >Bevestig</button>
         </form>
       </div>
     </div>

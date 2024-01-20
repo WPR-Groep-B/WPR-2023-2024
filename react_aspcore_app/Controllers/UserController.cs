@@ -13,6 +13,13 @@ public class LoginModel
     public required string Wachtwoord { get; set; }
 }
 
+public class PasswordChangeModel
+{
+    public required string Email { get; set; }
+    public required string Wachtwoord { get; set; }
+    public required string NieuwWachtwoord { get; set; }
+}
+
 public class RegisterModel
 {
     //Eigenschappen voor Elke gebruiker
@@ -56,13 +63,17 @@ public class UserController : ControllerBase
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("VGhpc0lzQVNlY3JldEtleVRoYXRJc0F0TGVhc3RTaXh0ZWVuQnl0ZXNMb25n")); // Replace "Your_Secret_Key" with your actual secret key
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
+        int? RolId = user.rolId;
+        string Rol = _context.rollen.Where(r => r.rolId == RolId).Select(r => r.rolNaam).FirstOrDefault();
+
         var claims = new[]
         {
         new Claim(JwtRegisteredClaimNames.Sub, user.email),
         new Claim("id", user.GebruikerId.ToString()),
         new Claim("voornaam", user.Voornaam),
         new Claim("achternaam", user.Achternaam),
-        new Claim("accountType", user.GetType().Name)
+        new Claim("accountType", user.GetType().Name),
+        new Claim ("Rol", Rol)
         // Add more claims if needed
     };
 
@@ -81,9 +92,11 @@ public class UserController : ControllerBase
     public UserController(SampleDBContext context)
     {
         _context = context;
+
     }
 
     // GET: api/user
+    [Authorize (Policy = "RequireAdmin")]
     [HttpGet]
     public ActionResult<IEnumerable<gebruiker>> Get()
     {
@@ -166,34 +179,14 @@ public class UserController : ControllerBase
     [HttpPost]
     public IActionResult Post([FromBody] RegisterModel nieuwGebruiker)
     {
-        if (nieuwGebruiker == null)
-        {
-            return BadRequest("Empty user data.");
-        }
-        if (_context.gebruikers.FirstOrDefault(g => g.email == nieuwGebruiker.Email) != null)
-        {
-            return BadRequest("Email already exists.");
-        }
-        if (nieuwGebruiker.Wachtwoord == null)
-        {
-            return BadRequest("Password is required.");
-        }
-        if (nieuwGebruiker.Voornaam == null)
-        {
-            return BadRequest("First name is required.");
-        }
-        if (nieuwGebruiker.Achternaam == null)
-        {
-            return BadRequest("Last name is required.");
-        }
-        if (nieuwGebruiker.Email == null)
-        {
-            return BadRequest("Email is required.");
-        }
-        if (nieuwGebruiker.AccountType == null)
-        {
-            return BadRequest("Account type is required.");
-        }
+        // lijst met required velden
+        if (nieuwGebruiker == null) return BadRequest("Invalid client request.");
+        if (_context.gebruikers.FirstOrDefault(g => g.email == nieuwGebruiker.Email) != null) return BadRequest("Email already exists.");
+        if (nieuwGebruiker.Wachtwoord == null) return BadRequest("Password is required.");
+        if (nieuwGebruiker.Voornaam == null) return BadRequest("First name is required.");
+        if (nieuwGebruiker.Achternaam == null) return BadRequest("Last name is required.");
+        if (nieuwGebruiker.Email == null) return BadRequest("Email is required.");
+        if (nieuwGebruiker.AccountType == null) return BadRequest("Account type is required.");
 
         gebruiker gebruiker;
 
@@ -204,7 +197,8 @@ public class UserController : ControllerBase
                 {
                     bedrijfsnaam = nieuwGebruiker.BedrijfsNaam,
                     locatie = nieuwGebruiker.Locatie,
-                    contactInformatie = nieuwGebruiker.ContactInformatie
+                    contactInformatie = nieuwGebruiker.ContactInformatie,
+                    rolId = _context.rollen.First(r => r.rolNaam == "Bedrijf").rolId
                 };
                 break;
             case "Ervaring":
@@ -217,13 +211,15 @@ public class UserController : ControllerBase
                     beperkingId = _context.beperkingen.First(b => b.beperkingType == nieuwGebruiker.BeperkingsType).beperkingId,
                     beschikbaarheid = nieuwGebruiker.Beschikbaarheid,
                     voorkeur = "test",
-                    hulpmiddelen = nieuwGebruiker.Hulpmiddelen
+                    hulpmiddelen = nieuwGebruiker.Hulpmiddelen,
+                    rolId = _context.rollen.First(r => r.rolNaam == "Panellid").rolId
                 };
                 break;
             case "beheerder":
                 gebruiker = new gebruikerBeheerder
                 {
-                    functie = nieuwGebruiker.Functie
+                    functie = nieuwGebruiker.Functie,
+                    rolId = _context.rollen.First(r => r.rolNaam == "Beheerder").rolId
                 };
                 break;
             default:
@@ -249,32 +245,40 @@ public class UserController : ControllerBase
     }
 
 
-    // PUT: api/user/{id}
+    // PUT: api/user/ChangePassword
     [Authorize]
-    [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody] gebruiker gebruiker)
+    [HttpPut("ChangePassword")]
+    public IActionResult ChangePassword([FromBody] PasswordChangeModel passwordChangeModel)
     {
-        if (gebruiker == null || gebruiker.GebruikerId != id)
-        {
-            return BadRequest();
-        }
+        var gebruiker = _context.gebruikers.FirstOrDefault(g => g.email == passwordChangeModel.Email);
 
-        var gebruikerToUpdate = _context.gebruikers.FirstOrDefault(g => g.GebruikerId == id);
-
-        if (gebruikerToUpdate == null)
+        if (gebruiker == null)
         {
             return NotFound();
         }
 
-        gebruikerToUpdate.Voornaam = gebruiker.Voornaam;
-        gebruikerToUpdate.Achternaam = gebruiker.Achternaam;
-        gebruikerToUpdate.email = gebruiker.email;
-        gebruikerToUpdate.wachtwoord = gebruiker.wachtwoord;
-        gebruikerToUpdate.googleId = gebruiker.googleId;
+        if (gebruiker.wachtwoord == null && gebruiker.googleId != null)
+        {
+            return Unauthorized("Je kan het wachtwoord van een google account niet veranderen.");
+        }
 
-        _context.gebruikers.Update(gebruikerToUpdate);
+        // Create a PasswordHasher
+        var passwordHasher = new PasswordHasher<gebruiker>();
+
+        // Verify the hashed password
+        var result = passwordHasher.VerifyHashedPassword(gebruiker, gebruiker.wachtwoord, passwordChangeModel.Wachtwoord);
+
+        if (result == PasswordVerificationResult.Failed)
+        {
+            // Password verification failed
+            return Unauthorized("Het huidige wachtwoord is onjuist.");
+        }
+
+        // Hash the password
+        gebruiker.wachtwoord = passwordHasher.HashPassword(gebruiker, passwordChangeModel.NieuwWachtwoord);
         _context.SaveChanges();
-        return NoContent();
+
+        return Ok("Wachtwoord succesvol veranderd.");
     }
 
     // Delete: api/user/{id}
@@ -293,5 +297,12 @@ public class UserController : ControllerBase
         _context.SaveChanges();
 
         return NoContent();
+    }
+
+    [Authorize]
+    [HttpPost("Authorize")]
+    public IActionResult Authorize()
+    {
+        return Ok();
     }
 }

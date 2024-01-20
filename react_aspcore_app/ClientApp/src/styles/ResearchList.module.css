@@ -3,48 +3,117 @@
     display: flex;
     flex-direction: column;
     height: auto;
+    height: auto;
 }
     
 
 .formContainer input,
 .formContainer textarea,
 .formContainer button {
-    margin-bottom: 10px; /* voeg ruimte toe tussen velden */
+    margin-bottom: 10px;
+    /* voeg ruimte toe tussen velden */
+}
+
+.textarea {
+    min-height: 60px;
+    max-height: 200px;
+    height: 60px;
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: 2px solid #1A2E83;
+    background-color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.textarea:focus {
+    background-color: #ededed;
+    outline: none;
+}
+
+.textarea:hover {
+    background-color: #ededed;
+    outline: none;
+}
+
+.inputText[type='text'] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 2% 22px 0;
+    display: inline-block;
+    border: 2px solid #1A2E83;
+    background-color: white;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.inputText[type='text']:focus {
+    background-color: #ededed;
+    outline: none;
+    box-shadow: 0 0 0 2.1px #1A2E83;
+}
+
+.inputText[type='text']:hover {
+    background-color: #ededed;
+    outline: none;
+    box-shadow: 0 0 0 2.1px #1A2E83;
+}
+
+.inputDate[type='date'] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 2% 22px 0;
+    display: inline-block;
+    border: 2px solid #1A2E83;
+    background-color: white;
+    color: grey;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.inputDate[type='date']:focus {
+    background-color: #ededed;
+    outline: none;
+}
+
+.inputDate[type='date']:hover {
+    background-color: #ededed;
+    outline: none;
 }
 
 .container {
-        
-        text-align: justify;
-        color: #1A2E83;
-        background-color: white;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        padding: 2rem;
-        border-radius: 15px;
-    }
+    text-align: justify;
+    color: #1A2E83;
+    background-color: white;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 15px;
+}
 
-  .button {
+.button {
     position: relative;
     overflow: hidden;
     background-color: #1fc396;
     color: #111e55;
     padding: 16px;
     cursor: pointer;
-    width: 100%;
+    width: 49%;
     margin: auto;
-    opacity: 0.8;
     font-weight: 800;
     font-size: large;
     border-radius: 15px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .button:hover {
+}
+
+.button:hover {
     background-color: #26ecb7;
     transform: scale(1.01);
-  }
-  
-  .button::before {
+}
+
+.button::before {
     content: '';
     position: absolute;
     background-color: #26ecb7;
@@ -52,13 +121,120 @@
     opacity: 0;
     transform: scale(0);
     transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  
-  .button:hover::before {
+}
+
+.button:hover::before {
     opacity: 1;
     transform: scale(1);
-  }
-  
-  .button:hover::after {
+}
+
+.button:hover::after {
     opacity: 0;
-  }
+}
+
+.buttonMargin {
+    margin-left: 2%;
+    /* Adjust as needed */
+}
+
+.researchContainer {
+    position: relative;
+    margin: auto;
+    width: 40%;
+    padding: 16px;
+    background: #111e55;
+    color: #fff;
+    border-radius: 25px;
+}
+
+.editButton {
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    overflow: hidden;
+    background-color: #1fc396;
+    color: #111e55;
+    padding: 8px;
+    cursor: pointer;
+    width: 12%;
+    margin: 0 20px 20px 20px;
+    font-weight: 800;
+    font-size: large;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.editButton:hover {
+    background-color: #26ecb7;
+    transform: scale(1.01);
+}
+
+.editButton::before {
+    content: '';
+    position: absolute;
+    background-color: #26ecb7;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.editButton:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.editButton:hover::after {
+    opacity: 0;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: right;
+}
+
+.formAndButtonContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.createButton {
+    overflow: hidden;
+    background-color: #1fc396;
+    color: #111e55;
+    padding: 8px;
+    cursor: pointer;
+    width: 20%;
+    font-weight: 800;
+    font-size: large;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.createButton:hover {
+    background-color: #26ecb7;
+    transform: scale(1.01);
+}
+
+.createButton::before {
+    content: '';
+    position: absolute;
+    background-color: #26ecb7;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.createButton:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.createButton:hover::after {
+    opacity: 0;
+}
+
+.researchContainer div {
+    word-wrap: break-word;
+}

@@ -150,6 +150,7 @@ function RegisterInfo() {
                                 className={styles.select}
                                 id="options"
                                 onChange={HandleAcountTypeChange}
+                                value={AccoutType}
                                 required
                             >
                                 <option value="">Kies een optie</option>
@@ -203,7 +204,7 @@ function RegisterInfo() {
                                 value={Locatie}
                                 onChange={handleLocatieChange}
                             />
-                            <label htmlFor="ContactInformatie">ContactInformatie</label>
+                            <label htmlFor="ContactInformatie">Contact Informatie</label>
                             <input
                                 style={{ width: inputWidth }}
                                 type="text"
@@ -216,10 +217,18 @@ function RegisterInfo() {
                         </div>
                     </div>
                     <hr />
-                    <button className={styles.registerbtn} type="submit">Volgende</button>
+                    <button
+                        className={styles.registerbtn}
+                        type="submit"
+                        disabled={
+                            age === "" ||
+                            AccoutType === "" ||
+                            ((Postcode.trim().length < 6 || telefoon.trim().length !== 11) && (bedrijf === "" || Locatie === "" || ContactInformatie.trim().length !== 11))
+                        }
+                    >Volgende</button>
                 </form>
             </div>
-        </div>
+        </div >
     );
 }
 

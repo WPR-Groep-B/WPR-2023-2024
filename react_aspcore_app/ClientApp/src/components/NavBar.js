@@ -86,7 +86,7 @@ function NavBar() {
             <>
               <li>
                 <NavLink
-                  to="/account"
+                  to="/Account"
                   onMouseEnter={e => {
                     const img = e.currentTarget.children[0];
                     img.src = accounticonHover;
@@ -121,7 +121,7 @@ function NavBar() {
                     setTimeout(() => img.style.opacity = 1, 0);
                   }}
                 >
-                  <img src={accounticon} alt="Account shortcut" className={styles.accounticon} />Uitloggen
+                  <img src={accounticon} alt="Uitloggen account" className={styles.accounticon} />Uitloggen
                 </button>
               </li>
             </>

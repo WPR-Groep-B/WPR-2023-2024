@@ -1,3 +1,6 @@
+import React from "react";
+import styles from "../../styles/ResearchList.module.css";
+
 // Deze functie voert de DELETE operatie uit
 function ResearchDetails({ onderzoek, onEdit, onDelete }) {
     return (
@@ -13,8 +16,11 @@ function ResearchDetails({ onderzoek, onEdit, onDelete }) {
             <div>{onderzoek.goedgekeurdDoorId}</div>
             <div>{onderzoek.onderzoekLink}</div>
             <div>{onderzoek.onderzoekForm}</div>
-            <button type="button" onClick={() => onEdit(onderzoek)}>Edit</button>
-            <button type="button" onClick={() => onDelete(onderzoek.onderzoekId)}>Delete</button>
+            <div className={styles.formAndButtonContainer}>
+                <div>{onderzoek.onderzoekForm}</div>
+            <button type="button" className={styles.editButton} onClick={() => onEdit(onderzoek)}>Edit</button>
+            <button type="button" className={styles.editButton} onClick={() => onDelete(onderzoek.onderzoekId)}>Delete</button>
+            </div>
         </div>
     );
 }

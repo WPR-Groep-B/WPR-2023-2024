@@ -33,6 +33,7 @@ function ReseachCreate({ onSave, onCancel }) {
         <div>
             <form onSubmit={handleSubmit} className={styles.formContainer}>
                 <input
+                    className={styles.inputText}
                     type="text"
                     name="gebruikerBedrijfId"
                     value={newOnderzoek.gebruikerBedrijfId}
@@ -40,6 +41,7 @@ function ReseachCreate({ onSave, onCancel }) {
                     placeholder="ID van Bedrijf"
                 />
                 <input
+                    className={styles.inputText}
                     type="text"
                     name="onderzoekNaam"
                     value={newOnderzoek.onderzoekNaam}
@@ -47,6 +49,7 @@ function ReseachCreate({ onSave, onCancel }) {
                     placeholder="Naam van het onderzoek"
                 />
                 <input
+                    className={styles.inputText}
                     type="text"
                     name="onderzoekBeschrijving"
                     value={newOnderzoek.onderzoekBeschrijving}
@@ -54,6 +57,7 @@ function ReseachCreate({ onSave, onCancel }) {
                     placeholder="Beschrijving van het onderzoek"
                 />
                 <input
+                    className={styles.inputDate}
                     type="date"
                     name="onderzoekStartDatum"
                     value={newOnderzoek.onderzoekStartDatum.split('T')[0]}
@@ -61,6 +65,7 @@ function ReseachCreate({ onSave, onCancel }) {
                     placeholder="Start Datum"
                 />
                 <input
+                    className={styles.inputDate}
                     type="date"
                     name="onderzoekEindDatum"
                     value={newOnderzoek.onderzoekEindDatum.split('T')[0]}
@@ -68,6 +73,7 @@ function ReseachCreate({ onSave, onCancel }) {
                     placeholder="Eind Datum"
                 />
                 <input
+                    className={styles.inputText}
                     type="text"
                     name="onderzoekStatus"
                     value={newOnderzoek.onderzoekStatus}
@@ -75,6 +81,7 @@ function ReseachCreate({ onSave, onCancel }) {
                     placeholder="Status van het onderzoek"
                 />
                 <input
+                    className={styles.inputText}
                     type="text"
                     name="onderzoekSoort"
                     value={newOnderzoek.onderzoekSoort}
@@ -82,6 +89,7 @@ function ReseachCreate({ onSave, onCancel }) {
                     placeholder="Soort onderzoek"
                 />
                 <input
+                    className={styles.inputText}
                     type="text"
                     name="goedgekeurdDoorId"
                     value={newOnderzoek.goedgekeurdDoorId}
@@ -89,6 +97,7 @@ function ReseachCreate({ onSave, onCancel }) {
                     placeholder="GoedgekeurdDoorId"
                 />
                 <input
+                    className={styles.inputText}
                     type="text"
                     name="onderzoekLink"
                     value={newOnderzoek.onderzoekLink}
@@ -96,14 +105,15 @@ function ReseachCreate({ onSave, onCancel }) {
                     placeholder="Link naar de website"
                 />
                 <input
+                    className={styles.inputText}
                     type="text"
                     name="onderzoekForm"
                     value={newOnderzoek.onderzoekForm}
                     onChange={handleChange}
                     placeholder="Link naar het formulier"
                 />
-                <button type="submit">Accept</button>
-                <button type="button" onClick={onCancel}>Cancel</button>
+                    <button className={styles.button} type="submit">Accept</button>
+                    <button className={`${styles.button} ${styles.buttonMargin}`} type="button" onClick={onCancel}>Cancel</button>
             </form>
         </div>
     );

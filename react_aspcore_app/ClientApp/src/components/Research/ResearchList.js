@@ -53,10 +53,11 @@ function ResearchList() {
             }
         })
             .then((response) => {
-                alert(response.status);
+                alert('Onderzoek is succesvol aangepast!');
                 setEditOnderzoekId(null); // Reset de edit state
                 setRefreshKey(oldKey => oldKey + 1); // Update the refreshKey state to cause the list to refresh
             }, (error) => {
+                alert('Onderzoek is niet succesvol aangepast! Probeer opnieuw of neem anders contact op met de beheerder.');
                 console.log(error);
             });
     };
@@ -90,7 +91,9 @@ function ResearchList() {
                 console.log(response);
                 setIsCreating(false);
                 setRefreshKey(oldKey => oldKey + 1); // Update the refreshKey state to cause the list to refresh
+                alert('Onderzoek is succesvol aangemaakt!');
             }, (error) => {
+                alert('Onderzoek is niet succesvol aangemaakt! Probeer opnieuw of neem anders contact op met de beheerder.');
                 console.log(error);
             });
     };
@@ -104,7 +107,7 @@ function ResearchList() {
 
     return (
         <div><div className={styles.container}>
-            <button type="button" onClick={handleCreate}>Create</button>
+            {!isCreating && <button className={styles.createButton} type="button" onClick={handleCreate}>Create New Research</button>}
             {isCreating && (
                 <ResearchCreate
                     onSave={handleCreateSave}

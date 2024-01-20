@@ -72,7 +72,7 @@ function Login() {
                         <button
                             className={styles.confirmButton}
                             type="submit"
-                            disabled={!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email) || wachtwoord === ""}
+                            disabled={wachtwoord === ""}
                             onClick={(e) => HandleLogin(e)}
                         >Login</button>
                     </form>

@@ -1,5 +1,5 @@
 // Deze functie voert de DELETE operatie uit
-export function ResearchDetails({ onderzoek, onEdit, onDelete }) {
+function ResearchDetails({ onderzoek, onEdit, onDelete }) {
     return (
         <div>
             <div>{onderzoek.onderzoekId}</div>

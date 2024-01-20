@@ -9,8 +9,10 @@ function ResearchList() {
 
     const [editOnderzoekId, setEditOnderzoekId] = useState(null); // Nieuwe state voor het tonen van het edit formulier
 
+    const [refreshKey, setRefreshKey] = useState(0);
+
     const [Status, setStatus] = useState(''); // Nieuwe state voor het tonen van de status van het onderzoek
-    const [data, setData] = useState([]); 
+    const [data, setData] = useState(); 
 
     const [isCreating, setIsCreating] = useState(false); // Nieuwe state voor het tonen van create formulier
 
@@ -21,16 +23,18 @@ function ResearchList() {
                     'Authorization': 'Bearer ' + localStorage.getItem('jwt')
                 }
             });
-
             setData(result.data);
+            console.log(data);
         };
 
+
         fetchData();
-    }, []);
+    }, [refreshKey]);
 
     const handleCreate = () => {
         setIsCreating(true);
     };
+
 
     const handleSave = async (onderzoek) => {
 
@@ -48,6 +52,7 @@ function ResearchList() {
             .then((response) => {
                 console.log(response);
                 setEditOnderzoekId(null); // Reset de edit state
+                setRefreshKey(oldKey => oldKey + 1); // Update the refreshKey state to cause the list to refresh
             }, (error) => {
                 console.log(error);
             });
@@ -63,6 +68,7 @@ function ResearchList() {
 
             .then((response) => {
                 console.log(response);
+                setRefreshKey(oldKey => oldKey + 1); // Update the refreshKey state to cause the list to refresh
             }, (error) => {
                 console.log(error);
             }
@@ -80,6 +86,7 @@ function ResearchList() {
             .then((response) => {
                 console.log(response);
                 setIsCreating(false);
+                setRefreshKey(oldKey => oldKey + 1); // Update the refreshKey state to cause the list to refresh
             }, (error) => {
                 console.log(error);
             });
@@ -103,9 +110,12 @@ function ResearchList() {
             )}
             {data && data.map((onderzoek) =>
                 <ResearchContainer 
+                key={onderzoek.onderzoekId}
                 onderzoek={onderzoek}
                 onSave={handleSave}
-                onCancel={() => setEditOnderzoekId(null)}
+                onDelete={handleDelete}
+                setEditOnderzoekId={setEditOnderzoekId}
+                editOnderzoekId={editOnderzoekId}
                 />
             )}
         </div>

@@ -4,7 +4,7 @@ import styles from '../styles/ResearchList.module.css';
 
 
 //https://localhost:7251
-async function getData() {
+export async function getData() {
     const response = await fetch('https://localhost:7251/api/research/', {
         mode: 'cors',
         headers: {

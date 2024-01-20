@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import getData from "../ResearchList"; // Zorg ervoor dat getData geëxporteerd wordt in ResearchList.js
+import getData from "./ResearchList"; // Zorg ervoor dat getData geëxporteerd wordt in ResearchList.js
+import { jwtDecode } from 'jwt-decode';
 
 export default function ResearchEnroll() {
     const { data, isPending, error } = useQuery({
@@ -9,7 +10,7 @@ export default function ResearchEnroll() {
     });
 
     const handleJoin = async (onderzoekId) => {
-        const gebruikerId = jwt_decode(localStorage.getItem('jwt')).id;
+        const gebruikerId = jwtDecode(localStorage.getItem('jwt')).id;
         const deelnameData = {
             GebruikerDeskundigeId: gebruikerId,
             OnderzoekId: onderzoekId,

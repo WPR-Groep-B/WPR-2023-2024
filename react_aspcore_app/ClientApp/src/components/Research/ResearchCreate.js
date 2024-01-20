@@ -46,7 +46,8 @@ function ReseachCreate({ onSave, onCancel }) {
                     onChange={handleChange}
                     placeholder="Naam van het onderzoek"
                 />
-                <textarea
+                <input
+                    type="text"
                     name="onderzoekBeschrijving"
                     value={newOnderzoek.onderzoekBeschrijving}
                     onChange={handleChange}

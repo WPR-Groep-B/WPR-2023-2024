@@ -12,7 +12,7 @@ function ResearchList() {
     const [refreshKey, setRefreshKey] = useState(0);
 
     const [Status, setStatus] = useState(''); // Nieuwe state voor het tonen van de status van het onderzoek
-    const [data, setData] = useState(); 
+    const [data, setData] = useState();
 
     const [isCreating, setIsCreating] = useState(false); // Nieuwe state voor het tonen van create formulier
 
@@ -20,7 +20,7 @@ function ResearchList() {
         const fetchData = async () => {
             const result = await Axios.get('https://localhost:7251/api/research/', {
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+                    Authorization: 'Bearer ' + localStorage.getItem('jwt')
                 }
             });
             setData(result.data);
@@ -46,11 +46,14 @@ function ResearchList() {
             GebruikerDeskundigeId: onderzoek.GebruikerDeskundigeId
         };
 
-        Axios.put('https://localhost:7251/api/research/' + onderzoek.onderzoekId, {
-            formattedData
+        Axios.put('https://localhost:7251/api/research/' + onderzoek.onderzoekId, formattedData, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('jwt')
+            }
         })
             .then((response) => {
-                console.log(response);
+                alert(response.status);
                 setEditOnderzoekId(null); // Reset de edit state
                 setRefreshKey(oldKey => oldKey + 1); // Update the refreshKey state to cause the list to refresh
             }, (error) => {
@@ -60,14 +63,14 @@ function ResearchList() {
 
     // In de ResearchList component
     const handleDelete = async (id) => {
-        Axios.delete('https://localhost:7251/api/research/' + id, {}, {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
-            }
+        Axios.delete('https://localhost:7251/api/research/' + id, {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('jwt')
+        }
         })
 
             .then((response) => {
-                console.log(response);
+                alert(response);
                 setRefreshKey(oldKey => oldKey + 1); // Update the refreshKey state to cause the list to refresh
             }, (error) => {
                 console.log(error);
@@ -80,7 +83,7 @@ function ResearchList() {
             newOnderzoek
         }, {
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            Authorization: 'Bearer ' + localStorage.getItem('jwt')
             }
         })
             .then((response) => {
@@ -100,7 +103,7 @@ function ResearchList() {
     // if (error) return <div>An error has occurred: {error.message}</div>;
 
     return (
-        <div>
+        <div><div className={styles.container}>
             <button type="button" onClick={handleCreate}>Create</button>
             {isCreating && (
                 <ResearchCreate
@@ -108,14 +111,15 @@ function ResearchList() {
                     onCancel={handleCancelCreate}
                 />
             )}
-            {data && data.map((onderzoek) =>
-                <ResearchContainer 
-                key={onderzoek.onderzoekId}
-                onderzoek={onderzoek}
-                onSave={handleSave}
-                onDelete={handleDelete}
-                setEditOnderzoekId={setEditOnderzoekId}
-                editOnderzoekId={editOnderzoekId}
+            </div>
+                {data && data.map((onderzoek) =>
+                <ResearchContainer
+                    key={onderzoek.onderzoekId}
+                    onderzoek={onderzoek}
+                    handleSave={handleSave}
+                    onDelete={handleDelete}
+                    setEditOnderzoekId={setEditOnderzoekId}
+                    editOnderzoekId={editOnderzoekId}
                 />
             )}
         </div>

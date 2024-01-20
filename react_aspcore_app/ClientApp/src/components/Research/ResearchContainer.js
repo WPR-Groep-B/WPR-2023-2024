@@ -1,6 +1,7 @@
 import ResearchEdit from './ResearchEdit';
 import ReseachDetails from './ResearchDetails';
 import { useState } from 'react';
+import styles from '../../styles/ResearchList.module.css'
 import Axios from 'axios';
 
 function ResearchContainer({onderzoek, handleSave, handleDelete}) {
@@ -8,13 +9,13 @@ function ResearchContainer({onderzoek, handleSave, handleDelete}) {
     const [editOnderzoekId, setEditOnderzoekId] = useState(null); // Nieuwe state voor het tonen van het edit formulier
 
     return (
-        <div>
+        <div className={styles.container}>
             {
                 editOnderzoekId === onderzoek.onderzoekId ? (
                 <ResearchEdit
                     onderzoek={onderzoek}
                     onSave={handleSave}
-                    onCancel={() => setEditOnderzoekId(editOnderzoekId)}
+                    onCancel={setEditOnderzoekId}
                 />
                 ) : (
                 <ReseachDetails

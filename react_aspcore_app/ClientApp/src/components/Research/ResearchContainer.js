@@ -9,7 +9,7 @@ function ResearchContainer({onderzoek, handleSave, handleDelete}) {
     const [editOnderzoekId, setEditOnderzoekId] = useState(null); // Nieuwe state voor het tonen van het edit formulier
 
     return (
-        <div className={styles.container}>
+        <div className={styles.percontainer}>
             {
                 editOnderzoekId === onderzoek.onderzoekId ? (
                 <ResearchEdit

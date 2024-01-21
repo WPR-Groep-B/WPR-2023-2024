@@ -119,7 +119,7 @@ function ResearchList() {
                     key={onderzoek.onderzoekId}
                     onderzoek={onderzoek}
                     handleSave={handleSave}
-                    onDelete={handleDelete}
+                    handleDelete={handleDelete}
                     setEditOnderzoekId={setEditOnderzoekId}
                     editOnderzoekId={editOnderzoekId}
                 />

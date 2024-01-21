@@ -65,6 +65,7 @@ public class UserController : ControllerBase
 
         int? RolId = user.rolId;
         string Rol = _context.rollen.Where(r => r.rolId == RolId).Select(r => r.rolNaam).FirstOrDefault();
+        if (Rol == null) Rol = "Panellid";
 
         var claims = new[]
         {

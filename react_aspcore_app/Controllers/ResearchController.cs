@@ -5,6 +5,13 @@ using System.Linq;
 
 namespace react_aspcore_app.Controllers
 {
+    public class Deelnemen
+    {
+        public int onderzoekId { get; set; }
+        public int gebruikerId { get; set; }
+    }
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class ResearchController : ControllerBase
@@ -71,6 +78,29 @@ namespace react_aspcore_app.Controllers
 
             return CreatedAtAction(nameof(Get), new { id = nieuwOnderzoek.onderzoekId }, nieuwOnderzoek);
         }
+
+        [HttpPost("Deelnemen")]
+        public IActionResult Deelnemen([FromBody] Deelnemen deelnemen)
+        {
+            if (deelnemen == null)
+            {
+                return BadRequest();
+            }
+
+            var onderzoek = _context.onderzoeken.FirstOrDefault(o => o.onderzoekId == deelnemen.onderzoekId);
+            if (onderzoek == null)
+            {
+                return NotFound();
+            }
+
+            onderzoek.gebruikerDeskundigeId = deelnemen.gebruikerId;
+
+            _context.onderzoeken.Update(onderzoek);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
 
         // PUT: api/research/{id}
         [Authorize]

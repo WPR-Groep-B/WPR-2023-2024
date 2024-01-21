@@ -44,19 +44,19 @@ namespace react_aspcore_app.Controllers
             return Ok(_context.onderzoeken.Where(o => o.gebruikerDeskundigeId == id).ToList());
         }
 
-        [HttpGet("Bedrijf/{id}/valid")]
+        [HttpGet("Bedrijf/valid/{id}")]
         public ActionResult<IEnumerable<onderzoek>> BedrijfValid(int id)
         {
             return Ok(_context.onderzoeken.Where(o => o.GebruikerBedrijfId == id && o.GoedgekeurdDoorId != null).ToList());
         }
 
-        [HttpGet("Bedrijf/{id}/unvalid")]
+        [HttpGet("Bedrijf/unvalid/{id}")]
         public ActionResult<IEnumerable<onderzoek>> BedrijfUnvalid(int id)
         {
-            return Ok(_context.onderzoeken.Where(o => o.GebruikerBedrijfId == id && o.GoedgekeurdDoorId == null).ToList());
+            return Ok(_context.onderzoeken.Where(o => o.GebruikerBedrijfId == id && o.GoedgekeurdDoorId == null && o.gebruikerDeskundigeId == null).ToList());
         }
 
-        [HttpGet("Bedrijf/{id}/Goed")]
+        [HttpGet("Bedrijf/Goed/{id}")]
         public ActionResult<IEnumerable<onderzoek>> BedrijfGoed(int id)
         {
             return Ok(_context.onderzoeken.Where(o => o.GebruikerBedrijfId == id && o.gebruikerDeskundigeId != null).ToList());

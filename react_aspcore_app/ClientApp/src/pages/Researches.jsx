@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import styles from "../styles/Chat.module.css";
 import OnderzoekenDeelnemenList from "../components/onderzoeken/OnderzoekenDeelnemenList";
+import OnderzoekenList from "../components/onderzoeken/OnderzoekenList";
 
 function Researches() {
 
@@ -93,16 +94,53 @@ function Researches() {
                     : null
                 }
             </div>
-            <div>
-                <h2>Mijn onderzoeken</h2>
-                <OnderzoekVeld joinRoom={joinRoom} connection={connection} refreshKey={refreshKey}/>
-            </div>
-            <div>
-                <h2>Onderzoeken om Deel te nemen</h2>
-                <OnderzoekenDeelnemenList setRefreshKey={setRefreshKey} refreshKey={refreshKey}/>
-            </div>
+            {jwtDecode(jwt).Rol === "Panellid" ?
+            <ToonOnderzoekersScherm setRefreshKey={setRefreshKey} refreshKey={refreshKey} joinRoom={joinRoom} connection={connection}/>
+            :
+            <ToonBedrijfScherm setRefreshKey={setRefreshKey} refreshKey={refreshKey} joinRoom={joinRoom} connection={connection}/>
+            }
         </div>
     );
 }
 
 export default Researches;
+
+//had geen zin om dit in een aparte file te zetten
+
+function ToonOnderzoekersScherm({setRefreshKey, refreshKey, joinRoom, connection}) {
+
+    const ApiLink = "https://localhost:7251/api/Research/valid/";
+
+    return (
+        <>
+        <div>
+            <h2>Mijn onderzoeken</h2>
+            <OnderzoekVeld joinRoom={joinRoom} connection={connection} refreshKey={refreshKey} ApiLink={ApiLink}/>
+        </div>
+        <div>
+            <h2>Onderzoeken om Deel te nemen</h2>
+            <OnderzoekenDeelnemenList setRefreshKey={setRefreshKey} refreshKey={refreshKey}/>
+        </div>
+        </>
+    );
+}
+
+function ToonBedrijfScherm({setRefreshKey, refreshKey, joinRoom, connection}) {
+
+    return (
+        <>
+        <div>
+            <h2>Mijn onderzoeken</h2>
+            <OnderzoekVeld joinRoom={joinRoom} connection={connection} refreshKey={refreshKey} ApiLink={"https://localhost:7251/api/Research/Bedrijf/goed/"}/>
+        </div>
+        <div>
+            <h2>onderzoeken nog geen deskundige gevonden</h2>
+            <OnderzoekenList setRefreshKey={setRefreshKey} refreshKey={refreshKey} ApiLink={"https://localhost:7251/api/Research/Bedrijf/valid/"}/>
+        </div>
+        <div>
+            <h2>onderzoeken nog niet goedgekeurd</h2>
+            <OnderzoekenList setRefreshKey={setRefreshKey} refreshKey={refreshKey} ApiLink={"https://localhost:7251/api/Research/Bedrijf/unvalid/"}/>
+        </div>
+        </>
+    );
+}

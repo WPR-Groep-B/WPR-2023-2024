@@ -123,7 +123,7 @@ function RegisterBeperking() {
 
                     <div className={styles.parentDiv}>
                         <div>
-                            <label htmlFor="ErvaringFields">beschikbaarheid:</label>
+                            <label htmlFor="ErvaringFields">Beschikbaarheid:</label>
                             <input
                                 style={{ width: inputWidth }}
                                 type="text"
@@ -136,7 +136,7 @@ function RegisterBeperking() {
                         </div>
 
                         <div className={styles.inputPadding}>
-                            <label htmlFor="ErvaringFields">hulpmiddelen:</label>
+                            <label htmlFor="ErvaringFields">Hulpmiddelen:</label>
                             <input
                                 style={{ width: inputWidth }}
                                 type="text"

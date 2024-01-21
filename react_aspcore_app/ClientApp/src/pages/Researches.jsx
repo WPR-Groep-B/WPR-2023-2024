@@ -8,6 +8,7 @@ import styles from "../styles/Chat.module.css";
 import OnderzoekenDeelnemenList from "../components/onderzoeken/OnderzoekenDeelnemenList";
 import OnderzoekenList from "../components/onderzoeken/OnderzoekenList";
 import axios from "axios";
+import OnderzoekMaken from "../components/onderzoeken/OnderzoekMaken"
 
 function Researches() {
 

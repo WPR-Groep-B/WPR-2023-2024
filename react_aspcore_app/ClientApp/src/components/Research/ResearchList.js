@@ -16,18 +16,17 @@ function ResearchList() {
 
     const [isCreating, setIsCreating] = useState(false); // Nieuwe state voor het tonen van create formulier
 
+    const fetchData = async () => {
+        const result = await Axios.get('https://localhost:7251/api/research/', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('jwt')
+            }
+        });
+        setData(result.data);
+        console.log(data);
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            const result = await Axios.get('https://localhost:7251/api/research/', {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('jwt')
-                }
-            });
-            setData(result.data);
-            console.log(data);
-        };
-
-
         fetchData();
     }, [refreshKey]);
 

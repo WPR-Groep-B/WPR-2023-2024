@@ -14,7 +14,7 @@ using static gebruiker;
         public DbSet<gebruikerDeskundige> gebruikerDeskundigen { get; set; }
         public DbSet<gebruikerBeheerder> gebruikerBeheerders { get; set; }
         public DbSet<onderzoek> onderzoeken { get; set; }
-        public DbSet<deelname> deelnames { get; set; }
+        // public DbSet<deelname> deelnames { get; set; }
         public DbSet<beperking> beperkingen { get; set; }
         public DbSet<rol> rollen { get; set; }
         public DbSet<Message> Messages { get; set; }
@@ -44,8 +44,8 @@ using static gebruiker;
             modelBuilder.Entity<onderzoek>()
                 .ToTable("onderzoek");
 
-            modelBuilder.Entity<deelname>()
-                .ToTable("deelname");
+            // modelBuilder.Entity<deelname>()
+            //     .ToTable("deelname");
 
             modelBuilder.Entity<gebruikerDeskundige>()
                 .HasOne(o => o.beperking)
@@ -57,6 +57,12 @@ using static gebruiker;
                 .HasOne(o => o.Rol)
                 .WithMany()
                 .HasForeignKey(o => o.rolId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<onderzoek>()
+                .HasOne(o => o.gebruikerDeskundige)
+                .WithMany()
+                .HasForeignKey(o => o.gebruikerDeskundigeId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<onderzoek>()
@@ -83,17 +89,17 @@ using static gebruiker;
             modelBuilder.Entity<gebruikerBedrijf>()
                 .ToTable("gebruikerBedrijven");
 
-            modelBuilder.Entity<deelname>()
-                .HasOne(o => o.gebruikerDeskundige)
-                .WithMany()
-                .HasForeignKey(o => o.GebruikerDeskundigeId)
-                .OnDelete(DeleteBehavior.NoAction);
+            // modelBuilder.Entity<deelname>()
+            //     .HasOne(o => o.gebruikerDeskundige)
+            //     .WithMany()
+            //     .HasForeignKey(o => o.GebruikerDeskundigeId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<deelname>()
-                .HasOne(o => o.onderzoek)
-                .WithMany()
-                .HasForeignKey(o => o.OnderzoekId)
-                .OnDelete(DeleteBehavior.NoAction);
+            // modelBuilder.Entity<deelname>()
+            //     .HasOne(o => o.onderzoek)
+            //     .WithMany()
+            //     .HasForeignKey(o => o.OnderzoekId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
             // Do the same for other relationships that could cause multiple cascade paths
         }

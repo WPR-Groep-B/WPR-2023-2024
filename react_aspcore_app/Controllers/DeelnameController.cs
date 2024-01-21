@@ -26,7 +26,7 @@ namespace react_aspcore_app.Controllers
                 return BadRequest();
             }
 
-            _context.deelnames.Add(nieuweDeelname);
+            // _context.deelnames.Add(nieuweDeelname);
             _context.SaveChanges();
 
             return Ok(nieuweDeelname); // Of return CreatedAtAction met relevante informatie

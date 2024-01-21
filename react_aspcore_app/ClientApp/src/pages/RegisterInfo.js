@@ -223,7 +223,7 @@ function RegisterInfo() {
                         disabled={
                             age === "" ||
                             AccoutType === "" ||
-                            ((Postcode.trim().length < 6 || telefoon.trim().length !== 11) && (bedrijf === "" || Locatie === "" || ContactInformatie.trim().length !== 11))
+                            ((Postcode.trim().length < 6 || telefoon.trim().length !== 10) && (bedrijf === "" || Locatie === "" || ContactInformatie.trim().length !== 11))
                         }
                     >Volgende</button>
                 </form>

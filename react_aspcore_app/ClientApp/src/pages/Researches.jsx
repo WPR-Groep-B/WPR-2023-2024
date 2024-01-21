@@ -7,6 +7,7 @@ import { jwtDecode } from 'jwt-decode';
 import styles from "../styles/Chat.module.css";
 import OnderzoekenDeelnemenList from "../components/onderzoeken/OnderzoekenDeelnemenList";
 import OnderzoekenList from "../components/onderzoeken/OnderzoekenList";
+import axios from "axios";
 
 function Researches() {
 
@@ -15,6 +16,29 @@ function Researches() {
     const [refreshKey, setRefreshKey] = useState(0);
 
     const jwt = localStorage.getItem('jwt');
+
+    useEffect(() => {
+        document.title = 'Account - Stichting Accessibility';
+    
+        // If not logged in, redirect to login page
+        axios.post('https://localhost:7251/api/User/Authorize', {}, {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('jwt')
+          }
+        }).then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            console.log('Authorized');
+          }
+        })
+          .catch((error) => {
+            console.log(error);
+            if (error.response.status === 401) {
+              localStorage.removeItem('jwt');
+              window.location.href = '/login';
+            }
+          });
+      }, []);
 
     const joinRoom = async (Room) => {
         if (jwt === null) { return; }

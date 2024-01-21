@@ -40,9 +40,6 @@ function NavBar() {
           <NavLink to="/privacy">Privacy</NavLink>
         </li>
         <li>
-          <NavLink to="/Chatpage">Chat</NavLink>
-        </li>
-        <li>
           <NavLink
             to="/login"
             onMouseEnter={e => {

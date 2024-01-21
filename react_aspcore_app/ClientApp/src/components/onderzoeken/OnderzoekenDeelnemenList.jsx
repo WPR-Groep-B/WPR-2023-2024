@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import OnderzoekenDeelnemen from "./OnderzoekDeelnemen";
 
-function OnderzoekenDeelnemenList ({updateList}) {
+function OnderzoekenDeelnemenList ({setRefreshKey, refreshKey}) {
 
     const [onderzoeken, setOnderzoeken] = useState([]);
 
@@ -27,18 +27,22 @@ function OnderzoekenDeelnemenList ({updateList}) {
                 Authorization: 'Bearer ' + localStorage.getItem('jwt')
             }
         }).then((response) => {
+            setRefreshKey(oldKey => oldKey + 1);
             console.log(response.data);
         });
     }
 
     useEffect(() => {
         getOnderzoeken();
-    }, []);
+    }, [refreshKey]);
 
     return (
         <div className="onderzoek-veld">
             {onderzoeken.map((onderzoek) => (
-            <OnderzoekenDeelnemen onderzoek={onderzoek} Deelnemen={Deelnemen}/>
+            <OnderzoekenDeelnemen 
+            key={onderzoek.onderzoekId} 
+            onderzoek={onderzoek} 
+            Deelnemen={Deelnemen}/>
             ))
         }
         </div>

@@ -11,6 +11,7 @@ function Researches() {
 
     const [connection, setConnection] = useState();
     const [messages, setMessages] = useState([]);
+    const [refreshKey, setRefreshKey] = useState(0);
 
     const jwt = localStorage.getItem('jwt');
 
@@ -94,11 +95,11 @@ function Researches() {
             </div>
             <div>
                 <h2>Mijn onderzoeken</h2>
-                <OnderzoekVeld joinRoom={joinRoom} connection={connection}/>
+                <OnderzoekVeld joinRoom={joinRoom} connection={connection} refreshKey={refreshKey}/>
             </div>
             <div>
                 <h2>Onderzoeken om Deel te nemen</h2>
-                <OnderzoekenDeelnemenList />
+                <OnderzoekenDeelnemenList setRefreshKey={setRefreshKey} refreshKey={refreshKey}/>
             </div>
         </div>
     );

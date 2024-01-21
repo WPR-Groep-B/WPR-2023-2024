@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import Onderzoek from "./Onderzoek";
 
-function OnderzoekVeld({ joinRoom, connection }) {
+function OnderzoekVeld({ joinRoom, connection, refreshKey }) {
 
     const [onderzoekenDeelgenomen, setOnderzoekenDeelgenomen] = useState([]);
 
@@ -20,7 +20,7 @@ function OnderzoekVeld({ joinRoom, connection }) {
 
     useEffect(() => {
         getOnderzoekenDeelgenomen();
-    }, []);
+    }, [refreshKey]);
 
     return (
         <div className="onderzoek-veld">

@@ -99,7 +99,7 @@ function RegisterBeperking() {
                                 value={beperking}
                                 onChange={handleBeperkingChange}
                             >
-                                <option value="">Kies een optie</option>
+                                <option value="">Kies een optie:</option>
                                 <option value="Zicht">Zicht</option>
                                 <option value="Gehoor">Gehoor</option>
                                 <option value="Mobiliteit">Mobiliteit</option>

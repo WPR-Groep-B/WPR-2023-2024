@@ -166,7 +166,6 @@ function ToonBedrijfScherm({setRefreshKey, refreshKey, joinRoom, connection}) {
             <h2>onderzoeken nog niet goedgekeurd</h2>
             <OnderzoekenList setRefreshKey={setRefreshKey} refreshKey={refreshKey} ApiLink={"https://localhost:7251/api/Research/Bedrijf/unvalid/"}/>
         </div>
-        
         </>
     );
 }

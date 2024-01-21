@@ -16,8 +16,9 @@ function ResearchDetails({ onderzoek, onEdit, onDelete }) {
             <div>{onderzoek.goedgekeurdDoorId}</div>
             <div>{onderzoek.onderzoekLink}</div>
             <div>{onderzoek.onderzoekForm}</div>
+            <br/>
             <div className={styles.formAndButtonContainer}>
-                <div>{onderzoek.onderzoekForm}</div>
+            <hr />
             <button type="button" className={styles.editButton} onClick={() => onEdit(onderzoek)}>Edit</button>
             <button type="button" className={styles.editButton} onClick={() => onDelete(onderzoek.onderzoekId)}>Delete</button>
             </div>

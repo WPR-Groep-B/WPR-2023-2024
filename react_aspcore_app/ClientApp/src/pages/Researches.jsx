@@ -8,6 +8,7 @@ import styles from "../styles/Chat.module.css";
 import OnderzoekenDeelnemenList from "../components/onderzoeken/OnderzoekenDeelnemenList";
 import OnderzoekenList from "../components/onderzoeken/OnderzoekenList";
 import axios from "axios";
+import OnderzoekMaken from "../components/onderzoeken/OnderzoekMaken"
 
 function Researches() {
 
@@ -145,6 +146,10 @@ function ToonOnderzoekersScherm({setRefreshKey, refreshKey, joinRoom, connection
             <h2>Onderzoeken om Deel te nemen</h2>
             <OnderzoekenDeelnemenList setRefreshKey={setRefreshKey} refreshKey={refreshKey}/>
         </div>
+        <div>
+            <p>OnderzoekMaken</p>
+            <OnderzoekMaken/>
+        </div>
         </>
     );
 }
@@ -165,6 +170,7 @@ function ToonBedrijfScherm({setRefreshKey, refreshKey, joinRoom, connection}) {
             <h2>onderzoeken nog niet goedgekeurd</h2>
             <OnderzoekenList setRefreshKey={setRefreshKey} refreshKey={refreshKey} ApiLink={"https://localhost:7251/api/Research/Bedrijf/unvalid/"}/>
         </div>
+        
         </>
     );
 }

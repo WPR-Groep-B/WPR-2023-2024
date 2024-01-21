@@ -66,7 +66,9 @@ function RegisterAccount() {
         Wachtwoord: password
       };
       console.log(payload);
-      Axios.post('/api/User', payload, { headers: { 'Content-Type': 'application/json' } })
+
+      //https://localhost:7251/api/User
+      Axios.post('https://localhost:7251/api/User', payload, { headers: { 'Content-Type': 'application/json' } })
         .then((response) => {
           console.log(response);
           if (response.status === 201) {

@@ -63,13 +63,18 @@ public class UserController : ControllerBase
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("VGhpc0lzQVNlY3JldEtleVRoYXRJc0F0TGVhc3RTaXh0ZWVuQnl0ZXNMb25n")); // Replace "Your_Secret_Key" with your actual secret key
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
+        int? RolId = user.rolId;
+        string Rol = _context.rollen.Where(r => r.rolId == RolId).Select(r => r.rolNaam).FirstOrDefault();
+        if (Rol == null) Rol = "Panellid";
+
         var claims = new[]
         {
         new Claim(JwtRegisteredClaimNames.Sub, user.email),
         new Claim("id", user.GebruikerId.ToString()),
         new Claim("voornaam", user.Voornaam),
         new Claim("achternaam", user.Achternaam),
-        new Claim("accountType", user.GetType().Name)
+        new Claim("accountType", user.GetType().Name),
+        new Claim ("Rol", Rol)
         // Add more claims if needed
     };
 
@@ -88,9 +93,11 @@ public class UserController : ControllerBase
     public UserController(SampleDBContext context)
     {
         _context = context;
+
     }
 
     // GET: api/user
+    [Authorize (Policy = "RequireAdmin")]
     [HttpGet]
     public ActionResult<IEnumerable<gebruiker>> Get()
     {
@@ -173,34 +180,14 @@ public class UserController : ControllerBase
     [HttpPost]
     public IActionResult Post([FromBody] RegisterModel nieuwGebruiker)
     {
-        if (nieuwGebruiker == null)
-        {
-            return BadRequest("Empty user data.");
-        }
-        if (_context.gebruikers.FirstOrDefault(g => g.email == nieuwGebruiker.Email) != null)
-        {
-            return BadRequest("Email already exists.");
-        }
-        if (nieuwGebruiker.Wachtwoord == null)
-        {
-            return BadRequest("Password is required.");
-        }
-        if (nieuwGebruiker.Voornaam == null)
-        {
-            return BadRequest("First name is required.");
-        }
-        if (nieuwGebruiker.Achternaam == null)
-        {
-            return BadRequest("Last name is required.");
-        }
-        if (nieuwGebruiker.Email == null)
-        {
-            return BadRequest("Email is required.");
-        }
-        if (nieuwGebruiker.AccountType == null)
-        {
-            return BadRequest("Account type is required.");
-        }
+        // lijst met required velden
+        if (nieuwGebruiker == null) return BadRequest("Invalid client request.");
+        if (_context.gebruikers.FirstOrDefault(g => g.email == nieuwGebruiker.Email) != null) return BadRequest("Email already exists.");
+        if (nieuwGebruiker.Wachtwoord == null) return BadRequest("Password is required.");
+        if (nieuwGebruiker.Voornaam == null) return BadRequest("First name is required.");
+        if (nieuwGebruiker.Achternaam == null) return BadRequest("Last name is required.");
+        if (nieuwGebruiker.Email == null) return BadRequest("Email is required.");
+        if (nieuwGebruiker.AccountType == null) return BadRequest("Account type is required.");
 
         gebruiker gebruiker;
 
@@ -211,7 +198,8 @@ public class UserController : ControllerBase
                 {
                     bedrijfsnaam = nieuwGebruiker.BedrijfsNaam,
                     locatie = nieuwGebruiker.Locatie,
-                    contactInformatie = nieuwGebruiker.ContactInformatie
+                    contactInformatie = nieuwGebruiker.ContactInformatie,
+                    rolId = _context.rollen.First(r => r.rolNaam == "Bedrijf").rolId
                 };
                 break;
             case "Ervaring":
@@ -224,13 +212,15 @@ public class UserController : ControllerBase
                     beperkingId = _context.beperkingen.First(b => b.beperkingType == nieuwGebruiker.BeperkingsType).beperkingId,
                     beschikbaarheid = nieuwGebruiker.Beschikbaarheid,
                     voorkeur = "test",
-                    hulpmiddelen = nieuwGebruiker.Hulpmiddelen
+                    hulpmiddelen = nieuwGebruiker.Hulpmiddelen,
+                    rolId = _context.rollen.First(r => r.rolNaam == "Panellid").rolId
                 };
                 break;
             case "beheerder":
                 gebruiker = new gebruikerBeheerder
                 {
-                    functie = nieuwGebruiker.Functie
+                    functie = nieuwGebruiker.Functie,
+                    rolId = _context.rollen.First(r => r.rolNaam == "Beheerder").rolId
                 };
                 break;
             default:

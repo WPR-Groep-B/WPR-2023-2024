@@ -25,7 +25,7 @@ function NavBar() {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/onderzoeken">Onderzoeken</NavLink>
+          <NavLink to="/onderzoekbeheer">Onderzoek Beheer</NavLink>
         </li>
         <li>
           <NavLink to="/contact">Contact</NavLink>
@@ -35,9 +35,6 @@ function NavBar() {
         </li>
         <li>
           <NavLink to="/privacy">Privacy</NavLink>
-        </li>
-        <li>
-          <NavLink to="/Chatpage">Chat</NavLink>
         </li>
         <li>
           <NavLink
@@ -82,6 +79,10 @@ function NavBar() {
           ) : (
             <>
               <li>
+                <NavLink to="/onderzoeken">Onderzoeken</NavLink>
+              </li>
+              <li>
+
                 <NavLink
                   to="/Account"
                   onMouseEnter={e => {

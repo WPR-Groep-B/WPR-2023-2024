@@ -3,7 +3,9 @@
     display: flex;
     flex-direction: column;
     height: auto;
+    height: auto;
 }
+    
 
 .formContainer input,
 .formContainer textarea,
@@ -91,6 +93,11 @@
     border-radius: 15px;
 }
 
+.percontainer {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
 .button {
     position: relative;
     overflow: hidden;
@@ -137,17 +144,15 @@
 
 .researchContainer {
     position: relative;
-    margin: auto;
+    margin: 5px;
     width: 40%;
     padding: 16px;
     background: #111e55;
     color: #fff;
     border-radius: 25px;
     margin-bottom: 20px;
-}
 
 .editButton {
-    position: absolute;
     bottom: 0px;
     right: 0;
     overflow: hidden;
@@ -194,7 +199,7 @@
 
 .formAndButtonContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
 }
 
 .createButton {

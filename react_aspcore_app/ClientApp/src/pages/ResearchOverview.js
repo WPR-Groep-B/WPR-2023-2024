@@ -1,4 +1,4 @@
-import ResearchList from "../components/ResearchList";
+import ResearchList from "../components/Research/ResearchList";
 import React, { useEffect } from 'react';
 import styles from '../styles/ResearchOverview.module.css';
 

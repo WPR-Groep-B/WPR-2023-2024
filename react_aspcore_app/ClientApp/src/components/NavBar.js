@@ -36,25 +36,6 @@ function NavBar() {
         <li>
           <NavLink to="/privacy">Privacy</NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/login"
-            onMouseEnter={e => {
-              const img = e.currentTarget.children[0];
-              img.src = searchHover;
-              img.style.opacity = 0;
-              setTimeout(() => img.style.opacity = 1, 0);
-            }}
-            onMouseLeave={e => {
-              const img = e.currentTarget.children[0];
-              img.src = search;
-              img.style.opacity = 0;
-              setTimeout(() => img.style.opacity = 1, 0);
-            }}
-          >
-            <img src={search} alt="Search" className={styles.search} />
-          </NavLink>
-        </li>
         {
           localStorage.getItem("jwt") == null ? (
             <li>

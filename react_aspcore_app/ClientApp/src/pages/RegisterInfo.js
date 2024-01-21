@@ -171,7 +171,7 @@ function RegisterInfo() {
                                 onChange={handlePostcodeChange}
                             />
 
-                            <label htmlFor="ErvaringFields">telefoonnummer:</label>
+                            <label htmlFor="ErvaringFields">Telefoonnummer:</label>
                             <input
                                 style={{ width: inputWidth }}
                                 type="text"

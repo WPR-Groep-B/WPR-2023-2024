@@ -146,10 +146,6 @@ function ToonOnderzoekersScherm({setRefreshKey, refreshKey, joinRoom, connection
             <h2>Onderzoeken om Deel te nemen</h2>
             <OnderzoekenDeelnemenList setRefreshKey={setRefreshKey} refreshKey={refreshKey}/>
         </div>
-        <div>
-            <p>OnderzoekMaken</p>
-            <OnderzoekMaken/>
-        </div>
         </>
     );
 }

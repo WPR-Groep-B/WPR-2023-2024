@@ -28,35 +28,11 @@ function Home() {
                         </button>
                     ) : (
                         <> {/*Dit zijn placeholderonderzoeken, de implementatie hiervan moet nog toegepast worden*/}
-                            <div className={styles.onderzoeken}>
-                                <div className={styles.onderrzoekContainer}>
-                                    <p>Hier komen alle onderzoeken te staan</p>
-                                </div>
 
-                                <div className={styles.onderrzoekContainer}>
-                                    <p>Het kunnen oneindig veel containers worden met allemaal andere soorten onderzoeken</p>
-                                </div>
+                            <button alt="Knop naar onderzoeken" className={styles.button} onClick={() => { window.location.href = "/onderzoeken"; }}>
+                                Alle onderzoeken zijn hier te vinden
+                            </button>
 
-                                <div className={styles.onderrzoekContainer}>
-                                    <p>Ze kunnen verschillende teksten en formatting hebben, maar het kunnen ook verschillende onderzoeken zijn, zoals een enquête of om en afspraak te maken</p>
-                                </div>
-
-                                <div className={styles.onderrzoekContainer}>
-                                    <p>Hieronder heb je een voorbeeld van een onderzoek:</p>
-                                </div>
-
-                                <div className={styles.onderrzoekContainer}>
-                                    <p>
-                                        Test Onderzoek
-                                        <hr></hr>
-                                        Locatie: nog te bepalen <br></br>
-                                        Datum: 21 januari 2024 <br></br>
-                                        Tijdstip: 23:59 <br></br>
-                                        <hr></hr>
-                                        Inhoud: Kijken of deze website af is
-                                    </p>
-                                </div>
-                            </div>
                         </>
                     )}
             </div>

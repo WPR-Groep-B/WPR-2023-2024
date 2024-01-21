@@ -16,7 +16,6 @@ function WachtWoordChanger({ setCurrentWindow, ChangePassword }) {
         }
 
         ChangePassword(oldPassword, newPassword);
-        alert("Wachtwoord succesvol veranderd!");
         setCurrentWindow("AccountInfo");
     }
 

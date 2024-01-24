@@ -1,5 +1,5 @@
 import styles from '../../styles/Onderzoek.module.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 function Onderzoek({onderzoek, joinRoom, connection}) {
 

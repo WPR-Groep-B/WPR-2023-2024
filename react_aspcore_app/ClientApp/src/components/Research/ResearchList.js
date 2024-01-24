@@ -11,7 +11,6 @@ function ResearchList() {
 
     const [refreshKey, setRefreshKey] = useState(0);
 
-    const [Status, setStatus] = useState(''); // Nieuwe state voor het tonen van de status van het onderzoek
     const [data, setData] = useState();
 
     const [isCreating, setIsCreating] = useState(false); // Nieuwe state voor het tonen van create formulier

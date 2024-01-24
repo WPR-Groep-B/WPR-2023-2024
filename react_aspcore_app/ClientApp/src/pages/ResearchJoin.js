@@ -1,5 +1,4 @@
 import React from "react";
-import ResearchEnroll from "../components/Research/ResearchEnroll";
 
 export default function ResearchJoin() {
     return (

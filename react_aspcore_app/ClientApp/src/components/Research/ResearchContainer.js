@@ -1,8 +1,7 @@
 import ResearchEdit from './ResearchEdit';
 import ReseachDetails from './ResearchDetails';
 import { useState } from 'react';
-import styles from '../../styles/ResearchList.module.css'
-import Axios from 'axios';
+import styles from '../../styles/ResearchList.module.css';
 
 function ResearchContainer({onderzoek, handleSave, handleDelete}) {
 

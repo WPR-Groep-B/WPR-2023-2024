@@ -4,11 +4,9 @@ import { HubConnectionBuilder, LogLevel, HttpTransportType } from "@microsoft/si
 import { useState } from "react";
 import React, { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import styles from "../styles/Chat.module.css";
 import OnderzoekenDeelnemenList from "../components/onderzoeken/OnderzoekenDeelnemenList";
 import OnderzoekenList from "../components/onderzoeken/OnderzoekenList";
 import axios from "axios";
-import OnderzoekMaken from "../components/onderzoeken/OnderzoekMaken"
 
 function Researches() {
 

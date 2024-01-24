@@ -20,7 +20,7 @@ function Researches() {
         document.title = 'Account - Stichting Accessibility';
     
         // If not logged in, redirect to login page
-        axios.post('https://localhost:7251/api/User/Authorize', {}, {
+        axios.post('/api/User/Authorize', {}, {
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('jwt')
           }
@@ -51,7 +51,7 @@ function Researches() {
         try {
             const connection = new HubConnectionBuilder()
                 //https://localhost:7251/ChatHub
-                .withUrl(`https://localhost:7251/ChatHub?access_token=${jwt}`, {
+                .withUrl(`/ChatHub?access_token=${jwt}`, {
                     skipNegotiation: true,
                     transport: HttpTransportType.WebSockets
                 })
@@ -132,7 +132,7 @@ export default Researches;
 
 function ToonOnderzoekersScherm({setRefreshKey, refreshKey, joinRoom, connection}) {
 
-    const ApiLink = "https://localhost:7251/api/Research/valid/";
+    const ApiLink = "/api/Research/valid/";
 
     return (
         <>
@@ -154,15 +154,15 @@ function ToonBedrijfScherm({setRefreshKey, refreshKey, joinRoom, connection}) {
         <>
         <div>
             <h2>Mijn onderzoeken</h2>
-            <OnderzoekVeld joinRoom={joinRoom} connection={connection} refreshKey={refreshKey} ApiLink={"https://localhost:7251/api/Research/Bedrijf/goed/"}/>
+            <OnderzoekVeld joinRoom={joinRoom} connection={connection} refreshKey={refreshKey} ApiLink={"/api/Research/Bedrijf/goed/"}/>
         </div>
         <div>
             <h2>onderzoeken nog geen deskundige gevonden</h2>
-            <OnderzoekenList setRefreshKey={setRefreshKey} refreshKey={refreshKey} ApiLink={"https://localhost:7251/api/Research/Bedrijf/valid/"}/>
+            <OnderzoekenList setRefreshKey={setRefreshKey} refreshKey={refreshKey} ApiLink={"/api/Research/Bedrijf/valid/"}/>
         </div>
         <div>
             <h2>onderzoeken nog niet goedgekeurd</h2>
-            <OnderzoekenList setRefreshKey={setRefreshKey} refreshKey={refreshKey} ApiLink={"https://localhost:7251/api/Research/Bedrijf/unvalid/"}/>
+            <OnderzoekenList setRefreshKey={setRefreshKey} refreshKey={refreshKey} ApiLink={"/api/Research/Bedrijf/unvalid/"}/>
         </div>
         </>
     );

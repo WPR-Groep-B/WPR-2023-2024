@@ -7,7 +7,7 @@ function ResearchEnroll() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        Axios.get('https://localhost:7251/api/research/', {
+        Axios.get('/api/research/', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('jwt')
             }
@@ -48,7 +48,7 @@ function ResearchEnroll() {
         //     console.error('Error joining the research: ', error);
         // }
 
-        Axios.post('https://localhost:7251/api/deelname/', {
+        Axios.post('/api/deelname/', {
             deelnameData
         }, {
             headers: {

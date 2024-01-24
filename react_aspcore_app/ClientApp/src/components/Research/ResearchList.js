@@ -57,7 +57,7 @@ function ResearchList() {
 
     // In de ResearchList component
     const handleDelete = async (id) => {
-        Axios.delete('https://localhost:7251/api/research/' + id, {
+        Axios.delete('/api/research/' + id, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('jwt')
         }
@@ -73,7 +73,7 @@ function ResearchList() {
     };
 
     const handleCreateSave = async (newOnderzoek) => {
-        Axios.post('https://localhost:7251/api/research/', {
+        Axios.post('/api/research/', {
             newOnderzoek
         }, {
             headers: {

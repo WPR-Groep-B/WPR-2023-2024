@@ -15,7 +15,7 @@ function Account() {
     document.title = 'Account - Stichting Accessibility';
 
     // If not logged in, redirect to login page
-    axios.post('https://localhost:7251/api/User/Authorize', {}, {
+    axios.post('/api/User/Authorize', {}, {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('jwt')
       }

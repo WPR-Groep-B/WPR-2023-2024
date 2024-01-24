@@ -8,7 +8,7 @@ function OnderzoekenDeelnemenList ({setRefreshKey, refreshKey}) {
     const [onderzoeken, setOnderzoeken] = useState([]);
 
     const getOnderzoeken = async () => {
-        axios.get("https://localhost:7251/api/Research/valid/", {
+        axios.get("/api/Research/valid/", {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('jwt')
             }
@@ -19,7 +19,7 @@ function OnderzoekenDeelnemenList ({setRefreshKey, refreshKey}) {
 
     const Deelnemen = async (onderzoekId) => {
         const jwt = jwtDecode(localStorage.getItem('jwt'));
-        axios.post("https://localhost:7251/api/Research/Deelnemen" , {
+        axios.post("api/Research/Deelnemen" , {
             onderzoekId: onderzoekId,
             gebruikerId: jwt.id
     }, {

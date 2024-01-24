@@ -7,7 +7,7 @@ function OnderzoekenList ({refreshKey, ApiLink}) {
 
     const [onderzoeken, setOnderzoeken] = useState([]);
 
-    const getOnderzoeken = async () => {
+    const getOnderzoeken = useCallback(() => {
         const jwt = jwtDecode(localStorage.getItem('jwt'));
         axios.get(ApiLink + jwt.id, {
             headers: {
@@ -16,7 +16,7 @@ function OnderzoekenList ({refreshKey, ApiLink}) {
         }).then((response) => {
             setOnderzoeken(response.data);
         });
-    }
+    }, []); // Add any dependencies here
     useEffect(() => {
         getOnderzoeken();
     }, [refreshKey]);

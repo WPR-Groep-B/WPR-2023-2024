@@ -1,11 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState , useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import OnderzoekKaal from "./onderzoekKaal";
 
 function OnderzoekenList ({refreshKey, ApiLink}) {
-
-    const RefreshKey = refreshKey
 
     const [onderzoeken, setOnderzoeken] = useState([]);
 
@@ -18,7 +16,7 @@ function OnderzoekenList ({refreshKey, ApiLink}) {
         }).then((response) => {
             setOnderzoeken(response.data);
         });
-    }, [RefreshKey]);
+    }, [refreshKey, ApiLink]);
 
     return (
         <div className="onderzoek-veld">

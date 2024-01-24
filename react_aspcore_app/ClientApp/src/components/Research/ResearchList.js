@@ -15,18 +15,13 @@ function ResearchList() {
 
     const [isCreating, setIsCreating] = useState(false); // Nieuwe state voor het tonen van create formulier
 
-    const fetchData = () => {
-        const result = Axios.get('https://localhost:7251/api/research/', {
+    useEffect(() => {
+        const result = Axios.get('/api/research/', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('jwt')
             }
         });
         setData(result.data);
-        console.log(data);
-    };
-
-    useEffect(() => {
-        fetchData();
     }, [refreshKey]);
 
     const handleCreate = () => {

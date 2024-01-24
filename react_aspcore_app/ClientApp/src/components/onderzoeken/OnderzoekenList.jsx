@@ -9,8 +9,8 @@ function OnderzoekenList ({refreshKey, ApiLink}) {
 
     const [onderzoeken, setOnderzoeken] = useState([]);
 
-    const getOnderzoeken = async () => {
-        const jwt = await jwtDecode(localStorage.getItem('jwt'));
+    useEffect(() => {
+        const jwt = jwtDecode(localStorage.getItem('jwt'));
         axios.get(ApiLink + jwt.id, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('jwt')
@@ -18,9 +18,6 @@ function OnderzoekenList ({refreshKey, ApiLink}) {
         }).then((response) => {
             setOnderzoeken(response.data);
         });
-    };
-    useEffect(() => {
-        getOnderzoeken();
     }, [RefreshKey]);
 
     return (

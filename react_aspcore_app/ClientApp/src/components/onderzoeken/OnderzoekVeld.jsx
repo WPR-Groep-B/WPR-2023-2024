@@ -6,8 +6,8 @@ import Onderzoek from "./Onderzoek";
 function OnderzoekVeld({ joinRoom, connection, refreshKey, ApiLink }) {
 
     const [onderzoekenDeelgenomen, setOnderzoekenDeelgenomen] = useState([]);
-
-    const getOnderzoekenDeelgenomen = useCallback(async () => {
+    
+    useEffect(() => {
         const jwt = jwtDecode(localStorage.getItem('jwt'));
         axios.get(ApiLink + jwt.id, {
             headers: {
@@ -16,11 +16,7 @@ function OnderzoekVeld({ joinRoom, connection, refreshKey, ApiLink }) {
         }).then((response) => {
             setOnderzoekenDeelgenomen(response.data);
         });
-    }, [ApiLink]);
-    
-    useEffect(() => {
-        getOnderzoekenDeelgenomen();
-    }, [getOnderzoekenDeelgenomen, refreshKey]);
+    }, [refreshKey]);
 
     return (
         <div className="onderzoek-veld">

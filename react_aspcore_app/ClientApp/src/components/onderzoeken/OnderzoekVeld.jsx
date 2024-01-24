@@ -16,7 +16,7 @@ function OnderzoekVeld({ joinRoom, connection, refreshKey, ApiLink }) {
         }).then((response) => {
             setOnderzoekenDeelgenomen(response.data);
         });
-    }, [refreshKey]);
+    }, [refreshKey, ApiLink]);
 
     return (
         <div className="onderzoek-veld">

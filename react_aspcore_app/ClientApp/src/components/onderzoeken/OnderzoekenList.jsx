@@ -5,10 +5,12 @@ import OnderzoekKaal from "./onderzoekKaal";
 
 function OnderzoekenList ({refreshKey, ApiLink}) {
 
+    const RefreshKey = refreshKey
+
     const [onderzoeken, setOnderzoeken] = useState([]);
 
-    const getOnderzoeken = useCallback(() => {
-        const jwt = jwtDecode(localStorage.getItem('jwt'));
+    const getOnderzoeken = async () => {
+        const jwt = await jwtDecode(localStorage.getItem('jwt'));
         axios.get(ApiLink + jwt.id, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('jwt')
@@ -16,10 +18,10 @@ function OnderzoekenList ({refreshKey, ApiLink}) {
         }).then((response) => {
             setOnderzoeken(response.data);
         });
-    }, []); // Add any dependencies here
+    };
     useEffect(() => {
         getOnderzoeken();
-    }, [refreshKey]);
+    }, [RefreshKey]);
 
     return (
         <div className="onderzoek-veld">

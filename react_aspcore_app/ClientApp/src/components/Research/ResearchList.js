@@ -39,7 +39,7 @@ function ResearchList() {
             GebruikerDeskundigeId: onderzoek.GebruikerDeskundigeId
         };
 
-        Axios.put('https://localhost:7251/api/research/' + onderzoek.onderzoekId, formattedData, {
+        Axios.put('/api/research/' + onderzoek.onderzoekId, formattedData, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + localStorage.getItem('jwt')
